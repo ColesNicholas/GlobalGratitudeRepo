@@ -1,0 +1,8 @@
+Test,Statistic,Parameter,P_Value,Estimate,
+<chr>,<dbl>,<dbl>,<dbl>,<dbl>,
+t,Measurement Only vs. Gratitude List,-3.721556,76.66551,3.76E-04,-0.8141304
+t1,Measurement Only vs. Gratitude Letter,-4.545743,73.04344,2.12E-05,-1.0116199
+t2,Measurement Only vs. Gratitude Text,-5.115979,65.10944,2.97E-06,-1.1302767
+t3,Measurement Only vs. Chan Gratitude List,-3.496234,74.40812,7.99E-04,-0.7826577
+t4,Measurement Only vs. Mental Subtraction Task,-2.398245,76.04829,1.89E-02,-0.5296837
+t5,Measurement Only vs. Gratitude to God Letter,-3.580259,76.99542,5.98E-04,-0.8035865

@@ -1,0 +1,712 @@
+Variable,Description,Values
+StartDate,Date when Qualtrics survey was opened,month/day/year time
+EndDate,Date when Qualtrics survey was closed,month/day/year time
+Status,Type of survey observation,"0 / IP Address: A normal response
+1 / Survey Preview: A preview response
+2 / Survey Test: A test response
+4 / Imported: An imported response
+8 / Spam: A possible spam response
+9  / Preview Spam: A possible spam response submitted through the preview link
+12 / Imported Spam: A possible spam response that was imported
+16 / Offline: A Qualtrics Offline App response
+17 / Offline Preview: Previews submitted through the Qualtrics Offline App. This feature is deprecated in latest versions of the app"
+Progress,Percentage of survey completed,0-100
+Duration (in seconds),Amount of time participant spent completing survey,
+Finished,Indicator of whether participant submitted a completed survey,"0 = participant left survey before completing
+1 = participant submitted completed survey"
+RecordedDate,Date survey was recorded in Qualtrics,
+ResponseId,Qualtrics-generated unique identifier for each participant,
+DistributionChannel,Method of survey distribution,"preview = preview version of survey used
+anonymous = anonymized official version of survey used"
+UserLanguage,Language that participant completed study in,"EN = English
+PT-BR = Brazilian Portuguese
+ZH-S = Mandarin Chinese
+ES = Latin American Spanish
+EL = Greek
+DA = Danish
+HI = Hindi
+RU = Russian
+KAZ = Kazakh
+KO = Korean
+MK = Macedonian
+NO = Norwegian
+PL = Polish
+SV = Swedish
+TH = Thai
+JA = Japanese
+TR = Turkish"
+consent,"After you have reviewed the consent form, please confirm below that you have reviewed the form and are ready to begin the study.","1 = Yes, I consent
+2 = No, I do not consent"
+control_events,"Control Condition: ""For the next few minutes, think back over the past day (past 24 hours) and write down five events that somehow affected you.""",
+control_interesting,"Control Condition: ""For the next few minutes, think back over the past day (past 24 hours) and write down five interesting events that somehow affected you.""",
+grat_list,"Gratitude Intervention: ""For the next few minutes, think back over the past week and write down five things in your life that you are grateful or thankful for.""",
+grat_letter,"Gratitude Intervention: ""Today, we want you to write a letter of gratitude (yped communication that is normally sent in an envelope by mail or messenger) towards someone who who has done something for which you are extremely grateful.""",
+grat_text,"Gratitude Intervention: ""deeply. Today, we want you to use your cellphone to text (a short electronic message sent from one cell phone to another using a cellular network) someone who has done something for which you are extremely grateful, and thank them for their kind act(s).""",
+grat_hk_list,"Gratitude Intervention: ""Please reflect on each of the three good moments by asking yourself three questions. What did I receive? What did I give? What more could I do?""",
+grat_sing_sub,"Gratitude Intervention: ""Next, please choose one of the five things you have written and describe how your life would be like if that particular moment or person was not present in your life.""",
+grat_god_letter,"Gratitude Intervention: "". Think about how God, a higher power, or some type of spiritual being has benefited you. List how you refer to this entity here and indicate how you would best describe them. Please write a letter to this entity, thanking them for all the ways they have benefited you.""",
+happy,"Report of extent that participant experienced feeling ""happy"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+obligated,"Report of extent that participant experienced feeling ""obligated"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+sad,"Report of extent that participant experienced feeling ""sad"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+optimistic,"Report of extent that participant experienced feeling ""optimistic"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+envious,"Report of extent that participant experienced feeling ""envious"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+emotion_DO_happy,Qualtrics randomization variable,
+emotion_DO_obligated,Qualtrics randomization variable,
+emotion_DO_sad,Qualtrics randomization variable,
+emotion_DO_optimistic,Qualtrics randomization variable,
+emotion_DO_envious,Qualtrics randomization variable,
+depressed,"Report of extent that participant experienced feeling ""depressed"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+pleased,"Report of extent that participant experienced feeling ""pleased"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+thankful,"Report of extent that participant experienced feeling ""thankful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+jealous,"Report of extent that participant experienced feeling ""jealous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+nervous,"Report of extent that participant experienced feeling ""nervous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+emotion_DO_depressed,Qualtrics randomization variable,
+emotion_DO_pleased,Qualtrics randomization variable,
+emotion_DO_thankful,Qualtrics randomization variable,
+emotion_DO_jealous,Qualtrics randomization variable,
+emotion_DO_nervous,Qualtrics randomization variable,
+joyful,"Report of extent that participant experienced feeling ""joyful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+anxious,"Report of extent that participant experienced feeling ""anxious"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+guilty,"Report of extent that participant experienced feeling ""guilty"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+hopeful,"Report of extent that participant experienced feeling ""jealous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+bitter,"Report of extent that participant experienced feeling ""nervous"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+emotion_DO_joyful,Qualtrics randomization variable,
+emotion_DO_anxious,Qualtrics randomization variable,
+emotion_DO_guilty,Qualtrics randomization variable,
+emotion_DO_hopeful,Qualtrics randomization variable,
+emotion_DO_bitter,Qualtrics randomization variable,
+appreciative,"Report of extent that participant experienced feeling ""depressed"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+satisfied,"Report of extent that participant experienced feeling ""pleased"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+indebted,"Report of extent that participant experienced feeling ""thankful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+content,"Report of extent that participant experienced feeling ""hopeful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+grateful,"Report of extent that participant experienced feeling ""grateful"" after completing the task","1 = ""not at all""; 7 = ""extremely"""
+emotion_DO_appreciative,Qualtrics randomization variable,
+emotion_DO_satisfied,Qualtrics randomization variable,
+emotion_DO_indebted,Qualtrics randomization variable,
+emotion_DO_content,Qualtrics randomization variable,
+emotion_DO_grateful,Qualtrics randomization variable,
+self_image_circle,Report of which circle size represents how large or small the participant feels about themselves.,1 = small; 7 = large
+self_image,Report of which stick figure size best describes themselves.,1 = small; 7 = large
+ls_1,In most ways my life is close to my ideal.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+ls_2,The conditions of my life are excellent.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+ls_3,I am satisfied with my life.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+ls_4,So far I have gotten the important things I want in life.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+ls_5,"If I could live my life over, I would change almost nothing.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+life_satisfaction_DO_ls_1,Qualtrics randomization variable,
+life_satisfaction_DO_ls_2,Qualtrics randomization variable,
+life_satisfaction_DO_ls_3,Qualtrics randomization variable,
+life_satisfaction_DO_ls_4,Qualtrics randomization variable,
+life_satisfaction_DO_ls_5,Qualtrics randomization variable,
+ladder,Report of what ladder rung represents how good the participant sees their life as.,"0 = worst, 10 = best"
+gratitude_1,I have so much in life to be thankful for.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_2,"If I had to list everything that I felt grateful for, it would be a very long list.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_3,"When I look at the world, I don't see much to be grateful for. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_4,I am grateful to a wide variety of people.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_5,"As I get older, I find myself more able to appreciate the people, events, and situations that have been part of my life history.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_6,Long amounts of time can go by before I feel grateful to something or someone. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gratitude_DO_gratitude_1,Qualtrics randomization variable,
+gratitude_DO_gratitude_2,Qualtrics randomization variable,
+gratitude_DO_gratitude_3,Qualtrics randomization variable,
+gratitude_DO_gratitude_4,Qualtrics randomization variable,
+gratitude_DO_gratitude_5,Qualtrics randomization variable,
+gratitude_DO_gratitude_6,Qualtrics randomization variable,
+gratitude_frequency_1,"Thanked someone you didn’t know who did a small favor for you in public (for example, someone who opened a door for you).","0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_2,"Expressed appreciation to a service worker (for example, someone who works in a restaurant or a grocery store).","0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_3,Tried to return a favor to someone who did something nice for you.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_4,Let your family and friends know that you appreciate them.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_5,Helped someone because they had helped you in the past.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_6,Made a point to not forget after someone had helped you.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_7,Helped a coworker with a task because they had helped you before.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_8,Complimented a friend who had done something nice for you.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_9,Told other people about a nice thing that someone else did for you.,"0 = Did not perform the behavior
+1 = Performed the behavior once
+2 = Performed the behavior more than once"
+gratitude_frequency_DO_gratitude_frequency_1,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_2,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_3,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_4,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_5,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_6,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_7,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_8,Qualtrics randomization variable,
+gratitude_frequency_DO_gratitude_frequency_9,Qualtrics randomization variable,
+color_task_red_6,"Report of how ""red"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
+color_task_yellow_1,"Report of how ""yellow"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
+color_task_blue_1,"Report of how ""blue"" the displayed color is",0 = not at all; 5 = moderately; 10 = extremely
+religion_1,How important is religion in your life?,"1 = Very important
+2 = Rather important
+3 = Not very important
+4 = Not at all important"
+religion_2,Are you a member of a church or a religious organization?,"1 = Not a member
+2 = Inactive member
+3 = Active member"
+religion_3,"How much confidence do you have in organized religions,churches, and religious organizations?","1 = A great deal
+2 = Quite a lot
+3 = Not very much
+4 = None at all"
+religion_4,"Apart from weddings and funerals, about how often do you attend religious services these days?","1 = More than once a week
+2 = Once a week
+3 = Once a month
+4 = Only on special holy days
+5 = Once a year
+6 = Less often
+7 = Never, practically never"
+religion_5,"Apart from weddings and funerals,about how often do you pray?","1 = Several times a day
+2 = Once a day
+3 = Several times a week
+4 = Only when attending religious services
+5 = Once on special holy days
+6 = Once a year
+7 = Less often
+8 = Never, practically never"
+religion_6,"Independently of whether you attend religious services or not, which would you say you are?","1 = A religious person
+2 = Not a religious person
+3 = An atheist"
+religion_7,Do you believe in God?,1 = Yes; 2 = No
+religion_8,Do you believe in hell?,1 = Yes; 2 = No
+religion_9,How important is God in your life?,1 = Not at all important; 10 = Very important
+religion_10,"Do you belong to anyparticular religion, religious denomination,or religious sect?",1 = Yes; 2 = No
+religion_11,"Please write its name here (If you answered ""no"", please put ""not applicable""):",
+belief_in_god,Which of these statements comes closest to describing your own belief in God?,"1 = I currently believe in God
+2 = I formerly believed in God, but no longer believe in God.
+3 = I have never believed in God"
+religious_grat_1,I have so much in life to be thankful to God for.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_2,"If I had to list everything that I felt grateful to God for, it would be a very long list.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_3,"When I look at the world, I don’t see much to be grateful to God for. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_4,I am grateful to God.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_5,As I get older I find myself more able to appreciate that God has been part of my life history.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_6,Long amounts of time can go by before I feel grateful to God. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+religious_grat_DO_religious_grat_1,Qualtrics randomization variable,
+religious_grat_DO_religious_grat_2,Qualtrics randomization variable,
+religious_grat_DO_religious_grat_3,Qualtrics randomization variable,
+religious_grat_DO_religious_grat_4,Qualtrics randomization variable,
+religious_grat_DO_religious_grat_5,Qualtrics randomization variable,
+religious_grat_DO_religious_grat_6,Qualtrics randomization variable,
+responsibilism_1,Children should be taught to place duty before pleasure.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+responsibilism_2,"You’re working in a company for two years, and one day you meet a co-worker from a different department that you’ve never met before. You are sitting outside a meeting room waiting for the meeting to start, and the two of you start talking. The co-worker starts asking you if you’re married, if you have children, what your hobbies are. Then you remember what a friend of yours told you: “Be careful not to share your personal secrets with people you don’t know because they could use those secrets to hurt you.” Do you agree with this statement?","1 = ""strongly disagree""; 7 = ""strongly agree"""
+responsibilism_3,Children should feel honored if their parents receive a distinguished award.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+responsibilism_4,We should keep our aging parents with us at home. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+responsibilism_5,"You are working in a company for two years, and one day you meet a co-worker from a different department that you’ve never met before. You’ve been working on a sales account that could be a big accomplishment. The co-worker asks about the account. You would feel comfortable telling this co-worker about the account. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_1,They (the people around you) have many chances to get to know other people.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_2,It is common for these people to have a conversation with someone they have never met before.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_3,"They are able to choose, according to their own preferences, the people whom they interact with in their daily life.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_4,"If they did not like their current groups, they could leave for better ones.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_5,They are able to choose the groups and organizations they belong to. ,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_6,It is easy for them to meet new people. ,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_7,It is uncommon for these people to have a conversation with people they have never met before. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_8,It is often the case that they cannot freely choose who they associate with. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_9,"Even if these people were not completely satisfied with the group they belonged to, they would usually stay with it anyway. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_10,There are few opportunities for these people to form new friendships. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_11,"Even if these people were not satisfied with their current relationships, they would often have no choice but to stay with them. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_12,"Even though they might rather leave, these people often have no choice but to stay in groups they don’t like. (reverse coded)","1 = ""strongly disagree""; 7 = ""strongly agree"""
+relational_mobility_DO_relational_mobility_1,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_2,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_3,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_4,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_5,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_6,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_7,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_8,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_9,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_10,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_11,Qualtrics randomization variable,
+relational_mobility_DO_relational_mobility_12,Qualtrics randomization variable,
+envy_1,I like to make people feel bad when something good has happened to them.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_2,I wouldn’t want to trade places with anyone.  (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_3,I feel angry when others succeed. ,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_4,It brings me happiness to see my friends succeed. (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_5,I’m content with what I’ve got.  (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_6,I am happy when others succeed even when I don’t.  (reverse coded),"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_7,It pains me to think of the success of my friends.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_8,I would rather see someone I don’t know win a lottery than to see an acquaintance win.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+envy_DO_envy_1,Qualtrics randomization variable,
+envy_DO_envy_2,Qualtrics randomization variable,
+envy_DO_envy_3,Qualtrics randomization variable,
+envy_DO_envy_4,Qualtrics randomization variable,
+envy_DO_envy_5,Qualtrics randomization variable,
+envy_DO_envy_6,Qualtrics randomization variable,
+envy_DO_envy_7,Qualtrics randomization variable,
+envy_DO_envy_8,Qualtrics randomization variable,
+me_attention,Attention check and creates an embedded variable for the WTR slider questions,
+inequality_1,Incomes should be made more equal : We need larger income differences as incentives for individual effort,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
+inequality_2,Competition is good : Competition is harmful,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
+inequality_3,"In the long run, hard work usually brings a better life : Hard work doesn’t bring success",1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
+inequality_4,People can only get rich at the expense of others : Wealth can grow so there’s enough for everyone,1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right
+inequality_DO_inequality_1,Qualtrics randomization variable,
+inequality_DO_inequality_2,Qualtrics randomization variable,
+inequality_DO_inequality_3,Qualtrics randomization variable,
+inequality_DO_inequality_4,Qualtrics randomization variable,
+gov_confidence_1,How much confidence do you have in your government?,"1 = A great deal
+2 = Quite a lot
+3 = Not very much
+4 = Not at all"
+gov_leaders_1,"In my country, there are plenty of opportunities to improve one's economic situations.","1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_2,Children in my country have a fair chance of moving up the economic ladder.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_3,Leaders in my country take good care of our citizens.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_4,Leaders in my country are competent and charismatic.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_5,Leaders in my country inspire us.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_6,Leaders in my country protect us when we are in a difficult situation.,"1 = ""strongly disagree""; 7 = ""strongly agree"""
+gov_leaders_DO_gov_leaders_1,Qualtrics randomization variable,
+gov_leaders_DO_gov_leaders_2,Qualtrics randomization variable,
+gov_leaders_DO_gov_leaders_3,Qualtrics randomization variable,
+gov_leaders_DO_gov_leaders_4,Qualtrics randomization variable,
+gov_leaders_DO_gov_leaders_5,Qualtrics randomization variable,
+gov_leaders_DO_gov_leaders_6,Qualtrics randomization variable,
+stim_lef_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
+stim_lef_lar_mkn,Visual judgement of whether the black line is the same length as the red line with no info (large discrepancy),
+stim_rig_sma_mkn,Visual judgement of whether the black line is the same length as the red line with no info (small discrepancy),
+stim_rig_lar_mkn,Visual judgement of whether the black line is the same length as the red line with no info (large discrepancy),
+stim_rig_lar_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (large discrepancy),7 is identified as the correct answer by the community or researcher
+stim_rig_sma_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (small discrepancy),7 is identified as the correct answer by the community or researcher
+stim_lef_lar_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (large discrepancy),7 is identified as the correct answer by the community or researcher
+stim_lef_sma_mky,Visual judgement of whether the black line is the same length as the red line with conform/demand info (small discrepancy),7 is identified as the correct answer by the community or researcher
+prq_g_1,Please rate the extent to which you view your role as a subject in a psychology experiment as being similar to the following roles in society: Giving anonymously to charity,1 = maximally dissimilar; 10 = maximally similar
+prq_g_2,Volunteering to pick up trash in a nearby community,1 = maximally dissimilar; 10 = maximally similar
+prq_o_1,"Waiting at a stop light even though there are no cars, people, or cameras around",1 = maximally dissimilar; 10 = maximally similar
+prq_o_2,Following instructions to turn off your phone at a show even though you do not believe that others would hear or see it,1 = maximally dissimilar; 10 = maximally similar
+prq_a_1,Trying to make a good impression when you meet a new person,1 = maximally dissimilar; 10 = maximally similar
+prq_a_2,Being interviewed for a job,1 = maximally dissimilar; 10 = maximally similar
+prq_p_1,Spending the evening with a good friend,1 = maximally dissimilar; 10 = maximally similar
+prq_p_2,Taking a relaxing walk through a park,1 = maximally dissimilar; 10 = maximally similar
+prq_n_1,Getting into an argument with a colleague or classmate,1 = maximally dissimilar; 10 = maximally similar
+prq_n_2,Walking outside during a storm,1 = maximally dissimilar; 10 = maximally similar
+prq_w_1,Working extra hours to earn more money,1 = maximally dissimilar; 10 = maximally similar
+prq_w_2,Completing an assignment to get a good grade in a class,1 = maximally dissimilar; 10 = maximally similar
+prq_DO_prq_g_1,Qualtrics randomization variable,
+prq_DO_prq_g_2,Qualtrics randomization variable,
+prq_DO_prq_o_1,Qualtrics randomization variable,
+prq_DO_prq_o_2,Qualtrics randomization variable,
+prq_DO_prq_a_1,Qualtrics randomization variable,
+prq_DO_prq_a_2,Qualtrics randomization variable,
+prq_DO_prq_p_1,Qualtrics randomization variable,
+prq_DO_prq_p_2,Qualtrics randomization variable,
+prq_DO_prq_n_1,Qualtrics randomization variable,
+prq_DO_prq_n_2,Qualtrics randomization variable,
+prq_DO_prq_w_1,Qualtrics randomization variable,
+prq_DO_prq_w_2,Qualtrics randomization variable,
+empathy_family,Participants are asked to input the name of a close relative of the same age.,
+empathy_kinType,What is your relationship with the close relative?,"1 = Cousin
+2 = Sibling
+3 = Aunt or uncle
+4 = Parent
+5 = Grandparent
+6 = Other"
+empathy_kinType_6_TEXT,"Text input for ""Other""",
+empathy_friend,Participants are asked to input the name of a friend.,
+empathy_stranger,Participants are asked to input the name of a stranger.,
+empathy_email_9,"How likely is it that you'll call, e-mail, or text [Name] over the next week?",0 = I am completely certain that I will NOT contanct this person in the next week; 100 = I am completely certain I WILL contact this person in the next week
+empathy_discussion_8,How likely is it that you'll discuss something important or interesting with [NAME] over the next month?,0 = I am completely certain that I will NOT discuss something important or interesting with this person in the next month; 100 = I am completely certain that I WILL discuss something important or interesting with this person in the next month
+empathy_time_8,How likely is it that you'll spend time with [NAME] over the next year?,0 = I am completely certain that I will NOT spend time with this person in the next year; 100 = I am completely certain that I WILL spend time with this person in the next year
+empathy_circle,"Please indicate which picture below best describes your relationship with [NAME]. For the picture, you are the left circle and [NAME[ is the right circle.",1 = No overlap; 7 = A lot of overlap
+empathy_1_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME]'s dog getting lost","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_1_emotions_DO_empathy_1_compassionate,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_distressed,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_suprised,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_sympathetic,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_upset,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_sad,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_pity,Qualtrics randomization variable,
+empathy_1_emotions_DO_empathy_1_confused,Qualtrics randomization variable,
+empathy_1_help,How much help would you be willing to provide [NAME] in this situation (finding their dog)?,"1 = No help
+2 = Search for a few minutes
+3 = Search for an hour
+4 = Search for two hours
+5 = Search for an entire afternoon
+6 = Cancel an afternoon of work or school to search
+7 = Cancel an afternoon of work or school to search and ask others to do the same"
+empathy_2_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] getting evicted","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_2_emotions_DO_empathy_2_compassionate,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_distressed,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_suprised,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_sympathetic,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_upset,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_sad,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_pity,Qualtrics randomization variable,
+empathy_2_emotions_DO_empathy_2_confused,Qualtrics randomization variable,
+empathy_2_help,How much help would you be willing to provide [NAME] in this situation (getting evicted)?,"1 = No help
+2 = Send them information about available apartments
+3 = Help them find a new place to live by visiting apartments for a few hours
+4 = Offer to have them come stay with you for a couple of days (provided you have space)
+5 = Offer to have them come stay with you for a week (provided you have space)
+6 = Offer to have them come stay with you until they find a new place (provided you have space)
+7 = Offer to have them come stay with you rent-free (provided you have space)"
+empathy_3_compassionate,"Report of extent that participant experienced feeling ""compassionate"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_distressed,"Report of extent that participant experienced feeling ""distressed"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_suprised,"Report of extent that participant experienced feeling ""suprised"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_sympathetic,"Report of extent that participant experienced feeling ""sympathetic"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_upset,"Report of extent that participant experienced feeling ""upset"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_sad,"Report of extent that participant experienced feeling ""sad"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_pity,"Report of extent that participant experienced feeling ""pity"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_confused,"Report of extent that participant experienced feeling ""confused"" after reading a story about [NAME] dying in an accident","1 = ""Not at all""; 7 = ""Extremely"""
+empathy_3_emotions_DO_empathy_3_compassionate,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_distressed,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_suprised,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_sympathetic,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_upset,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_sad,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_pity,Qualtrics randomization variable,
+empathy_3_emotions_DO_empathy_3_confused,Qualtrics randomization variable,
+empathy_3_help,How much help would you be willing to provide [NAME]'s children in this situation?,"1 = No help
+2 = Donate an hours worth of typical wages toward a fund for the kids
+3 = Donate a 2.5 hours worth of typical wages toward a fund for the kids
+4 = Donate a 5 hours worth of typical wages toward a fund for the kids
+5 = Start a fund-raising effort for the kids' welfare
+6 = Have the kids come live with you until a permanent home was found
+7 = Have the kids come live with you and raise them as you would your own"
+birthdate,Participant's age,
+brother,"How many brothers do you have (please include all step, adopted, biological, and half-brothers)?",1-10+
+sister,"How many sisters do you have (please include all step, adopted, biological, and half-sisters)?",1-10+
+sibling_instructions,What is the name of your oldest living sibling?,
+sibling_gender,What is the sex of this sibling?,"1 = Male
+2 = Female
+3 = Other"
+sibling_gen_match,Is this sibling the same or different sex as you?,"1 = Same
+2 = Different"
+sibling_birthdate,What is your sibling's age?,
+sibling_mother,Does this sibling share the same biological mother as you?,"1 = Yes
+2 = No 
+3 = I don't know"
+sibling_father,Does this sibling share the same biological father as you?,"1 = Yes
+2 = No 
+3 = I don't know"
+sibling_status,Is this sibling older or younger than you?,"1 = Younger
+2 = Older
+3 = Twin"
+older_age,How old was this sibling when you were born?,
+younger_age,How old were you when this sibling was born?,
+younger_mother,Did you live with BOTH this sibling and your biological mother right after this sibling was born?,"1 = Yes
+2 = No 
+3 = I don't know"
+younger_infant,Did your biological mother care for this sibling as an infant?,"1 = Yes
+2 = No 
+3 = I don't know"
+sb_tg_0_1,Did you live with your oldest sibling when you were just born?,"1 = Yes
+2 = No "
+sb_tg_0_2,Did you live with your biological mother when you were just born?,"1 = Yes
+2 = No "
+sb_tg_0_3,Did you live with your biological father when you were just born?,"1 = Yes
+2 = No "
+sb_tg_1_1,Did you live with your oldest sibling when you were 1 years old?,"1 = Yes
+2 = No "
+sb_tg_1_2,Did you live with your biological mother when you were 1 years old?,"1 = Yes
+2 = No "
+sb_tg_1_3,Did you live with your biological father when you were 1 years old?,"1 = Yes
+2 = No "
+sb_tg_2_1,Did you live with your oldest sibling when you were 2 years old?,"1 = Yes
+2 = No "
+sb_tg_2_2,Did you live with your biological mother when you were 2 years old?,"1 = Yes
+2 = No "
+sb_tg_2_3,Did you live with your biological father when you were 2 years old?,"1 = Yes
+2 = No "
+sb_tg_3_1,Did you live with your oldest sibling when you were 3 years old?,"1 = Yes
+2 = No "
+sb_tg_3_2,Did you live with your biological mother when you were 3 years old?,"1 = Yes
+2 = No "
+sb_tg_3_3,Did you live with your biological father when you were 3 years old?,"1 = Yes
+2 = No "
+sb_tg_4_1,Did you live with your oldest sibling when you were 4 years old?,"1 = Yes
+2 = No "
+sb_tg_4_2,Did you live with your biological mother when you were 4 years old?,"1 = Yes
+2 = No "
+sb_tg_4_3,Did you live with your biological father when you were 4 years old?,"1 = Yes
+2 = No "
+sb_tg_5_1,Did you live with your oldest sibling when you were 5 years old?,"1 = Yes
+2 = No "
+sb_tg_5_2,Did you live with your biological mother when you were 5 years old?,"1 = Yes
+2 = No "
+sb_tg_5_3,Did you live with your biological father when you were 5 years old?,"1 = Yes
+2 = No "
+sb_tg_6_1,Did you live with your oldest sibling when you were 6 years old?,"1 = Yes
+2 = No "
+sb_tg_6_2,Did you live with your biological mother when you were 6 years old?,"1 = Yes
+2 = No "
+sb_tg_6_3,Did you live with your biological father when you were 6 years old?,"1 = Yes
+2 = No "
+sb_tg_7_1,Did you live with your oldest sibling when you were 7 years old?,"1 = Yes
+2 = No "
+sb_tg_7_2,Did you live with your biological mother when you were 7 years old?,"1 = Yes
+2 = No "
+sb_tg_7_3,Did you live with your biological father when you were 7 years old?,"1 = Yes
+2 = No "
+sb_tg_8_1,Did you live with your oldest sibling when you were 8 years old?,"1 = Yes
+2 = No "
+sb_tg_8_2,Did you live with your biological mother when you were 8 years old?,"1 = Yes
+2 = No "
+sb_tg_8_3,Did you live with your biological father when you were 8 years old?,"1 = Yes
+2 = No "
+sb_tg_9_1,Did you live with your oldest sibling when you were 9 years old?,"1 = Yes
+2 = No "
+sb_tg_9_2,Did you live with your biological mother when you were 9 years old?,"1 = Yes
+2 = No "
+sb_tg_9_3,Did you live with your biological father when you were 9 years old?,"1 = Yes
+2 = No "
+sb_tg_10_1,Did you live with your oldest sibling when you were 10 years old?,"1 = Yes
+2 = No "
+sb_tg_10_2,Did you live with your biological mother when you were 10 years old?,"1 = Yes
+2 = No "
+sb_tg_10_3,Did you live with your biological father when you were 10 years old?,"1 = Yes
+2 = No "
+sb_tg_11_1,Did you live with your oldest sibling when you were 11 years old?,"1 = Yes
+2 = No "
+sb_tg_11_2,Did you live with your biological mother when you were 11 years old?,"1 = Yes
+2 = No "
+sb_tg_11_3,Did you live with your biological father when you were 11 years old?,"1 = Yes
+2 = No "
+sb_tg_12_1,Did you live with your oldest sibling when you were 12 years old?,"1 = Yes
+2 = No "
+sb_tg_12_2,Did you live with your biological mother when you were 12 years old?,"1 = Yes
+2 = No "
+sb_tg_12_3,Did you live with your biological father when you were 12 years old?,"1 = Yes
+2 = No "
+sb_tg_13_1,Did you live with your oldest sibling when you were 13 years old?,"1 = Yes
+2 = No "
+sb_tg_13_2,Did you live with your biological mother when you were 13 years old?,"1 = Yes
+2 = No "
+sb_tg_13_3,Did you live with your biological father when you were 13 years old?,"1 = Yes
+2 = No "
+sb_tg_14_1,Did you live with your oldest sibling when you were 14 years old?,"1 = Yes
+2 = No "
+sb_tg_14_2,Did you live with your biological mother when you were 14 years old?,"1 = Yes
+2 = No "
+sb_tg_14_3,Did you live with your biological father when you were 14 years old?,"1 = Yes
+2 = No "
+sb_tg_15_1,Did you live with your oldest sibling when you were 15 years old?,"1 = Yes
+2 = No "
+sb_tg_15_2,Did you live with your biological mother when you were 15 years old?,"1 = Yes
+2 = No "
+sb_tg_15_3,Did you live with your biological father when you were 15 years old?,"1 = Yes
+2 = No "
+sb_tg_16_1,Did you live with your oldest sibling when you were 16 years old?,"1 = Yes
+2 = No "
+sb_tg_16_2,Did you live with your biological mother when you were 16 years old?,"1 = Yes
+2 = No "
+sb_tg_16_3,Did you live with your biological father when you were 16 years old?,"1 = Yes
+2 = No "
+sb_tg_17_1,Did you live with your oldest sibling when you were 17 years old?,"1 = Yes
+2 = No "
+sb_tg_17_2,Did you live with your biological mother when you were 17 years old?,"1 = Yes
+2 = No "
+sb_tg_17_3,Did you live with your biological father when you were 17 years old?,"1 = Yes
+2 = No "
+sb_tg_18_1,Did you live with your oldest sibling when you were 18 years old?,"1 = Yes
+2 = No "
+sb_tg_18_2,Did you live with your biological mother when you were 18 years old?,"1 = Yes
+2 = No "
+sb_tg_18_3,Did you live with your biological father when you were 18 years old?,"1 = Yes
+2 = No "
+sb_tg_19_1,Did you live with your oldest sibling when you were 19 years old?,"1 = Yes
+2 = No "
+sb_tg_19_2,Did you live with your biological mother when you were 19 years old?,"1 = Yes
+2 = No "
+sb_tg_19_3,Did you live with your biological father when you were 19 years old?,"1 = Yes
+2 = No "
+sb_tg_20_1,Did you live with your oldest sibling when you were 20 years old?,"1 = Yes
+2 = No "
+sb_tg_20_2,Did you live with your biological mother when you were 20 years old?,"1 = Yes
+2 = No "
+sb_tg_20_3,Did you live with your biological father when you were 20 years old?,"1 = Yes
+2 = No "
+sibling_house,Do you still live with this sibling in the same household?,"1 = Yes
+2 = No "
+sibling_favor,How many favors did you do for your sibling in the past month?,0 - 10 or more
+sibling_kidney,"Provided that your sibling needed a new kidney, how willing would you be to donate one of your kidneys? In this hypothetical situation, you’re not the only person who could help your sibling.",0 = Not willing at all; 6 = Completely willing
+sibling_money,How willing would you be to give your sibling a month of living expenses?,0 = Not willing at all; 6 = Completely willing
+sibling_education,"Assume your sibling needed your help to make a large necessary purchase. If, for some reason, nobody else could help, how willing would you be to interrupt your education, career, or other important goals <u>for an entire year</u> to work and help pay for this purchase?",0 = Not willing at all; 6 = Completely willing
+sibling_sick,How willing would you be to care for this sibling if they got sick?,0 = Not willing at all; 6 = Completely willing
+sibling_phone,How many times in the last month have you called to talk to this sibling on the phone?,"1 = 0 times
+2 = 1 time
+3 = 2-3 times
+4 = 4 times (once a week)
+5 = 8 times (twice a week)
+6 = 12-16 times (3-4 times a week)
+7 = 20-30 times (5-7 times a week)"
+sibling_inperson,When was the last time you saw this sibling in person?,"1 = Within the lask week
+2 = Within the last month
+3 = Within the last 6 months
+4 = Witihin the last year
+5 = Within the last 2 years
+6 = Within the last 5 years
+7 = Within the last 10 years
+8 = It's been more than 10 years"
+meals_attention,Attention check,4 (Correct answer)
+sex,Participant's gender identity,"1 = Male
+2 = Female
+3 = Other
+4 = Prefer not to answer"
+age,What is your age in years?,
+education,How many years of formal education do you have?,
+elementary,How many times did you move between the ages of 5-10?,0 - 5+
+middle,How many times did you move between the ages of 11-14?,0 - 5+
+high,How many times did you move between the ages of 15-18?,0 - 5+
+social_class,How would you rate your social class?,"1 = lower/working
+2 = lower middle
+3 = middle
+4 = upper middle
+5 = upper
+6 = prefer not "
+grow_up,"Where did you grow up? (If you grew up in multiple places, please answer for the place you spent the longest time)","1 = Small town
+2 = Suburb of medium sized city
+3 = Medium sized city
+4 = Suburb of a large sized city
+5 = Large city "
+marital_status,Which of the following best describes your current marital status?,"1 = Never married
+2 = Married/In a domestic partnership
+3 = Widowed
+4 = Divorced
+5 = Other "
+attention_check,How much attention did you pay to this study?,"1 = Almost none
+2 = Very little
+3 = Some
+4 = A lot
+5 = Almost all "
+goal_check,What do you think this study was about?,
+hypothesis_check,What hypothesis/hypotheses do you think we were testing in study?,
+intervention_check,"Before participating in our study today, had you ever taken part in an activity (for example, keeping a gratitude journal) designed to make you feel more grateful?","1 = Yes
+2 = No "
+intervention_check_2,Do you think it worked?,"1 = Yes
+2 = No "
+intervention_check_3,"In general, do you think activities like keeping a gratitude journal help people feel happier and more satisfied with life?<br>","1 = Yes
+2 = No 
+3 = Not sure"
+ai,AI check,"1 = Yes
+2 = No "
+copy_paste,Copy paste check,"1 = Yes
+2 = No "
+copy_paste_yes,Elaborating on AI and copy paste check,
+feedback,Feedback on the survey,
+PROLIFIC_PID,Prolific ID,
+lab,Site identification,"USA_01
+BRA_01
+CHN_01
+COL_01
+CYP_01
+DNK_01
+GHA_01
+IND_01
+KAZ_01
+KAZ_01
+KOR_01
+MKD_01
+MYS_01
+MYS_01
+NGA_01
+NGA_02
+NOR_01
+PHL_01
+POL_01
+SWE_01
+THA_01
+JPN_01
+TUR_01
+TUR_01
+ARE_01"
+modality,How participants are recorded,Online/In-person
+incentive,How participants are getting paid,Paid/Credit
+IRB,Link to consent form,
+redir,Link to redirect link,
+deb,Link to debriefing page,
+condition,Name of the condition assigned,"measure
+events
+int.events
+list
+letter
+text
+hk.list
+sub
+god.letter"
+condition_type,Type of the condition assigned,"control
+intervention"
+orientation,Orientation of the line task,"left.c
+right.c"
+info,Assigned condition of the line task,"demand
+conform"
+otherName,Name of the other person in the empathy task,
+subjName,Embedded data from me_attention,
+lambda1,WTR slider from the empathy task module,
+lambda2,WTR slider from the kinship module,
+subjName2,Embedded data from me_attention,
+kinName,Name of the sibling from the kinship module,
+worktimeArray,An ordered array of the total time spent both on and off task,
+tasktime,How much time a participant spent on the survey,
+WorktimeArray,An ordered array of the total time spent both on and off task,
+offTask,An ordered array of the time spent off task; each item in the array represents a separate time the subjects’ cursor left the work space and the amount of time the subject spent off task,
+onTask,An ordered array of the time spent on task; each item in the array represents a separate time the subjects’ cursor entered the workspace and the amount of time the subject spent within the task window,
+totalOffTask,The total amount of time spent off task,
+totalOnTask,The total amount of time on task (without subtracting time spent off task),
+perPagePT,Page breaks between pages,
+pageNo,How many pages the participant saw,
+FL_6_DO_FL_42,Qualtrics randomization variable,
+FL_6_DO_FL_43,Qualtrics randomization variable,
+FL_6_DO_FL_44,Qualtrics randomization variable,
+FL_6_DO_FL_46,Qualtrics randomization variable,
+FL_6_DO_FL_47,Qualtrics randomization variable,
+FL_6_DO_FL_48,Qualtrics randomization variable,
+FL_6_DO_FL_49,Qualtrics randomization variable,
+FL_6_DO_FL_50,Qualtrics randomization variable,
+FL_6_DO_FL_51,Qualtrics randomization variable,
+FL_8_DO_emotion_1,Qualtrics randomization variable,
+FL_8_DO_emotion_2,Qualtrics randomization variable,
+FL_8_DO_emotion_3,Qualtrics randomization variable,
+FL_8_DO_emotion_4,Qualtrics randomization variable,
+FL_13180993309_DO_FL_151,Qualtrics randomization variable,
+FL_13180993309_DO_FL_87,Qualtrics randomization variable,
+FL_152_DO_FL_153,Qualtrics randomization variable,
+FL_152_DO_FL_154,Qualtrics randomization variable,
+FL_155_DO_FL_156,Qualtrics randomization variable,
+FL_155_DO_FL_157,Qualtrics randomization variable,
+FL_160_DO_FL_161,Qualtrics randomization variable,
+FL_160_DO_FL_171,Qualtrics randomization variable,
+FL_164_DO_stimuli:leftaligned;smalldiscrepancy;noinfo,Qualtrics randomization variable,
+FL_164_DO_stimuli:leftaligned;largediscrepancy;noinfo,Qualtrics randomization variable,
+FL_168_DO_stimuli:rightaligned;smalldiscrepancy;noinfo,Qualtrics randomization variable,
+FL_168_DO_stimuli:rightaligned;largediscrepancy;noinfo,Qualtrics randomization variable,
+FL_177_DO_stimuli:rightaligned;largediscrepancy;info,Qualtrics randomization variable,
+FL_177_DO_stimuli:rightaligned;smalldiscrepancy;info,Qualtrics randomization variable,
+FL_181_DO_stimuli:leftaligned;largediscrepancy;info,Qualtrics randomization variable,
+FL_181_DO_stimuli:leftaligned;smalldiscrepancy;info,Qualtrics randomization variable,
+FL_73_DO_FL_13180993312,Qualtrics randomization variable,
+FL_73_DO_FL_13180993314,Qualtrics randomization variable,
+FL_73_DO_FL_13180993315,Qualtrics randomization variable,
+FL_82_DO_empathystory1,Qualtrics randomization variable,
+FL_82_DO_empathy_story2,Qualtrics randomization variable,
+FL_82_DO_empathystory3,Qualtrics randomization variable,
+control_measure_DO_control_measure,Qualtrics randomization variable,
+emotion_1_DO_emotion,Qualtrics randomization variable,
+emotion_2_DO_emotion,Qualtrics randomization variable,
+emotion_3_DO_emotion,Qualtrics randomization variable,
+emotion_4_DO_emotion,Qualtrics randomization variable,
+responsibilism_DO_responsibilism_1,Qualtrics randomization variable,
+responsibilism_DO_responsibilism_2,Qualtrics randomization variable,
+responsibilism_DO_responsibilism_3,Qualtrics randomization variable,
+responsibilism_DO_responsibilism_5,Qualtrics randomization variable,
+responsibilism_DO_responsibilism_4,Qualtrics randomization variable,
