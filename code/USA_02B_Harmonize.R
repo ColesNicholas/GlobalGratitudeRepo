@@ -39,5 +39,5 @@ data <- data %>% select(-color_task_red_6, -color_task_yellow_1, -color_task_blu
 # Save the processed data to CSV
 write.csv(data, 
           file = here('data',
-                      "USA_002b_raw_harmonized.csv")
+                      "USA_02b_raw_harmonized.csv")
           )

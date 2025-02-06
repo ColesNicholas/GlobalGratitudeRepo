@@ -16,52 +16,20 @@ library(Matrix)
 library(ggtext)
 library(tidyr)
 library(sf)
+library(here)
 
 
 ```
 #Open and Set Up Data
 ```{r}
-# fetch survey
-data <- fetch_survey(surveyID = 'SV_1YQ3FmlbEHp1RIO',
-                   force_request = T,
-                   label = F,
-                   convert = F)
+# specify directory
+i_am("code/GlobalGratitude_Graphs.Rmd")
 
-# fix known issues
-data <- data %>% 
-  
-  # 4/22/2024 TUR_01 used real link for testing purposes
-  filter(ResponseId != "R_42KUGZSS76NgWH7",
-         ResponseId != "R_4W4EXfgeyk1rCYF",
-         ResponseId != "R_45Z862EIfzYcin4",
-         ResponseId != "R_7BhJx9Ci7THupmF",
-         ResponseId != "R_42Lv9fg5qi9V9xm",
-         ResponseId != "R_2kFa26mh78uevnz",
-         ResponseId != "R_4DRThnH8LgbEvM8",
-         ResponseId != "R_4r1kAEqQCo1PNn6",
-         ResponseId != "R_4GQErqyYDlRWVwZ",
-         ResponseId != "R_4SGF0GCHSHIN0ls",
-         ResponseId != "R_6Pndj5c7sr1pcU3",
-         ResponseId != "R_8lQxsY2ITg7HKh1",
-         #USA_01 duplicate data
-         ResponseId != "R_6rDfD5u84z6WufT",
-         #DZA_01 test data
-         ResponseId != "R_4ioYJK1zR2FgR4R",
-         ResponseId != "R_4OvlyOmeTsmLpFn",
-         ResponseId != "R_4BA1gbglSYnVyDK",
-         #TUR_01 duplicate data
-         ResponseId != "R_8HXsI5PQftiJUYk",
-         ResponseId != "R_8iVWI3CN49ACiUp",
-         DistributionChannel != "preview",
-         consent == 1,
-         Progress > 95,
-         condition_type != "NA",
-         lab != "NA")
+# fetch survey
+data <- read.csv(file = here("data", "GlobalGratitude_Final_Cleaned.csv"))
 
 ```
 ```{r}
-data <- data %>%
-  select(StartDate:inequality_4, sex:totalOnTask)
 
 data$gratitude_all <- rowMeans(data[, c("grateful", "thankful", "appreciative")], na.rm = TRUE)
 data$happy_all <- rowMeans(data[, c("happy", "satisfied", "content", "joyful", "pleased")], na.rm = TRUE)
@@ -90,6 +58,8 @@ data <- data %>%
     lab == "MYS_01" ~ "Malaysia",
     lab == "USA_01" ~ "United States",
     lab == "USA_02" ~ "United States",
+    lab == "USA_02b" ~ "United States",
+    lab == "USA_02c" ~ "United States",
     lab == "NGA_01" ~ "Nigeria",
     lab == "NGA_02" ~ "Nigeria",
     lab == "CAN_01" ~ "Canada",
@@ -120,7 +90,8 @@ data <- data %>%
     lab == "GHA_01" ~ "Ghana",
     lab == "THA_01" ~ "Thailand",
     TRUE ~ NA_character_
-  ))
+  )) %>%
+  filter(!is.na(country))
 
 control_data <- subset(data, condition_type == "control")
 intervention_data <- subset(data, condition_type == "intervention")
@@ -229,7 +200,6 @@ results_df <- results_df %>%
   )
 
 print(results_df)
-
 
 ```
 ```{r}
