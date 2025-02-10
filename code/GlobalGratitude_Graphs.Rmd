@@ -26,7 +26,7 @@ library(here)
 i_am("code/GlobalGratitude_Graphs.Rmd")
 
 # fetch survey
-data <- read.csv(file = here("data", "GlobalGratitude_Final_Cleaned.csv"))
+data <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
 
 ```
 ```{r}

@@ -2,7 +2,7 @@ library(dplyr)
 library(here)
 
 # specify directory
-i_am("code/GlobalGratitude_LabSpecificData.Rmd")
+i_am("code/Cleaned_Final_Dataset.R")
 
 #Fetch main survey data
 data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
@@ -81,6 +81,6 @@ data <- data %>%
                              "paid", incentive))
 
 # Save the processed data to CSV
-write.csv(data, 
+saveRDS(data, 
           file = here('data',
-                      "GlobalGratitude_Final_Cleaned.csv"))
+                      "GlobalGratitude_Final_Cleaned.Rds"))
