@@ -6,7 +6,6 @@ output: html_notebook
 library(dplyr)
 library(effsize)
 library(ggplot2)
-library(qualtRics)
 library(metafor)
 library(scales)
 library(ggtext)
@@ -89,6 +88,7 @@ data <- data %>%
     lab == "JPN_01" ~ "Japan",
     lab == "GHA_01" ~ "Ghana",
     lab == "THA_01" ~ "Thailand",
+    lab == "MKD_01" ~ "Macedonia",
     TRUE ~ NA_character_
   )) %>%
   filter(!is.na(country))
@@ -313,13 +313,16 @@ for (lab_name in unique_labs) {
     pa_n_control <- length(control$mean_pa)
     na_n_control <- length(control$mean_na)
     ls_n_control <- length(control$mean_ls)
-    n_condition <- length(condition_data$mean_gratitude)
-    
+    grat_n_condition <- length(condition_data$mean_gratitude)
+    pa_n_condition <- length(condition_data$mean_pa)
+    na_n_condition <- length(condition_data$mean_na)
+    ls_n_condition <- length(condition_data$mean_ls)
+
     # Calculate standard error for each measure
-    grat_standard_error <- sqrt((grat_var_control / grat_n_control) + (var_condition_grat / n_condition))
-    pa_standard_error <- sqrt((pa_var_control / pa_n_control) + (var_condition_pa / n_condition))
-    na_standard_error <- sqrt((na_var_control / na_n_control) + (var_condition_na / n_condition))
-    ls_standard_error <- sqrt((ls_var_control / ls_n_control) + (var_condition_ls / n_condition))
+    grat_standard_error <- sqrt((grat_var_control / grat_n_control) + (var_condition_grat / grat_n_condition))
+    pa_standard_error <- sqrt((pa_var_control / pa_n_control) + (var_condition_pa / pa_n_condition))
+    na_standard_error <- sqrt((na_var_control / na_n_control) + (var_condition_na / na_n_condition))
+    ls_standard_error <- sqrt((ls_var_control / ls_n_control) + (var_condition_ls / ls_n_condition))
 
     # Add results to dataframe
     results_df_2 <- rbind(results_df_2, data.frame(

@@ -6,8 +6,6 @@ i_am("code/Cleaned_Final_Dataset.R")
 
 #Fetch main survey data
 data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
-data_main <- data_main %>%
-  rename("StartDate" = "ï..StartDate")
 data_main <- data_main %>% select(StartDate:gov_leaders_6, meals_attention:pageNo)
 
 # Fetch the USA_02b (harmonized) survey data
@@ -80,7 +78,12 @@ data <- data %>%
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
-# Save the processed data to CSV
+# Save the processed data to RDS
 saveRDS(data, 
           file = here('data',
                       "GlobalGratitude_Final_Cleaned.Rds"))
+#Save the process data CSV
+write.csv(data, 
+        file = here('data',
+                    "GlobalGratitude_RA.csv"))
+
