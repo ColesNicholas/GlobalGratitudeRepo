@@ -80,7 +80,15 @@ data <- data %>%
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
+<<<<<<< Updated upstream
 # Save the processed data to RDS
 saveRDS(data, 
+=======
+# Save the processed data to CSV and RDS
+write.csv(data, 
+>>>>>>> Stashed changes
           file = here('data',
-                      "GlobalGratitude_Final_Cleaned.Rds"))
+                      "GlobalGratitude_Final_Cleaned.csv"))
+saveRDS(data, 
+        file = here('data',
+                    "GlobalGratitude_Final_Cleaned.Rds"))
