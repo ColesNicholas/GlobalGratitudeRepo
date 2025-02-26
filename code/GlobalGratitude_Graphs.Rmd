@@ -26,6 +26,7 @@ i_am("code/GlobalGratitude_Graphs.Rmd")
 
 # fetch survey
 data <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
+
 ```
 ```{r}
 
