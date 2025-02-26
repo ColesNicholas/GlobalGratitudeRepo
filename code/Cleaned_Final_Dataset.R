@@ -81,8 +81,13 @@ data <- data %>%
                              "paid", incentive))
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # Save the processed data to RDS
 saveRDS(data, 
+=======
+# Save the processed data to CSV and RDS
+write.csv(data, 
+>>>>>>> Stashed changes
 =======
 # Save the processed data to CSV and RDS
 write.csv(data, 
