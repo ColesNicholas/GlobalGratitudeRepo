@@ -8,7 +8,7 @@ i_am("code/Cleaned_Final_Dataset.R")
 data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
 data_main <- data_main %>%
   rename("StartDate" = "ï..StartDate")
-data_main <- data_main %>% select(StartDate:gov_leaders_6, meals_attention:pageNo)
+data_main <- data_main %>% select(StartDate:pageNo)
 
 # Fetch the USA_02b (harmonized) survey data
 data_USA_02b <- read.csv(file = here("data", "USA_02b_raw_harmonized.csv"))
@@ -17,7 +17,7 @@ data_USA_02b <- data_USA_02b %>%
 
 # Fetch the USA_02c survey data
 data_USA_02c <- read.csv(file = here("data", "USA_02c.csv"))
-data_USA_02c <- data_USA_02c %>% select(StartDate:gov_leaders_6, meals_attention:pageNo)
+data_USA_02c <- data_USA_02c %>% select(StartDate:pageNo)
 
 #Match columns
 data_main <- data_main %>%
@@ -80,7 +80,7 @@ data <- data %>%
          incentive = if_else(lab == "NOR_01" & StartDate > as.POSIXct("11/19/2024 0:00", format = "%m/%d/%Y %H:%M"),
                              "paid", incentive))
 
-# Save the processed data to CSV
+# Save the processed data to RDS
 saveRDS(data, 
           file = here('data',
                       "GlobalGratitude_Final_Cleaned.Rds"))
