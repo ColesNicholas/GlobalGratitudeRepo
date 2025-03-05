@@ -20,51 +20,15 @@ options(contrasts = c('contr.sum', 'contr.poly'))
 
 # Open data
 ```{r}
-# Dangs API credential at UCSD
-qualtrics_api_credentials(
-  api_key = 'urh7PtWEEOkAzrbjmYQC2FoipCvCT4n8ZIByL5rH', 
-  base_url = 'iad1.qualtrics.com',
-  install = TRUE,
-  overwrite = TRUE)
+# specify directory
+i_am("code/GlobalGratitude_Graphs.Rmd")
 
-readRenviron("~/.Renviron")
+# fetch survey
+DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
 
-# open data
-DF <- fetch_survey(surveyID = 'SV_1YQ3FmlbEHp1RIO',
-                   force_request = T,
-                   label = F,
-                   convert = F)
-
-# process data
-DF <- DF %>%
-  
-  # remove incomplete or test observations
-  filter(DistributionChannel != "preview",
-         Progress > 95,
-         consent == 1,
-        
-        #TUR_01 test data
-         ResponseId != "R_42KUGZSS76NgWH7",
-         ResponseId != "R_4W4EXfgeyk1rCYF",
-         ResponseId != "R_45Z862EIfzYcin4",
-         ResponseId != "R_7BhJx9Ci7THupmF",
-         ResponseId != "R_42Lv9fg5qi9V9xm",
-         ResponseId != "R_2kFa26mh78uevnz",
-         ResponseId != "R_4DRThnH8LgbEvM8",
-         ResponseId != "R_4r1kAEqQCo1PNn6",
-         ResponseId != "R_4GQErqyYDlRWVwZ",
-         ResponseId != "R_4SGF0GCHSHIN0ls",
-         ResponseId != "R_6Pndj5c7sr1pcU3",
-         ResponseId != "R_8lQxsY2ITg7HKh1",
-        
-        #USA_01 duplicate data
-        ResponseId != "R_6rDfD5u84z6WufT",
-        
-        #ESP_01 duplicate data
-        ResponseId != "R_27FP7RxRpESO3F7") %>% 
-  
   # select relevant variables
-  select(Status: envy_DO_envy_8,
+
+DF  <- DF %>% select(Status: envy_8,
          lab : condition_type,
          me_attention, meals_attention) %>% 
   
