@@ -21,7 +21,7 @@ options(contrasts = c('contr.sum', 'contr.poly'))
 # Open data
 ```{r}
 # specify directory
-i_am("code/GlobalGratitude_Graphs.Rmd")
+i_am("code/GlobalGratitude_Main.Rmd")
 
 # fetch survey
 DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
@@ -202,9 +202,11 @@ out.list <- c('gratitude_mean',
               'optimistic_mean',
               'na_mean',
               'indebted_mean',
+              'guilty',
               'envy_mean',
               'ls_mean',
-              'ss_mean')
+              'ss_mean',
+              'ladder')
 
 # for each outcome build model
 results <- sapply(X = out.list,
@@ -249,6 +251,7 @@ results3 <- sapply(X = out.list,
                     
                     emm <- emmeans(m,
                                    pairwise ~ condition,
+                                   adjust = "none",
                                    pbkrtest.limit = 9999)
                     
                     return(list(m = summary(m), 
@@ -268,6 +271,7 @@ results4 <- sapply(X = out.list,
                     
                     emm <- emmeans(m,
                                    pairwise ~ condition,
+                                   adjust = "none",
                                    pbkrtest.limit = 9999)
                     
                     return(list(m = summary(m), 

@@ -1754,20 +1754,65 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZWZmc2l6ZSlcbmxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkobWV0YWZvcilcbmxpYnJhcnkoc2NhbGVzKVxubGlicmFyeShnZ3RleHQpXG5saWJyYXJ5KFJDb2xvckJyZXdlcilcbmxpYnJhcnkocm5hdHVyYWxlYXJ0aClcbmxpYnJhcnkoTWF0cml4KVxubGlicmFyeShnZ3RleHQpXG5saWJyYXJ5KHRpZHlyKVxubGlicmFyeShzZilcbmxpYnJhcnkoaGVyZSlcblxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZWZmc2l6ZSlcbmBgYCJ9 -->
 <pre class="r"><code>library(dplyr)
-library(effsize)
-library(ggplot2)
-library(metafor)
-library(scales)
-library(ggtext)
+library(effsize)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZWZmc2l6ZeKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnBzeWNo4oCZOlxuXG4gICAgY29oZW4uZFxuIn0= -->
+<pre><code>
+Attaching package: ‘effsize’
+
+The following object is masked from ‘package:psych’:
+
+    cohen.d</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeShtZXRhZm9yKVxuYGBgIn0= -->
+<pre class="r"><code>library(ggplot2)
+library(metafor)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBtZXRhZGF0XG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IG51bURlcml2XG5cbkxvYWRpbmcgdGhlICdtZXRhZm9yJyBwYWNrYWdlICh2ZXJzaW9uIDQuNi0wKS4gRm9yIGFuXG5pbnRyb2R1Y3Rpb24gdG8gdGhlIHBhY2thZ2UgcGxlYXNlIHR5cGU6IGhlbHAobWV0YWZvcilcblxuQW4gdXBkYXRlZCB2ZXJzaW9uIG9mIHRoZSBwYWNrYWdlICh2ZXJzaW9uIDQuOC0wKSBpcyBhdmFpbGFibGUhXG5UbyB1cGRhdGUgdG8gdGhpcyB2ZXJzaW9uIHR5cGU6IGluc3RhbGwucGFja2FnZXMoXCJtZXRhZm9yXCIpXG4ifQ== -->
+<pre><code>Loading required package: metadat
+Loading required package: numDeriv
+
+Loading the &#39;metafor&#39; package (version 4.6-0). For an
+introduction to the package please type: help(metafor)
+
+An updated version of the package (version 4.8-0) is available!
+To update to this version type: install.packages(&quot;metafor&quot;)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzY2FsZXMpXG5gYGAifQ== -->
+<pre class="r"><code>library(scales)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYc2NhbGVz4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g4oCYcGFja2FnZTpwc3ljaOKAmTpcblxuICAgIGFscGhhLCByZXNjYWxlXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6cHVycnLigJk6XG5cbiAgICBkaXNjYXJkXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6cmVhZHLigJk6XG5cbiAgICBjb2xfZmFjdG9yXG4ifQ== -->
+<pre><code>
+Attaching package: ‘scales’
+
+The following objects are masked from ‘package:psych’:
+
+    alpha, rescale
+
+The following object is masked from ‘package:purrr’:
+
+    discard
+
+The following object is masked from ‘package:readr’:
+
+    col_factor</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3RleHQpXG5saWJyYXJ5KFJDb2xvckJyZXdlcilcbmxpYnJhcnkocm5hdHVyYWxlYXJ0aClcbmxpYnJhcnkoTWF0cml4KVxubGlicmFyeShnZ3RleHQpXG5saWJyYXJ5KHRpZHlyKVxubGlicmFyeShzZilcbmBgYCJ9 -->
+<pre class="r"><code>library(ggtext)
 library(RColorBrewer)
 library(rnaturalearth)
 library(Matrix)
 library(ggtext)
 library(tidyr)
-library(sf)
-library(here)
+library(sf)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlua2luZyB0byBHRU9TIDMuMTEuMiwgR0RBTCAzLjguMiwgUFJPSiA5LjMuMTsgc2ZfdXNlX3MyKCkgaXMgVFJVRVxuIn0= -->
+<pre><code>Linking to GEOS 3.11.2, GDAL 3.8.2, PROJ 9.3.1; sf_use_s2() is TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>library(here)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
