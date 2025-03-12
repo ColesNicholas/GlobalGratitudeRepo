@@ -1,8 +1,11 @@
+library(here)
+library(dplyr)
+
 # specify directory
 i_am("code/GlobalGratitude_Graphs.Rmd")
 
 # fetch survey
-DF <- readRDS(file = here("DF", "GlobalGratitude_Final_Cleaned.Rds"))
+DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
 
 DF <- DF %>% 
   rowwise() %>% 
@@ -281,7 +284,7 @@ for (i in seq_along(grat_DFsets)) {
     optimistic_effect_size = optimistic_effect_size$estimate * -1,
     indebted_effect_size = indebted_effect_size$estimate * -1,
     envy_effect_size = envy_effect_size$estimate * -1,
-    guilty_effect_size = ls_effect_size$estimate * -1,
+    guilty_effect_size = guilty_effect_size$estimate * -1,
     ss_effect_size = ss_effect_size$estimate * -1,
     ladder_effect_size = ladder_effect_size$estimate * -1
   ))
