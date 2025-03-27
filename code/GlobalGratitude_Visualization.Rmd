@@ -163,9 +163,9 @@ results_list <- sapply(unique_labs, function(lab_name){
   return(result)
 }, simplify = FALSE)
 
-overall_results_df <- do.call(rbind, results_list)
+overall_country_results_df <- do.call(rbind, results_list)
 
-print(overall_results_df)
+print(overall_country_results_df)
 
 ```
 
@@ -173,7 +173,7 @@ print(overall_results_df)
 ```{r}
 
 # Initialize results data frame
-unique_results_df <- data.frame(
+unique_country_results_df <- data.frame(
   country = character(),
   control_condition = character(),
   intervention_condition = character(),
@@ -239,37 +239,122 @@ for (lab_name in unique_labs) {
 }
 
 # Combine results into a single data frame
-unique_results_df <- do.call(rbind, results_list)
+unique_country_results_df <- do.call(rbind, results_list)
 
 # Print results
-print(unique_results_df)
+print(unique_country_results_df)
+
+```
+
+#Overall intervention vs. control (Each interventions vs. Each control)
+```{r}
+
+# Initialize results data frame
+unique_cond_results_df <- data.frame(
+  control_condition = character(),
+  intervention_condition = character(),
+  pa_effect_size = numeric(),
+  na_effect_size = numeric(),
+  optimism_effect_size = numeric(),
+  ls_effect_size = numeric(),
+  ladder_effect_size = numeric(),
+  envy_effect_size = numeric(),
+  indebted_effect_size = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Function to compute Cohen's d for a given condition pair
+compute_effect_sizes <- function(control_cond, intervention_cond) {
+  # Get subsets for the control and intervention conditions
+  control_subset <- DF %>% filter(condition == control_cond)
+  intervention_subset <- DF %>% filter(condition == intervention_cond)
+  
+  # Compute Cohen's d for each measure
+  pa_effect_size_result <- cohen.d(intervention_subset$pa_mean, control_subset$pa_mean, pooled_sd = TRUE)
+  na_effect_size_result <- cohen.d(intervention_subset$na_mean, control_subset$na_mean, pooled_sd = TRUE)
+  optimism_effect_size_result <- cohen.d(intervention_subset$optimistic_mean, control_subset$optimistic_mean, pooled_sd = TRUE)
+  ls_effect_size_result <- cohen.d(intervention_subset$ls_mean, control_subset$ls_mean, pooled_sd = TRUE)
+  ladder_effect_size_result <- cohen.d(intervention_subset$ladder, control_subset$ladder, pooled_sd = TRUE)
+  envy_effect_size_result <- cohen.d(intervention_subset$envy_mean, control_subset$envy_mean, pooled_sd = TRUE)
+  indebted_effect_size_result <- cohen.d(intervention_subset$indebted_mean, control_subset$indebted_mean, pooled_sd = TRUE)
+  
+  # Return a data frame with the results
+  return(data.frame(
+    control_condition = control_cond,
+    intervention_condition = intervention_cond,
+    pa_effect_size = pa_effect_size_result$estimate,
+    na_effect_size = na_effect_size_result$estimate,
+    optimism_effect_size = optimism_effect_size_result$estimate,
+    ls_effect_size = ls_effect_size_result$estimate,
+    ladder_effect_size = ladder_effect_size_result$estimate,
+    envy_effect_size = envy_effect_size_result$estimate,
+    indebted_effect_size = indebted_effect_size_result$estimate,
+    stringsAsFactors = FALSE
+  ))
+}
+
+# Generate results for all condition pairs
+results_list <- list()
+
+control_conditions <- unique(DF$condition[DF$condition_type == "control"])
+intervention_conditions <- unique(DF$condition[DF$condition_type == "intervention"])
+
+for (control_cond in control_conditions) {
+  for (intervention_cond in intervention_conditions) {
+    results_list <- append(results_list, list(compute_effect_sizes(control_cond, intervention_cond)))
+  }
+}
+
+# Combine results into a single data frame
+unique_cond_results_df <- do.call(rbind, results_list)
+
+# Print results
+print(unique_cond_results_df)
 
 ```
 
 #Create nested lists
 ```{r}
 # Nest overall data by country
-overall_nested <- overall_results_df %>%
+overall_country_nested <- overall_country_results_df %>%
   group_by(country) %>%
   nest()
 
-# Print the nested dataframe
-print(overall_nested)
+print(overall_country_nested)
 
-# Nest unique data by country and (gratitude) intervention
-unique_nested <- unique_results_df %>%
+# Nest unique data by condition
+unique_country_nested <- unique_country_results_df %>%
   group_by(country, control_condition, intervention_condition) %>%
   nest()
 
-# Print the nested dataframe
-print(unique_nested)
+print(unique_country_nested)
 
-write.csv(overall_results_df, 
-        file = here('data',
-                    "overall_effect_sizes.csv"))
-write.csv(unique_results_df, 
-        file = here('data',
-                    "unique_effect_sizes.csv"))
+# Nest unique data by condition
+unique_condition_nested <- unique_condition_results_df %>%
+  group_by(control_condition, intervention_condition) %>%
+  nest()
 
+print(unique_condition_nested)
+
+```
+
+#Write CSV
+
+```{r}
+write.csv(overall_country_results_df, 
+        file = here('data',
+                    "overall_country_effect_sizes.csv"))
+
+write.csv(unique_country_results_df, 
+        file = here('data',
+                    "unique_country_effect_sizes.csv"))
+
+write.csv(unique_cond_results_df, 
+        file = here('data',
+                    "unique_cond_effect_sizes.csv"))
+```
+
+
+```{r}
 ```
 
