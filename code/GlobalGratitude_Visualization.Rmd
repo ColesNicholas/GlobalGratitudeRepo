@@ -254,7 +254,7 @@ overall_nested <- overall_results_df %>%
   nest()
 
 # Print the nested dataframe
-print(overall_nested_country)
+print(overall_nested)
 
 # Nest unique data by country and (gratitude) intervention
 unique_nested <- unique_results_df %>%
@@ -264,6 +264,12 @@ unique_nested <- unique_results_df %>%
 # Print the nested dataframe
 print(unique_nested)
 
+write.csv(overall_results_df, 
+        file = here('data',
+                    "overall_effect_sizes.csv"))
+write.csv(unique_results_df, 
+        file = here('data',
+                    "unique_effect_sizes.csv"))
 
 ```
 
