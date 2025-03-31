@@ -18,9 +18,6 @@ library(here)
 ```
 #Open and Set Up Data
 ```{r}
-# specify directory
-i_am("code/GlobalGratitude_Graphs.Rmd")
-
 # fetch survey
 DF <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
 
@@ -171,12 +168,12 @@ print(overall_country_results_df)
 
 #Overall intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
-
-# Initialize results data frame
+# Initialize results data frame with only variance columns (no standard error columns)
 unique_country_results_df <- data.frame(
   country = character(),
   control_condition = character(),
   intervention_condition = character(),
+  contrast = character(),
   pa_effect_size = numeric(),
   na_effect_size = numeric(),
   optimism_effect_size = numeric(),
@@ -184,11 +181,17 @@ unique_country_results_df <- data.frame(
   ladder_effect_size = numeric(),
   envy_effect_size = numeric(),
   indebted_effect_size = numeric(),
+  pa_var = numeric(),
+  na_var = numeric(),
+  optimism_var = numeric(),
+  ls_var = numeric(),
+  ladder_var = numeric(),
+  envy_var = numeric(),
+  indebted_var = numeric(),
   stringsAsFactors = FALSE
 )
 
-
-# Function to compute Cohen's d for a given country and condition pair
+# Function to compute Cohen's d and its variance for a given country and condition pair
 compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   # Filter data for the specific country
   country_data <- DF %>% filter(country == lab_name)
@@ -206,11 +209,29 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   envy_effect_size_result <- cohen.d(intervention_subset$envy_mean, control_subset$envy_mean, pooled_sd = TRUE)
   indebted_effect_size_result <- cohen.d(intervention_subset$indebted_mean, control_subset$indebted_mean, pooled_sd = TRUE)
   
+  # Extract Cohen's d (effect size) and calculate the variance for each effect size
+  calculate_variance <- function(d, n1, n2) {
+    # Calculate the standard error
+    se_d <- sqrt((n1 + n2) / (n1 * n2) + d^2 / (2 * (n1 + n2)))
+    # Return the variance (which is the square of SE)
+    return(se_d^2)
+  }
+  
+  # Calculate variance for each measure
+  pa_var <- calculate_variance(pa_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  na_var <- calculate_variance(na_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  optimism_var <- calculate_variance(optimism_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  ls_var <- calculate_variance(ls_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  ladder_var <- calculate_variance(ladder_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  envy_var <- calculate_variance(envy_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  indebted_var <- calculate_variance(indebted_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  
   # Return a data frame with the results
   return(data.frame(
     country = lab_name,
     control_condition = control_cond,
     intervention_condition = intervention_cond,
+    contrast = paste(control_cond, "vs", intervention_cond),
     pa_effect_size = pa_effect_size_result$estimate,
     na_effect_size = na_effect_size_result$estimate,
     optimism_effect_size = optimism_effect_size_result$estimate,
@@ -218,6 +239,13 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
     ladder_effect_size = ladder_effect_size_result$estimate,
     envy_effect_size = envy_effect_size_result$estimate,
     indebted_effect_size = indebted_effect_size_result$estimate,
+    pa_var = pa_var,
+    na_var = na_var,
+    optimism_var = optimism_var,
+    ls_var = ls_var,
+    ladder_var = ladder_var,
+    envy_var = envy_var,
+    indebted_var = indebted_var,
     stringsAsFactors = FALSE
   ))
 }
@@ -226,14 +254,13 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
 results_list <- list()
 
 for (lab_name in unique_labs) {
-  # Get control and intervention conditions for the current country
   country_data <- DF %>% filter(country == lab_name)
   control_conditions <- unique(country_data$condition[country_data$condition_type == "control"])
   intervention_conditions <- unique(country_data$condition[country_data$condition_type == "intervention"])
   
   for (control_cond in control_conditions) {
     for (intervention_cond in intervention_conditions) {
-      results_list <- append(results_list, list(compute_effect_sizes(lab_name, control_cond, intervention_cond)))
+      results_list[[length(results_list) + 1]] <- compute_effect_sizes(lab_name, control_cond, intervention_cond)
     }
   }
 }
@@ -245,6 +272,7 @@ unique_country_results_df <- do.call(rbind, results_list)
 print(unique_country_results_df)
 
 ```
+
 
 #Overall intervention vs. control (Each interventions vs. Each control)
 ```{r}
@@ -352,9 +380,5 @@ write.csv(unique_country_results_df,
 write.csv(unique_cond_results_df, 
         file = here('data',
                     "unique_cond_effect_sizes.csv"))
-```
-
-
-```{r}
 ```
 
