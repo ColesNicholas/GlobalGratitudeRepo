@@ -1,19 +1,15 @@
-library(dplyr)
+library(tidyverse)
 library(here)
-
-# specify directory
-i_am("code/Cleaned_Final_Dataset.R")
 
 #Fetch main survey data
 data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
-data_main <- data_main %>%
-  rename("StartDate" = "ï..StartDate")
 data_main <- data_main %>% select(StartDate:pageNo)
 
 # Fetch the USA_02b (harmonized) survey data
 data_USA_02b <- read.csv(file = here("data", "USA_02b_raw_harmonized.csv"))
-data_USA_02b <- data_USA_02b %>%
-  rename("events_list" = "control_list")
+data_USA_02b <- data_USA_02b %>% 
+  select(StartDate:pageNo) %>%
+  rename("events_list" = "control_list") 
 
 # Fetch the USA_02c survey data
 data_USA_02c <- read.csv(file = here("data", "USA_02c.csv"))

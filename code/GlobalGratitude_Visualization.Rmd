@@ -3,7 +3,7 @@ title: "GlobalGratitude_Visualization"
 output: html_notebook
 ---
 ```{r}
-library(dplyr)
+library(tidyverse)
 library(effsize)
 library(ggplot2)
 library(metafor)
