@@ -19,13 +19,17 @@ Load libraries
 library(tidyverse)
 library(metafor)
 library(ggExtra)
+library(ggplot2)
+library(ggrepel)
+library(cowplot)
+library (here)
 ```
 
 Prep data
 ```{r}
 # open data
 df <- 
-  read.csv('unique_country_effect_sizes.csv')
+  read.csv(file = here("data",'unique_country_effect_sizes.csv'))
 
 # estimate total heterogeneity
 m <-  
@@ -83,7 +87,7 @@ d.c <-
   
   # add [jittered] y-value to assist with plotting
   mutate(y = 0,
-         y = jitter(y, .1)) %>% 
+         y = jitter(y, .1))
   
   # labels most extreme observations (in terms of min and max)
   mutate(label = 
@@ -112,6 +116,35 @@ d.i <-
          label = if_else(m == max(d.i$m),
                          true = intervention_condition,
                          false = label))
+```
+
+# Annabel: Calculate country-level and intervention-level descriptives
+```{r}
+#Annabel: The above code wasn't working for me.
+d.c <- df %>% 
+  group_by(country) %>% 
+  summarise(m = mean(pa_effect_size), .groups = "drop") %>%
+ 
+  # add [jittered] y-value to assist with plotting
+  mutate(
+    y = jitter(rep(0, n()), amount = 0.1), 
+  
+  # labels most extreme observations (in terms of min and max)
+label = if_else(m == min(m), true = country, false = ""),
+    label = if_else(m == max(m), true = country, false = label))
+
+d.i <- df %>% 
+  group_by(intervention_condition) %>% 
+  summarise(m = mean(pa_effect_size), .groups = "drop") %>%
+ 
+  # add [jittered] y-value to assist with plotting
+  mutate(
+    y = jitter(rep(-.02, n()), amount = 0.1), 
+  
+  # labels most extreme observations (in terms of min and max)
+label = if_else(m == min(m), true = intervention_condition, false = ""),
+    label = if_else(m == max(m), true = intervention_condition, false = label))
+
 ```
 
 # Create density plots

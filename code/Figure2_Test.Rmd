@@ -1,0 +1,216 @@
+---
+title: "Figure 2: Variability decomposition"
+author: "Nicholas A. Coles"
+date: "2025-04-01"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+This code is designed to (a) estimate the extent to which the effects of gratitude tasks exhibit heterogeneity across different interventions and countries, (b) illustrate the heterogeneity via density curves, and (c) illustrate observed patterns via a second illustration that is combined via ggExtra.
+
+The code as it is written creates this plot for a single independent variable: Pa_effect size. It needs to into a function that can produce the plot for any given variable. This will allow us, for instance, to use lapply to generate plots for pa_effects_size, na_effect_size, optimism_effect_size, ls_effect_size (combined with highly correlated ladder_effect_size), envy_effect_size, and indebted_effect_size.
+
+Once these outcome-specific figures are created via the function (e.g,. via lapply), they can be combined via ggExtra for the final version of the Figure.
+
+Please functionalize the code.
+
+Load libraries
+```{r lib}
+library(tidyverse)
+library(metafor)
+library(ggExtra)
+library(ggplot2)
+library(ggrepel)
+library(cowplot)
+library(purrr)
+library (here)
+```
+
+Prep data
+```{r}
+# open data
+df <- 
+  read.csv(file = here("data",'unique_country_effect_sizes.csv'))
+
+# List of effect size columns and variance columns
+effect_size_columns <- c("pa_effect_size", "na_effect_size", "optimism_effect_size",
+                         "ls_effect_size", "envy_effect_size",
+                         "indebted_effect_size")
+variance_columns <- c("pa_var", "na_var", "optimism_var",
+                         "ls_var", "envy_var", "indebted_var")
+
+# estimate total heterogeneity
+m <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(yi = df[[effect_size_columns[i]]],
+         V = df[[variance_columns[i]]],
+         data = df)
+})
+
+# Use lapply to fit models for each pair of effect size and variance
+m.ic <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(yi = df[[effect_size_columns[i]]],
+         V = df[[variance_columns[i]]],
+         random = list(~ 1 | intervention_condition, ~ 1 | country),
+         data = df)
+})
+
+# Store the results with a name reflecting the effect size and variance pair
+names(m.ic) <- paste(effect_size_columns)
+
+```
+
+#Calculate country-level and intervention-level descriptives
+```{r}
+
+# Apply the operations for each effect size column
+# Use lapply to apply the operations for each effect size column
+
+results <- lapply(effect_size_columns, function(effect_size) {
+  
+  # Summarize by country (d.c)
+  d.c <- df %>% 
+    group_by(country) %>% 
+    summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
+    mutate(
+      y = jitter(rep(0, n()), amount = 0.1), 
+      label = if_else(m == min(m), true = country, false = ""),
+      label = if_else(m == max(m), true = country, false = label),
+      effect_size = effect_size 
+    )
+  
+  # Summarize by intervention condition (d.i)
+  d.i <- df %>% 
+    group_by(intervention_condition) %>% 
+    summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
+    mutate(
+      y = jitter(rep(-0.02, n()), amount = 0.1), 
+      label = if_else(m == min(m), true = intervention_condition, false = ""),
+      label = if_else(m == max(m), true = intervention_condition, false = label),
+      effect_size = effect_size
+    )
+  
+  # Return both country-level and intervention-level results as a list
+  list(d.c = d.c, d.i = d.i)
+})
+
+# Combine results for all effect sizes into separate data frames for country and intervention
+d.c <- bind_rows(lapply(results, function(res) res$d.c))
+d.i <- bind_rows(lapply(results, function(res) res$d.i))
+
+```
+
+# Create density plots
+```{r}
+# Create a list of ggplot objects
+m.d <- lapply(effect_size_columns, function(effect_size) {
+  
+  # Extract the corresponding model (e.g., m.ic) for the effect size from the list of models
+  model <- m.ic[[which(effect_size_columns == effect_size)]]
+  
+  # Create the plot for each effect size
+  plot <- ggplot() +
+    
+    # Add overall effect size estimate
+    geom_point(aes(x = model$b[1], 
+                   y = 5.7),
+               shape = 18,
+               size = 4,
+               color = "grey30") +
+    
+    # Add 95% CI of overall effect size estimate
+    geom_segment(aes(x = model$ci.lb, 
+                     xend = model$ci.ub, 
+                     y = 5.7),
+                 color = "grey30") +
+    
+    # Density plot: intervention-level sources of heterogeneity
+    stat_function(fun = dnorm, 
+                  args = list(mean = model$b[1], 
+                              sd = sqrt(model$sigma2[1])), 
+                  color = "#E64B35") +
+    
+    # Density plot: country-level sources of heterogeneity
+    stat_function(fun = dnorm, 
+                  args = list(mean = model$b[1], 
+                              sd = sqrt(model$sigma2[2])), 
+                  color = "#3C5488") +
+    
+    # Aesthetics
+    scale_x_continuous(limits = c(-1, 1)) +
+    scale_y_continuous(limits = c(0, 12)) +
+    theme_void() +
+    ggtitle(effect_size)
+  
+  return(plot)
+})
+
+# Check the resulting list of plots
+m.d
+
+```
+
+# Plot descriptives
+```{r}
+
+# Combine both datasets into one data frame
+d.c$dataset <- "d.c"
+d.i$dataset <- "d.i"
+d.c$intervention_condition <- NA
+d.i$country <- NA
+
+d.c.i <- rbind(d.c, d.i)
+
+# Create a list of 6 plots based on the effect size values
+m.p <- lapply(effect_size_columns, function(es) {
+  
+  # Filter the data for the current effect_size level
+  data_subset <- subset(d.c.i, effect_size == es)
+  
+  # Create the plot for the current effect_size
+  ggplot(data_subset) +
+    # Add country-level descriptives (for d.c)
+    geom_point(data = subset(data_subset, dataset == "d.c"),
+               aes(x = m, y = y), 
+               color = "#3C5488", alpha = .5) +
+    
+    # Add labels for country-level
+    geom_text_repel(data = subset(data_subset, dataset == "d.c"),
+                    aes(x = m, y = y, label = label),
+                    color = "#3C5488", alpha = .5, nudge_y = -.01) +
+    
+    # Add intervention-level descriptives (for d.i)
+    geom_point(data = subset(data_subset, dataset == "d.i"),
+               aes(x = m, y = y),
+               color = "#E64B35", alpha = .5) +
+    
+    # Add labels for intervention-level
+    geom_text_repel(data = subset(data_subset, dataset == "d.i"),
+                    aes(x = m, y = y, label = label),
+                    color = "#E64B35", alpha = .5, nudge_y = .01) +
+    
+    # Aesthetics
+    theme_classic() +
+    theme(axis.title.y = element_blank(),
+          axis.text.y = element_blank(), 
+          axis.ticks.y = element_blank()) +
+    scale_x_continuous(limits = c(-1, 1)) +
+    labs(x = expression("Cohens " * italic('d')))
+})
+
+# Check the resulting list of plots
+m.p
+
+```
+
+# combine plots
+```{r}
+# Combine m.d and m.p into a single list
+combined_plots <- mapply(function(plot_d, plot_p) {
+  # Combine each pair of plots (one from m.d and one from m.p) into a list
+  plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
+}, m.d, m.p, SIMPLIFY = FALSE)
+
+# Check the resulting combined list of plots
+print(combined_plots)
+
+```

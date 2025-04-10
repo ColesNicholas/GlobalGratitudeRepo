@@ -1,9 +1,14 @@
 library(tidyverse)
 library(here)
 
+# specify directory
+i_am("code/Cleaned_Final_Dataset.R")
+
 #Fetch main survey data
 data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"))
-data_main <- data_main %>% select(StartDate:pageNo)
+data_main <- data_main %>%
+  rename("StartDate" = "ï..StartDate") %>% 
+  select(StartDate:pageNo)
 
 # Fetch the USA_02b (harmonized) survey data
 data_USA_02b <- read.csv(file = here("data", "USA_02b_raw_harmonized.csv"))
