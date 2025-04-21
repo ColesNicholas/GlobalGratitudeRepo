@@ -30,7 +30,7 @@ Prep data
 ```{r}
 # open data
 df <- 
-  read.csv(file = here("data",'unique_country_effect_sizes.csv'))
+  read.csv(file = 'unique_country_effect_sizes.csv')
 
 # List of effect size columns and variance columns
 effect_size_columns <- c("pa_effect_size", "na_effect_size", "optimism_effect_size",
@@ -56,14 +56,11 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
 
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)
-
 ```
 
 #Calculate country-level and intervention-level descriptives
 ```{r}
-
 # Apply the operations for each effect size column
-
 d.c <- lapply(effect_size_columns, function(effect_size) {
   
   d.c <- df %>%
@@ -155,8 +152,14 @@ m.d <- lapply(effect_size_columns, function(effect_size) {
     # Aesthetics
     scale_x_continuous(limits = c(-0.75, 0.75)) +
     scale_y_continuous(limits = c(0, 12)) +
-    theme_void() +
-    ggtitle(effect_size)
+    theme_void()
+    # ggtitle(effect_size) +
+    # theme(plot.title = element_text(hjust = 0.5,
+    #                                 face = "bold",
+    #                                 size = 12,
+    #                                 margin = margin(b = 4)
+    #                                 )
+    #       )
   
   return(plot)
 })
@@ -193,7 +196,7 @@ m.p <- lapply(effect_size_columns, function(es) {
     # Add labels for country-level
     geom_text_repel(data = subset(data_subset, dataset == "d.c"),
                     aes(x = m, y = y, label = label),
-                    color = "#3C5488", alpha = .5, nudge_y = -.01) +
+                    color = "#3C5488", alpha = .5, nudge_y = -.005) +
     
     # Add intervention-level descriptives (for d.i)
     geom_point(data = subset(data_subset, dataset == "d.i"),
@@ -203,15 +206,16 @@ m.p <- lapply(effect_size_columns, function(es) {
     # Add labels for intervention-level
     geom_text_repel(data = subset(data_subset, dataset == "d.i"),
                     aes(x = m, y = y, label = label),
-                    color = "#E64B35", alpha = .5, nudge_y = .01) +
+                    color = "#E64B35", alpha = .5, nudge_y = .005) +
     
     # Aesthetics
     theme_classic() +
     theme(axis.title.y = element_blank(),
+          axis.title.x = element_blank(),
           axis.text.y = element_blank(), 
           axis.ticks.y = element_blank()) +
-    scale_x_continuous(limits = c(-1, 1)) +
-    labs(x = expression("Cohens " * italic('d')))
+    scale_x_continuous(limits = c(-1, 1))
+    #labs(x = expression("Cohens " * italic('d')))
 })
 
 # Check the resulting list of plots
@@ -227,7 +231,35 @@ combined_plots <- mapply(function(plot_d, plot_p) {
   plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
 }, m.d, m.p, SIMPLIFY = FALSE)
 
-# Check the resulting combined list of plots
-print(combined_plots)
+# combine the plot
+grid <-
+  plot_grid(combined_plots[[1]], 
+          combined_plots[[2]],
+          combined_plots[[3]],
+          combined_plots[[4]],
+          combined_plots[[5]],
+          combined_plots[[6]],
+          ncol = 3,
+          labels = paste0("   ",
+                          LETTERS[1:6],
+                          ". ",
+                          c('Positive affect',
+                            'Negative affect',
+                            'Optimism',
+                            'Life satisfaction',
+                            'Envy',
+                            'Indebtedness')
+                          ),
+          label_size = 10,
+          label_x = 0,
+          hjust = 0,
+          vjust = 1.7
+          ) 
+
+# add space at bottom
+ggdraw() + 
+  draw_plot(grid, 0, 0.05, 1, 0.95) +
+  draw_label(expression("Cohen's "*italic(d)), 
+             x = 0.5, y = 0, vjust = -1, size = 10)
 
 ```
