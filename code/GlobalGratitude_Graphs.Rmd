@@ -500,10 +500,13 @@ combined_rma_df <- combined_rma_df %>%
                          " | τ = ", round(grat_tau, 2)))
 
 # Create the forest plot with custom facet labels (bold test part)
-forest_plot <- ggplot(combined_df_final, aes(x = grat_effect_size, y = reorder(lab, grat_effect_size),
-                                                     xmin = grat_lower_ci, xmax = grat_upper_ci, color = test)) +
+grat_forest_plot <- ggplot(combined_df_final, aes(x = grat_effect_size, 
+                                             y = factor(lab, levels = rev(sort(unique(lab)))),
+                                             #reorder(lab, grat_effect_size)
+                                             xmin = grat_lower_ci, 
+                                             xmax = grat_upper_ci, 
+                                             color = test)) +
       geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-
   facet_grid(~test, labeller = labeller(test = setNames(combined_rma_df$custom_label, combined_rma_df$test))) +
   geom_point(size = 2.5) +
   geom_errorbarh(height = 0.2) +
@@ -536,7 +539,7 @@ forest_plot <- ggplot(combined_df_final, aes(x = grat_effect_size, y = reorder(l
   scale_x_continuous(labels = scales::number_format(accuracy = 0.1))
 
 # Print the plot
-print(forest_plot)
+print(grat_forest_plot)
 
 ```
 #PA Forest Plot
@@ -553,10 +556,12 @@ combined_rma_df <- combined_rma_df %>%
                          " | τ = ", round(pa_tau, 2)))
 
 # Create the forest plot with custom facet labels (bold test part)
-forest_plot <- ggplot(combined_df_final, aes(x = pa_effect_size, y = reorder(lab, pa_effect_size),
-                                                     xmin = pa_lower_ci, xmax = pa_upper_ci, color = test)) +
+pa_forest_plot <- ggplot(combined_df_final, aes(x = pa_effect_size, 
+                                             y = factor(lab, levels = rev(sort(unique(lab)))),
+                                             #reorder(lab, pa_effect_size)
+                                             xmin = pa_lower_ci, 
+                                             xmax = pa_upper_ci, color = test)) +
       geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-
   facet_grid(~test, labeller = labeller(test = setNames(combined_rma_df$custom_label, combined_rma_df$test))) +
   geom_point(size = 2.5) +
   geom_errorbarh(height = 0.2) +
@@ -589,7 +594,7 @@ forest_plot <- ggplot(combined_df_final, aes(x = pa_effect_size, y = reorder(lab
   scale_x_continuous(labels = scales::number_format(accuracy = 0.1))
 
 # Print the plot
-print(forest_plot)
+print(pa_forest_plot)
 
 ```
 #NA Forest Plot
@@ -606,10 +611,12 @@ combined_rma_df <- combined_rma_df %>%
                          " | τ = ", round(na_tau, 2)))
 
 # Create the forest plot with custom facet labels (bold test part)
-forest_plot <- ggplot(combined_df_final, aes(x = na_effect_size, y = reorder(lab, na_effect_size),
-                                                     xmin = na_lower_ci, xmax = na_upper_ci, color = test)) +
+na_forest_plot <- ggplot(combined_df_final, aes(x = na_effect_size, 
+                                             y = factor(lab, levels = rev(sort(unique(lab)))),
+                                             #reorder(lab, na_effect_size)
+                                             xmin = na_lower_ci, 
+                                             xmax = na_upper_ci, color = test)) +
       geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-
   facet_grid(~test, labeller = labeller(test = setNames(combined_rma_df$custom_label, combined_rma_df$test))) +
   geom_point(size = 2.5) +
   geom_errorbarh(height = 0.2) +
@@ -642,7 +649,7 @@ forest_plot <- ggplot(combined_df_final, aes(x = na_effect_size, y = reorder(lab
   scale_x_continuous(labels = scales::number_format(accuracy = 0.1))
 
 # Print the plot
-print(forest_plot)
+print(na_forest_plot)
 
 ```
 #LS Forest Plot
@@ -659,10 +666,12 @@ combined_rma_df <- combined_rma_df %>%
                          " | τ = ", round(ls_tau, 2)))
 
 # Create the forest plot with custom facet labels (bold test part)
-forest_plot <- ggplot(combined_df_final, aes(x = ls_effect_size, y = reorder(lab, ls_effect_size),
-                                                     xmin = ls_lower_ci, xmax = ls_upper_ci, color = test)) +
+ls_forest_plot <- ggplot(combined_df_final, aes(x = ls_effect_size, 
+                                             y = factor(lab, levels = rev(sort(unique(lab)))),
+                                             #reorder(lab, ls_effect_size)
+                                             xmin = ls_lower_ci, 
+                                             xmax = ls_upper_ci, color = test)) +
       geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
-
   facet_grid(~test, labeller = labeller(test = setNames(combined_rma_df$custom_label, combined_rma_df$test))) +
   geom_point(size = 2.5) +
   geom_errorbarh(height = 0.2) +
@@ -695,9 +704,10 @@ forest_plot <- ggplot(combined_df_final, aes(x = ls_effect_size, y = reorder(lab
   scale_x_continuous(labels = scales::number_format(accuracy = 0.1))
 
 # Print the plot
-print(forest_plot)
+print(ls_forest_plot)
 
 ```
+
 #Sample Size Heat Map
 ```{r}
 map_data <- data %>%
