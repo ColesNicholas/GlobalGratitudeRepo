@@ -172,7 +172,7 @@ print(overall_country_results_df)
 
 #Overall intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
-# Initialize results data frame with only variance columns (no standard error columns)
+# Initialize results data frame
 unique_country_results_df <- data.frame(
   country = character(),
   control_condition = character(),
