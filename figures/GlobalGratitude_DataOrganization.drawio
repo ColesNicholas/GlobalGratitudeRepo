@@ -1,98 +1,64 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="26.0.16">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.2.14">
   <diagram name="Page-1" id="geDB2yIjoZFIldEb_VjC">
-    <mxGraphModel dx="1434" dy="866" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1426" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="De1eZjqfpODv19dZXhUb-1" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="20" width="210" height="60" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-1" value="&lt;u&gt;GlobalGratitude_Final.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="170" width="210" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-2" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="20" y="120" width="210" height="60" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-2" value="&lt;u&gt;USA_02b_raw_unharmonized.csv&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="990" y="30" width="210" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-2" target="De1eZjqfpODv19dZXhUb-6">
+        <mxCell id="De1eZjqfpODv19dZXhUb-3" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="230" y="179.5" as="sourcePoint" />
-            <mxPoint x="320" y="180" as="targetPoint" />
+            <mxPoint x="1094.5" y="100" as="sourcePoint" />
+            <mxPoint x="1094.5" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-4" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="De1eZjqfpODv19dZXhUb-3">
+        <mxCell id="De1eZjqfpODv19dZXhUb-4" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="De1eZjqfpODv19dZXhUb-3" vertex="1" connectable="0">
           <mxGeometry x="-0.1556" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-6" target="De1eZjqfpODv19dZXhUb-18">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-6" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="990" y="170" width="210" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-6" value="&lt;u&gt;USA_02b_raw_harmonized.csv&lt;/u&gt;&lt;div&gt;Harmonized to match with GlobalGratitude_Final.csv&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="120" width="210" height="60" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-7" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1210" y="170" width="210" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-7" value="&lt;div&gt;&lt;u&gt;USA_02c.csv&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="220" width="210" height="60" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="980" y="400" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-10" target="De1eZjqfpODv19dZXhUb-15">
+        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_Visualization.Rmd&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="980" y="510" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;div&gt;&lt;u&gt;GlobalGratitude_Main.Rmd&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="170" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="De1eZjqfpODv19dZXhUb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="755" y="340" />
-              <mxPoint x="425" y="340" />
-            </Array>
+            <mxPoint x="1094.5" y="350" as="sourcePoint" />
+            <mxPoint x="1094.5" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-9" value="Use in" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="De1eZjqfpODv19dZXhUb-8">
-          <mxGeometry x="0.122" y="1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-10" value="&lt;u&gt;GlobalGratitude_Final_Cleaned.Rds&lt;/u&gt;&lt;div&gt;Final Rds file used for all data analysis)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="240" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-11" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.367;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-7">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="236" as="sourcePoint" />
-            <mxPoint x="560" y="40" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="560" y="242" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-12" value="Used in" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="De1eZjqfpODv19dZXhUb-11">
-          <mxGeometry x="0.1207" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-13" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="530" y="40" as="sourcePoint" />
-            <mxPoint x="560" y="40" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-14" value="&lt;u&gt;GlobalGratitude_Graphs.Rmd&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="550" y="380" width="210" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-15" value="&lt;div&gt;&lt;u&gt;GlobalGratitude_Main.Rmd&lt;/u&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="380" width="210" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="De1eZjqfpODv19dZXhUb-18" target="De1eZjqfpODv19dZXhUb-10">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-17" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="De1eZjqfpODv19dZXhUb-16">
+        <mxCell id="De1eZjqfpODv19dZXhUb-17" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="De1eZjqfpODv19dZXhUb-16" vertex="1" connectable="0">
           <mxGeometry x="0.04" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-18" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="110" width="230" height="80" as="geometry" />
+        <mxCell id="De1eZjqfpODv19dZXhUb-18" value="&lt;u&gt;Cleaned_Final_Dataset.R&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="980" y="270" width="230" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-19" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-6" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="424.5" y="340" as="sourcePoint" />
-            <mxPoint x="425" y="380" as="targetPoint" />
+            <mxPoint x="1095" y="230" as="sourcePoint" />
+            <mxPoint x="1095" y="270" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="De1eZjqfpODv19dZXhUb-20" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="660" y="340" as="sourcePoint" />
-            <mxPoint x="660.5" y="380" as="targetPoint" />
+        <mxCell id="z9q1VAa0Q0Au0Lvns-ut-7" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="z9q1VAa0Q0Au0Lvns-ut-6">
+          <mxGeometry x="-0.1556" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
