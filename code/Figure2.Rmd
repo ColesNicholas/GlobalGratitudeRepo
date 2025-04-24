@@ -29,13 +29,15 @@ library (here)
 Prep data
 ```{r}
 # open data
-df <- 
-  read.csv(file = 'unique_country_effect_sizes.csv')
+# specify directory
+i_am("code/Figure2.Rmd")
+
+df <- read.csv(file = here("data", "unique_country_effect_sizes.csv"))
 
 # List of effect size columns and variance columns
-effect_size_columns <- c("pa_effect_size", "na_effect_size", "optimism_effect_size",
-                         "ls_effect_size", "envy_effect_size",
-                         "indebted_effect_size")
+effect_size_columns <- c("pa_effect_size", "na_effect_size",
+                         "optimism_effect_size","ls_effect_size",
+                         "envy_effect_size", "indebted_effect_size")
 variance_columns <- c("pa_var", "na_var", "optimism_var",
                          "ls_var", "envy_var", "indebted_var")
 
@@ -43,16 +45,14 @@ variance_columns <- c("pa_var", "na_var", "optimism_var",
 m <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
-         data = df)
-})
+         data = df)})
 
 # Use lapply to fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
          random = list(~ 1 | intervention_condition, ~ 1 | country),
-         data = df)
-})
+         data = df)})
 
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)

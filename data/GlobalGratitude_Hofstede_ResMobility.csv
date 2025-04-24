@@ -1,0 +1,158 @@
+Original_1,Original_2,Matched,Match_Method_1,Match_Method_2,resmobility,power-distance,individualism,motivation,uncertainty-avoidance,long-term-orientation,indulgence
+US,United states,United States,countrycode,countrycode,0.2156,40,60,62,46,50,68
+Egypt,Egypt,Egypt,countrycode,countrycode,0.0748,80,13,55,55,22,0
+Morocco,Morocco,Morocco,countrycode,countrycode,0.0967,70,24,53,68,25,25
+Lebanon,Lebanon,Lebanon,countrycode,countrycode,0.0553,62,27,48,57,47,10
+Saudi Arabia,Saudi arabia,Saudi Arabia,countrycode,countrycode,0.1209,72,48,43,64,27,14
+Jordan,Jordan,Jordan,countrycode,countrycode,0.0446,70,20,45,65,20,43
+Syria,Syria,Syria,countrycode,countrycode,0.2458,80,35,52,60,30,
+Turkey,Turkey,Turkey,countrycode,countrycode,0.0503,66,46,45,85,35,49
+Pakistan,Pakistan,Pakistan,countrycode,countrycode,0.0504,55,5,50,70,19,0
+Indonesia,Indonesia,Indonesia,countrycode,countrycode,0.0449,78,5,46,48,29,38
+Bangladesh,Bangladesh,Bangladesh,countrycode,countrycode,0.0716,80,5,55,60,38,20
+UK,United kingdom,United Kingdom,countrycode,countrycode,0.1312,35,76,66,35,60,69
+France,France,France,countrycode,countrycode,0.1569,68,74,43,86,60,48
+Germany,Germany,Germany,countrycode,countrycode,0.0515,35,79,66,65,57,40
+Netherlands,Netherlands,Netherlands,countrycode,countrycode,0.0805,38,100,14,53,67,68
+Belgium,Belgium,Belgium,countrycode,countrycode,0.1084,65,81,54,94,61,57
+Spain,Spain,Spain,countrycode,countrycode,0.1139,57,67,42,86,47,44
+Italy,Italy,Italy,countrycode,countrycode,0.0688,50,53,70,75,39,30
+Poland,Poland,Poland,countrycode,countrycode,0.0661,68,47,64,93,49,29
+Hungary,Hungary,Hungary,countrycode,countrycode,0.0685,46,71,88,82,45,31
+Czech Republic,Czech republic,Czechia,countrycode,countrycode,0.0795,57,70,57,74,51,29
+Romania,Romania,Romania,countrycode,countrycode,0.0584,90,46,42,90,32,20
+Sweden,Sweden,Sweden,countrycode,countrycode,0.1419,31,87,5,29,52,78
+Greece,Greece,Greece,countrycode,countrycode,0.0937,60,59,57,100,51,50
+Denmark,Denmark,Denmark,countrycode,countrycode,0.2087,18,89,16,23,59,70
+Iran,Iran,Iran,countrycode,countrycode,0.1624,58,23,43,59,30,40
+Hong Kong,Hong kong,Hong Kong SAR China,countrycode,countrycode,0.0477,68,50,57,29,93,17
+Singapore,Singapore,Singapore,countrycode,countrycode,0.0964,74,43,48,8,67,46
+Japan,Japan,Japan,countrycode,countrycode,0.1021,54,62,95,92,100,42
+China,China,China,countrycode,countrycode,0.0522,80,43,66,30,77,24
+India,India,India,countrycode,countrycode,0.0577,77,24,56,40,51,26
+Venezuela,Venezuela,Venezuela,countrycode,countrycode,0.0331,81,26,73,76,0,100
+Brazil,Brazil,Brazil,countrycode,countrycode,0.1166,69,36,49,76,28,59
+Mexico,Mexico,Mexico,countrycode,countrycode,0.0501,81,34,69,82,23,97
+Nigeria,Nigeria,Nigeria,countrycode,countrycode,0.2029,80,0,60,55,8,84
+Kenya,Kenya,Kenya,countrycode,countrycode,0.1735,70,4,60,50,11,
+Tanzania,Tanzania,Tanzania,countrycode,countrycode,0.1117,70,25,40,50,34,38
+Israel,Israel,Israel,countrycode,countrycode,0.1518,13,56,47,81,47,
+Palestinian Territories,,Palestinian Territories,countrycode,,0.0537,,,,,,
+Ghana,Ghana,Ghana,countrycode,countrycode,0.19,80,9,40,65,1,72
+Uganda,,Uganda,countrycode,,0.19,,,,,,
+Benin,,Benin,countrycode,,0.063,,,,,,
+Madagascar,,Madagascar,countrycode,,0.1066,,,,,,
+Malawi,Malawi,Malawi,countrycode,countrycode,0.1953,70,30,40,50,,
+South Africa,South africa,South Africa,countrycode,countrycode,0.1105,49,23,63,49,18,63
+Canada,Canada,Canada,countrycode,countrycode,0.1751,39,72,52,48,54,68
+Australia,Australia,Australia,countrycode,countrycode,0.1313,38,73,61,51,56,71
+Philippines,Philippines,Philippines,countrycode,countrycode,0.1069,94,17,64,44,46,42
+Sri Lanka,Sri lanka,Sri Lanka,countrycode,countrycode,0.0763,80,35,10,45,45,
+Vietnam,Vietnam,Vietnam,countrycode,countrycode,0.0654,70,30,40,30,47,35
+Thailand,Thailand,Thailand,countrycode,countrycode,0.0732,64,19,34,64,67,45
+Cambodia,,Cambodia,countrycode,,0.1142,,,,,,
+Laos,,Laos,countrycode,,0.0705,,,,,,
+Myanmar,,Myanmar (Burma),countrycode,,0.048,,,,,,
+New Zealand,New zealand,New Zealand,countrycode,countrycode,0.2231,22,69,58,49,55,75
+Angola,Angola,Angola,countrycode,countrycode,0.0901,83,18,20,60,15,83
+Botswana,,Botswana,countrycode,,0.1642,,,,,,
+Ethiopia,Ethiopia,Ethiopia,countrycode,countrycode,0.1351,70,7,65,55,14,46
+Mali,,Mali,countrycode,,0.0675,,,,,,
+Mauritania,,Mauritania,countrycode,,0.1391,,,,,,
+Niger,,Niger,countrycode,,0.0592,,,,,,
+Rwanda,,Rwanda,countrycode,,0.1051,,,,,,
+Senegal,Senegal,Senegal,countrycode,countrycode,0.079,70,25,45,55,25,
+Zambia,Zambia,Zambia,countrycode,countrycode,0.204,60,35,40,50,30,42
+South Korea,South korea,South Korea,countrycode,countrycode,0.1331,60,58,39,85,86,29
+Taiwan,Taiwan,Taiwan,countrycode,countrycode,0.0671,58,40,45,69,87,49
+Afghanistan,,Afghanistan,countrycode,,0.101,,,,,,
+Belarus,Belarus,Belarus,countrycode,countrycode,0.0586,95,48,20,95,53,15
+Georgia,Georgia,Georgia,countrycode,countrycode,0.0684,65,15,55,85,24,32
+Kazakhstan,Kazakhstan,Kazakhstan,countrycode,countrycode,0.0802,88,20,50,88,85,22
+Kyrgyzstan,,Kyrgyzstan,countrycode,,0.0732,,,,,,
+Moldova,Moldova,Moldova,countrycode,countrycode,0.053,90,27,39,95,71,19
+Russia,Russia,Russia,countrycode,countrycode,0.0863,93,46,36,95,58,20
+Ukraine,Ukraine,Ukraine,countrycode,countrycode,0.0557,92,55,27,95,51,14
+Burkina Faso,Burkina faso,Burkina Faso,countrycode,countrycode,0.1246,70,15,50,55,27,18
+Cameroon,,Cameroon,countrycode,,0.2195,,,,,,
+Sierra Leone,Sierra leone,Sierra Leone,countrycode,countrycode,0.2338,70,20,40,50,,
+Zimbabwe,,Zimbabwe,countrycode,,0.1341,,,,,,
+Costa Rica,Costa rica,Costa Rica,countrycode,countrycode,0.1613,35,15,21,86,,
+Albania,Albania,Albania,countrycode,countrycode,0.0841,90,27,80,70,56,15
+Algeria,Algeria,Algeria,countrycode,countrycode,0.083,80,29,35,70,25,32
+Argentina,Argentina,Argentina,countrycode,countrycode,0.0863,49,51,56,86,29,62
+Armenia,Armenia,Armenia,countrycode,countrycode,0.0766,85,17,50,88,38,25
+Austria,Austria,Austria,countrycode,countrycode,0.0775,11,77,79,70,47,63
+Azerbaijan,Azerbaijan,Azerbaijan,countrycode,countrycode,0.0495,85,28,50,88,59,22
+Bahrain,,Bahrain,countrycode,,0.2033,,,,,,
+Bhutan,Bhutan,Bhutan,countrycode,countrycode,0.2035,94,52,32,28,,
+Bolivia,Bolivia,Bolivia,countrycode,countrycode,0.1345,78,23,42,87,21,46
+Bosnia and Herzegovina,Bosnia and herzegovina,Bosnia & Herzegovina,countrycode,countrycode,0.0503,90,40,48,87,36,44
+Bulgaria,Bulgaria,Bulgaria,countrycode,countrycode,0.0527,70,50,40,85,51,16
+Chad,,Chad,countrycode,,0.1237,,,,,,
+Chile,Chile,Chile,countrycode,countrycode,0.0873,63,49,28,86,12,68
+Colombia,Colombia,Colombia,countrycode,countrycode,0.1365,67,29,64,80,6,83
+Comoros,,Comoros,countrycode,,0.0602,,,,,,
+Congo (Kinshasa),,Congo - Kinshasa,countrycode,,0.1799,,,,,,
+Congo Brazzaville,,Congo - Brazzaville,countrycode,,0.1587,,,,,,
+Croatia,Croatia,Croatia,countrycode,countrycode,0.0544,73,42,40,80,40,33
+Cyprus,,Cyprus,countrycode,,0.0913,,,,,,
+Dominican Republic,Dominican republic,Dominican Republic,countrycode,countrycode,0.2215,65,38,65,45,11,54
+Ecuador,Ecuador,Ecuador,countrycode,countrycode,0.0648,78,24,63,67,24,
+El Salvador,El salvador,El Salvador,countrycode,countrycode,0.0639,66,19,40,94,20,89
+Estonia,Estonia,Estonia,countrycode,countrycode,0.0887,40,62,30,60,71,16
+Finland,Finland,Finland,countrycode,countrycode,0.1916,33,75,26,59,63,57
+Gabon,,Gabon,countrycode,,0.16,,,,,,
+Guatemala,Guatemala,Guatemala,countrycode,countrycode,0.097,95,36,37,98,25,
+Guinea,,Guinea,countrycode,,0.0968,,,,,,
+Haiti,,Haiti,countrycode,,0.1003,,,,,,
+Honduras,Honduras,Honduras,countrycode,countrycode,0.081,80,20,40,50,,
+Iceland,Iceland,Iceland,countrycode,countrycode,0.189,30,83,10,50,57,67
+Iraq,Iraq,Iraq,countrycode,countrycode,0.2232,97,25,53,96,11,23
+Ireland,Ireland,Ireland,countrycode,countrycode,0.0781,28,58,68,35,51,65
+Ivory Coast,,Côte d’Ivoire,countrycode,,0.1539,,,,,,
+Jamaica,Jamaica,Jamaica,countrycode,countrycode,0.2028,45,39,68,13,,
+Kuwait,Kuwait,Kuwait,countrycode,countrycode,0.1291,73,28,45,70,31,29
+Latvia,Latvia,Latvia,countrycode,countrycode,0.0966,44,70,9,63,69,13
+Liberia,,Liberia,countrycode,,0.1504,,,,,,
+Libya,Libya,Libya,countrycode,countrycode,0.0611,100,17,66,67,22,74
+Lithuania,Lithuania,Lithuania,countrycode,countrycode,0.0786,42,55,19,65,49,16
+Luxembourg,Luxembourg,Luxembourg,countrycode,countrycode,0.1308,40,60,50,70,64,56
+Macedonia,North macedonia,North Macedonia,countrycode,countrycode,0.0386,90,40,45,87,35,35
+Malaysia,Malaysia,Malaysia,countrycode,countrycode,0.1364,100,27,50,36,47,57
+Malta,Malta,Malta,countrycode,countrycode,0.0959,56,59,47,96,47,66
+Mongolia,Mongolia,Mongolia,countrycode,countrycode,0.1209,93,37,29,39,50,42
+Montenegro,Montenegro,Montenegro,countrycode,countrycode,0.0655,88,27,48,90,40,20
+Nepal,Nepal,Nepal,countrycode,countrycode,0.0837,65,30,40,40,,
+Nicaragua,,Nicaragua,countrycode,,0.0716,,,,,,
+Norway,Norway,Norway,countrycode,countrycode,0.2213,31,81,8,50,55,55
+Panama,Panama,Panama,countrycode,countrycode,0.1008,95,11,44,86,,
+Paraguay,Paraguay,Paraguay,countrycode,countrycode,0.0879,70,12,40,85,20,56
+Peru,Peru,Peru,countrycode,countrycode,0.1013,64,20,42,87,5,46
+Portugal,Portugal,Portugal,countrycode,countrycode,0.092,63,59,31,99,42,33
+Qatar,Qatar,Qatar,countrycode,countrycode,0.2896,93,18,55,80,14,
+Serbia,Serbia,Serbia,countrycode,countrycode,0.054,86,42,43,92,37,28
+Slovakia,Slovakia,Slovakia,countrycode,countrycode,0.0436,100,57,100,51,53,28
+Slovenia,Slovenia,Slovenia,countrycode,countrycode,0.0765,71,81,19,88,50,48
+Sudan,,Sudan,countrycode,,0.188,,,,,,
+Suriname,Suriname,Suriname,countrycode,countrycode,0.1607,85,47,37,92,,
+Switzerland,Switzerland,Switzerland,countrycode,countrycode,0.1101,34,79,70,58,42,66
+Tajikistan,,Tajikistan,countrycode,,0.0219,,,,,,
+Trinidad & Tobago,Trinidad and tobago,Trinidad & Tobago,countrycode,countrycode,0.1491,47,25,58,55,17,80
+Tunisia,Tunisia,Tunisia,countrycode,countrycode,0.062,70,27,40,75,24,
+Turkmenistan,,Turkmenistan,countrycode,,0.0248,,,,,,
+United Arab Emirates,United arab emirates,United Arab Emirates,countrycode,countrycode,0.1844,74,36,52,66,22,22
+Uruguay,Uruguay,Uruguay,countrycode,countrycode,0.1412,61,60,38,98,28,53
+Uzbekistan,,Uzbekistan,countrycode,,0.0439,,,,,,
+Yemen,,Yemen,countrycode,,0.0742,,,,,,
+Kosovo,,Kosovo,countrycode,,0.073,,,,,,
+Somaliland region,,Somaliland,countrycode,,0.0662,,,,,,
+Northern Cyprus,,Cyprus,countrycode,,0.0864,,,,,,
+Nagorno-Karabakh Republic,,,unmatched,,0.0701,,,,,,
+Total,,,unmatched,,0.0961,,,,,,
+,Cape verde,Cape Verde,,countrycode,,75,20,15,40,12,83
+,Fiji,Fiji,,countrycode,,78,14,46,48,,
+,Mozambique,Mozambique,,countrycode,,85,15,38,44,11,80
+,Namibia,Namibia,,countrycode,,65,30,40,45,35,
+,Puerto rico,Puerto Rico,,countrycode,,68,43,56,38,27,90
+,São tomé and príncipe,São Tomé & Príncipe,,countrycode,,75,37,24,70,32,41
