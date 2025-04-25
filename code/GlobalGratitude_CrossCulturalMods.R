@@ -3,7 +3,7 @@ library(tidyverse)
 library(here)
 
 # specify directory
-i_am("code/Cleaned_CrossCulturalMods.R")
+i_am("code/GlobalGratitude_CrossCulturalMods.R")
 
 #Main data country_code
 DF_main <- readRDS(file = here("data", "GlobalGratitude_Final_Cleaned.Rds"))
@@ -70,10 +70,11 @@ DF_cultural <- DF_main %>%
 
 #Tightness Looseness
 DF_tight <- read.csv(file = here("data", "GlobalGratitude_Tightness.csv")) %>%
-  rename(country = "ï..Country") %>%
-  mutate(country_code = countrycode(country, origin = 'country.name', destination = 'iso3c')) %>%
+  mutate(country_code = countrycode(Country, origin = 'country.name', destination = 'iso3c')) %>%
   filter(country_code %in% unique(DF_main$country_code)) %>% 
-  select(Tightness:country_code)
+  select(Tightness:country_code) %>%
+  rename("tightness" = "Tightness") %>%
+  rename("tightness_centered" = "Tightness_Centered")
 
 #Hofstede
 DF_indcol <- read.csv(file = here("data", "GlobalGratitude_Hofstede_ResMobility.csv"))
@@ -104,6 +105,8 @@ DF_combined <- DF_cultural %>%
   left_join(DF_relig, by = "country_code") %>%
   left_join(DF_GDP, by = "country_code") %>%
   left_join(DF_indcol, by = "country_code")
+
+DF_combined$country_name <- countrycode(DF_combined$country_code, origin = "iso3c", destination = "country.name")
 
 write.csv(DF_combined, 
           file = here('data',
