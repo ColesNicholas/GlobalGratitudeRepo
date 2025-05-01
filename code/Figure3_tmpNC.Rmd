@@ -1,0 +1,222 @@
+---
+title: "Figure 3: Cross-cultural analyses"
+author: "Nicholas A. Coles"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load libraries
+```{r lib}
+library(tidyverse)
+library(metafor)
+library(ggExtra)
+library(readxl)
+library(countrycode)
+library(lme4)
+library(lmerTest)
+library(broom.mixed)
+library(janitor)
+
+options(scipen = 999)
+```
+
+# Prep data
+```{r}
+# open survey data
+DF_surv <- 
+  # open data
+  read.csv('GlobalGratitude_Final.csv') %>% 
+  
+  # identify country ISO
+  mutate(country = 
+           substr(x = lab, 
+                  start = 1, 
+                  stop = 3)
+         ) %>% 
+  
+  # calculate scales
+  rowwise() %>% 
+  mutate(
+    # gratitude
+    gratitude_mean = 
+      mean(c(grateful, appreciative, thankful), 
+           na.rm = T),
+    
+    # positive affect
+    pa_mean = 
+      mean(c(happy, satisfied, content, joyful, pleased), 
+           na.rm = T),
+    
+    # optimism
+    optimistic_mean = 
+      mean(c(optimistic, hopeful), 
+           na.rm = T),
+  
+    # negative affect
+    na_mean = 
+      mean(c(sad, depressed, anxious, nervous), 
+           na.rm = T),
+    
+    # indebtendess
+    indebted_mean = 
+      mean(c(indebted, obligated), 
+           na.rm = T),
+          
+    # envy
+    envy_mean = 
+      mean(c(envious, bitter, jealous), 
+           na.rm = T),
+    
+    # life satisfaction
+    ls_mean = 
+      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), 
+           na.rm = T),
+    
+    # sense of self
+    ss_mean = 
+      mean(c(self_image_circle, self_image), 
+           na.rm = T)) %>% 
+  ungroup() %>% 
+  
+  # delete vestigial variables
+  select(-c(grateful, appreciative, thankful, 
+            happy, satisfied, content, 
+            joyful, pleased, optimistic,
+            hopeful,  depressed, sad,  anxious,  nervous,
+            indebted, obligated,
+            envious, bitter, jealous,
+            ls_1, ls_2, ls_3,
+            ls_4, ls_5, self_image_circle,
+            self_image)
+         ) %>% 
+  
+  # standardize
+  mutate_if(is.numeric,
+            scale)
+
+# open Shige's L2 data (not sure how he compiled)
+DF_l2 <- 
+  # open data
+  read_excel("GlobalGratitude_L2.xlsx") %>% 
+  
+  # identify country ISO
+  mutate(country = 
+           countrycode(Country, 
+                       origin = "country.name", 
+                       destination = "iso3c")
+         ) %>%
+  select(-c(Country, Nation, `Relational mobility_latent scores`,
+            `PA meta mean effect size` : `LS meta mean effect size`)) %>% 
+  
+  # fix problematic variable names
+  clean_names() %>% 
+  
+  # standardize cross-cultural measures
+  mutate_if(is.numeric,
+            scale)
+
+# join
+DF <-
+  left_join(DF_surv,
+            DF_l2,
+            by = "country")
+
+# delete vestigial
+rm(DF_surv,
+   DF_l2)
+```
+
+# Replicate Shige's analyses
+Give list of moderators
+
+For each of those moderators, fit a mixed-effect model that tests moderator and outputs summary
+
+```{r}
+# created expanded list of outcome-moderator combinations
+out.list <- 
+  c('gratitude_mean',
+    'pa_mean',
+    'optimistic_mean',
+    'na_mean',
+    'indebted_mean',
+    'guilty',
+    'envy_mean',
+    #='ls_mean',
+    'ss_mean',
+    'ladder')
+
+mod.list <-
+  c('gelfand',
+    'hofstede',
+    "relational_mobility_raw_scores",
+    "responsiblism",
+    "religiosity",
+    "gdp_per_capita",
+    "tightness_looseness",
+    "residential_mobility_2016")
+
+expanded.list <- 
+  expand_grid(out.list,
+              mod.list)
+
+results <- sapply(X = seq_len(nrow(expanded.list)), # iterate through each row of list
+                  simplify = F,
+                  FUN = function(i){
+                    
+                    m <- lmer(as.formula(paste0(expanded.list$out.list[i], 
+                                                '~ condition_type *',
+                                                expanded.list$mod.list[i], 
+                                                '+ (1 | lab)')
+                                         ),
+                              data = DF)
+                    
+                    cbind(outcome = expanded.list$out.list[i],
+                          moderator = expanded.list$mod.list[i],
+                          tidy(m)) %>% 
+                      return()
+       })
+
+# focus on just tests of moderation
+tmp <- 
+  results %>% 
+  
+  # combine list
+  bind_rows() %>% 
+  
+  # focus on interactions
+  filter(str_detect(term, ":")) %>% 
+  
+  # organize by mod, outcome
+  arrange(moderator, outcome) %>% 
+  
+  # remove vestigial
+  select(-c(effect, group, term, std.error : df))
+  
+```
+
+# Heat map
+```{r}
+tmp2 <- 
+  tmp %>% 
+  select(-p.value) %>% 
+  pivot_wider(names_from = moderator,
+              values_from = estimate) %>% 
+  column_to_rownames(var = 'outcome') %>% 
+  as.matrix()
+
+heatmap(tmp2,
+        col = colorRampPalette(c("blue", "white", "red"))(100),
+        cexRow = 0.7,
+        cexCol = 0.7)
+```
+
+
+# Quick plot
+```{r}
+ggplot(data = tmp,
+       aes(color = moderator)) +
+  facet_wrap(~ outcome) +
+  geom_lin
+```
+
