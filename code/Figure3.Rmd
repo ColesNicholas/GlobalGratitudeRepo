@@ -1,0 +1,337 @@
+---
+title: "Figure 3: Cross-cultural analyses"
+author: "Nicholas A. Coles"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load libraries
+```{r lib}
+library(tidyverse)
+library(here)
+
+options(scipen = 999)
+
+i_am('code/Figure3.Rmd')
+```
+
+# Open data
+```{r}
+DF_surv <- 
+  # open data
+  read.csv(here('data',
+                'GlobalGratitude_Final.csv')) %>% 
+  
+  # identify country ISO
+  mutate(country = 
+           substr(x = lab, 
+                  start = 1, 
+                  stop = 3)
+         ) %>% 
+  filter(country != "KEN",
+         country != "DZA") %>% 
+  
+  # calculate scales
+  rowwise() %>% 
+  mutate(
+    # gratitude
+    gratitude_mean = 
+      mean(c(grateful, appreciative, thankful), 
+           na.rm = T),
+    
+    # positive affect
+    pa_mean = 
+      mean(c(happy, satisfied, content, joyful, pleased), 
+           na.rm = T),
+    
+    # optimism
+    optimistic_mean = 
+      mean(c(optimistic, hopeful), 
+           na.rm = T),
+  
+    # negative affect
+    na_mean = 
+      mean(c(sad, depressed, anxious, nervous), 
+           na.rm = T),
+    
+    # indebtendess
+    indebted_mean = 
+      mean(c(indebted, obligated), 
+           na.rm = T),
+          
+    # envy
+    envy_mean = 
+      mean(c(envious, bitter, jealous), 
+           na.rm = T),
+    
+    # life satisfaction
+    ls_4 = as.numeric(ls_4),
+    
+    ls_mean = 
+      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), 
+           na.rm = T),
+    
+    # sense of self
+    ss_mean = 
+      mean(c(self_image_circle, self_image), 
+           na.rm = T)) %>% 
+  ungroup() %>% 
+  
+  # delete vestigial variables
+  select(-c(grateful, appreciative, thankful, 
+            happy, satisfied, content, 
+            joyful, pleased, optimistic,
+            hopeful,  depressed, sad,  anxious,  nervous,
+            indebted, obligated,
+            envious, bitter, jealous,
+            ls_1, ls_2, ls_3,
+            ls_4, ls_5, self_image_circle,
+            self_image)
+         ) %>% 
+  
+  # create country-specific estimates
+  filter(country != "",
+         country != "KEN") %>% 
+  group_by(country) %>% 
+  summarise(n = n(),
+            gratitude_mean = mean(gratitude_mean,
+                                  na.rm = T),
+            pa_mean = mean(pa_mean,
+                           na.rm = T),
+            ls_mean = mean(ls_mean,
+                           na.rm = T),
+            optimistic_mean = mean(optimistic_mean,
+                                   na.rm = T),
+            ladder = mean(ladder,
+                          na.rm = T),
+            guilty = mean(guilty,
+                          na.rm = T),
+            indebted_mean = mean(indebted_mean,
+                                 na.rm = T),
+            ss_mean = mean(ss_mean,
+                           na.rm = T),
+            envy_mean = mean(envy_mean,
+                             na.rm = T),
+            na_mean = mean(na_mean,
+                           na.rm = T))
+```
+
+# Open country-specific effect sizes
+```{r}
+country.DF <-
+  # open data
+  read.csv(here('data',
+                'unique_country_effect_sizes.csv'
+                )
+           ) %>% 
+  
+  # select relevant outcomes
+  select(
+    pa_effect_size,
+    na_effect_size,
+    optimism_effect_size,
+    ls_effect_size, 
+    envy_effect_size, 
+    indebted_effect_size,
+    country) %>% 
+  
+  # summarise
+  group_by(country) %>% 
+  summarise(across(everything(), mean, na.rm = TRUE))
+
+mod.DF <-
+  read.csv(here('data',
+                'GlobalGratitude_CrossCulturalMod.csv'
+                )
+           ) %>% 
+  mutate(country = country_name) %>% 
+  select(-c(country_code,
+            country_name))
+
+rm(mod.list, out.list)
+```
+
+# Open cross-cultural moderator data
+```{r}
+# join
+DF <-
+  left_join(x = country.DF,
+            y = mod.DF,
+            by = "country")
+
+# delete vestigial
+rm(country.DF,
+   mod.DF)
+```
+
+# Bayesian correlation analyses
+```{r}
+# created expanded list of outcome-moderator combinations
+out.list <- 
+  c('pa_effect_size',
+    'na_effect_size',
+    'optimism_effect_size',
+    'ls_effect_size',
+    'envy_effect_size',
+    'indebted_effect_size')
+
+mod.list <-
+  c('rel_mob_mean',
+    'respon_mean',
+    "tightness",
+    "relig_mean",
+    "mean_GDP",
+    "resmobility",
+    "power.distance",
+    "individualism",
+    "motivation",
+    "uncertainty.avoidance",
+    "long.term.orientation",
+    "indulgence")
+
+expanded.list <- 
+  expand_grid(out.list,
+              mod.list)
+
+results <- sapply(X = seq_len(nrow(expanded.list)), # iterate through each row of list
+                  simplify = F,
+                  FUN = function(i){
+                    df <- DF %>% 
+                      select(expanded.list$out.list[i],
+                             expanded.list$mod.list[i])
+                    
+                    names(df) <- c('x', 'y')
+                      
+                    
+                    cor.est <- 
+                      cor(x = df$x,
+                          y = df$y,
+                          use = "pairwise.complete.obs",
+                          method = 'pearson')
+                    
+                    bf.est <- 
+                      correlationBF(x = df$x,
+                                    y = df$y)
+                    
+                    cbind(outcome = expanded.list$out.list[i],
+                          moderator = expanded.list$mod.list[i],
+                          cor = cor.est,
+                          bf = extractBF(bf.est)$b) %>% 
+                      return()
+       })
+
+# combine list
+results <- 
+  do.call(rbind, results) %>% 
+  as.data.frame() %>% 
+  mutate(cor = as.numeric(cor),
+         cor = round(cor, 2),
+         bf = as.numeric(bf),
+         bf = round(bf, 2)) %>% 
+  
+  # clean aesthetics
+  mutate(outcome = factor(outcome,
+                          levels = c("pa_effect_size",
+                                     "na_effect_size",
+                                     "optimism_effect_size",
+                                     "ls_effect_size",
+                                     "envy_effect_size",
+                                     "indebted_effect_size"),
+                          labels = c("Positive affect",
+                                     "Negative affect",
+                                     "Optimism",
+                                     "Life satisfaction",
+                                     "Envy",
+                                     "Indebtednes")
+                          )
+         ) %>% 
+  mutate(moderator = factor(moderator,
+                            levels = c("individualism",
+                                       "tightness",
+                                       "rel_mob_mean",
+                                       "resmobility",
+                                       "respon_mean",
+                                       "relig_mean",
+                                       "mean_GDP",
+                                       "power.distance",
+                                       "motivation",
+                                       "uncertainty.avoidance",
+                                       "long.term.orientation",
+                                       "indulgence"),
+                            
+                            labels = c("Individualism",
+                                       "Tightness",
+                                       "Relational mobility",
+                                       "Residential mobility",
+                                       "Responsibilism",
+                                       "Religiosity",
+                                       "GDP",
+                                       "Power distance",
+                                       "Motivation",
+                                       "Uncertainty avoidance",
+                                       "Long term orientation",
+                                       "Indulgence"
+                                       )
+                            )
+         )
+
+# Make minor edit to label
+results <- results %>% 
+  mutate(bf = if_else(moderator == "Individualism" & 
+                         outcome == "Positive affect",
+                       paste0("BF['1,0'] == ", bf),
+                       as.character(bf))
+         )
+```
+
+# Heat map
+```{r}
+ggplot(data = results,
+       aes(y = fct_rev(moderator),
+           x = outcome,
+           fill = cor,
+           label = bf)) +
+  geom_tile() +
+  scale_fill_gradient2(
+    low = "red", 
+    mid = "white", 
+    high = "blue", 
+    midpoint = 0,
+    limit = c(-1, 1)) +
+  geom_text(parse = T) + 
+  theme_classic() +
+  labs(x = expression("Cohens " * italic('d')),
+       y = "Moderator",
+       fill = expression("Pearson's " * italic('r'))) +
+  theme(legend.position = "top",
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        plot.background = element_blank())
+```
+
+
+```{r}
+tmp2 <- 
+  tmp %>% 
+  select(-p.value) %>% 
+  pivot_wider(names_from = moderator,
+              values_from = estimate) %>% 
+  column_to_rownames(var = 'outcome') %>% 
+  as.matrix()
+
+heatmap(tmp2,
+        col = colorRampPalette(c("blue", "white", "red"))(100),
+        cexRow = 0.7,
+        cexCol = 0.7)
+```
+
+
+# Quick plot
+```{r}
+ggplot(data = tmp,
+       aes(color = moderator)) +
+  facet_wrap(~ outcome) +
+  geom_lin
+```
+

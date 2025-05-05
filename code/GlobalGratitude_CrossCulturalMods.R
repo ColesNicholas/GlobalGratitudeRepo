@@ -110,5 +110,6 @@ DF_combined$country_name <- countrycode(DF_combined$country_code, origin = "iso3
 
 write.csv(DF_combined, 
           file = here('data',
-                      "GlobalGratitude_CrossCulturalMod.csv"))
+                      "GlobalGratitude_CrossCulturalMod.csv"),
+          row.names = F)
 
