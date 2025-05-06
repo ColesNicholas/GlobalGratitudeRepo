@@ -10,6 +10,7 @@ editor_options:
 ```{r lib}
 library(tidyverse)
 library(here)
+library(BayesFactor)
 
 options(scipen = 999)
 
@@ -17,20 +18,21 @@ i_am('code/Figure3.Rmd')
 ```
 
 # Open data
-```{r}
+```{r eval = F}
 DF_surv <- 
   # open data
-  read.csv(here('data',
-                'GlobalGratitude_Final.csv')) %>% 
+  readRDS(here('data',
+               'GlobalGratitude_Final_Cleaned.Rds'))
+
+DF_surv2 <- DF_surv %>% 
   
+  # remove countries that shouldn't be in the data?
   # identify country ISO
   mutate(country = 
            substr(x = lab, 
                   start = 1, 
                   stop = 3)
          ) %>% 
-  filter(country != "KEN",
-         country != "DZA") %>% 
   
   # calculate scales
   rowwise() %>% 
@@ -91,8 +93,8 @@ DF_surv <-
          ) %>% 
   
   # create country-specific estimates
-  filter(country != "",
-         country != "KEN") %>% 
+  # filter(country != "",
+  #        country != "KEN") %>% 
   group_by(country) %>% 
   summarise(n = n(),
             gratitude_mean = mean(gratitude_mean,
@@ -228,7 +230,8 @@ results <-
   mutate(cor = as.numeric(cor),
          cor = round(cor, 2),
          bf = as.numeric(bf),
-         bf = round(bf, 2)) %>% 
+         logbf = log(bf),
+         logbf = round(logbf, 2)) %>% 
   
   # clean aesthetics
   mutate(outcome = factor(outcome,
@@ -243,7 +246,7 @@ results <-
                                      "Optimism",
                                      "Life satisfaction",
                                      "Envy",
-                                     "Indebtednes")
+                                     "Indebtedness")
                           )
          ) %>% 
   mutate(moderator = factor(moderator,
@@ -277,61 +280,98 @@ results <-
          )
 
 # Make minor edit to label
+ results <- results %>% 
+    mutate(cor.lab = paste0("paste(", 
+                            "italic(r), ' = ",
+                            cor,
+                            "')"
+                            )
+           )
+
+# restructure
 results <- results %>% 
-  mutate(bf = if_else(moderator == "Individualism" & 
-                         outcome == "Positive affect",
-                       paste0("BF['1,0'] == ", bf),
-                       as.character(bf))
+  mutate(outcome = fct_reorder(outcome, -logbf),
+         moderator = fct_reorder(moderator, -logbf))
+
+# recalculate bf scale
+results <- results %>% 
+  mutate(bf.type = 
+           if_else(bf >.9999,
+                   "BF['1,0']",
+                   "BF['0,1']"),
+         bf.tran =
+           if_else(bf >.9999,
+                   bf,
+                   1 / bf),
+         bf.tran = 
+           round(bf.tran, 
+                 2),
+         bf.tran.dir = 
+           if_else(bf > .9999,
+                   bf.tran,
+                   bf.tran * (-1)),
+         bf.lab = 
+           paste0("paste(",
+                  "italic(", 
+                  bf.type,
+                  ")",
+                  ", ' = ",
+                  bf.tran,
+                  "')")
          )
 ```
 
-# Heat map
+# Heat map (MAY 6)
 ```{r}
 ggplot(data = results,
-       aes(y = fct_rev(moderator),
-           x = outcome,
-           fill = cor,
-           label = bf)) +
-  geom_tile() +
+       aes(x = moderator,
+           y = fct_rev(outcome),
+           fill = bf.tran.dir,
+           label = bf.lab)) +
+  geom_tile(aes(color = cor),
+            size = 1,
+            width = .97, height = 0.97) +
+  
+  scale_color_gradient2(
+    low = "red", mid = "white", high = "blue",
+    midpoint = 0, limits = c(-1, 1),
+    name = expression("Pearson's " * italic('r'))
+    ) +
+  
   scale_fill_gradient2(
-    low = "red", 
-    mid = "white", 
-    high = "blue", 
-    midpoint = 0,
-    limit = c(-1, 1)) +
-  geom_text(parse = T) + 
+    high = "#1b7837",
+    mid = "white",
+    low = "black", 
+    midpoint = 1,
+    limits = c(-8, 8),
+    name = "Bayes factor",
+    labels = c("-4" = expression(BF['0,1'] == 4),
+               "-2" = expression(BF['0,1'] == 2),
+               "0" = expression(BF['1,0'] == 1),
+               "2" = expression(BF['1,0'] == 2),
+               "4" = expression(BF['1,0'] == 4)
+               )
+    ) +
+  
+  geom_text(aes(label = bf.lab),
+                  parse = T,
+                  nudge_y = .25,
+                  size = 3.5) +
+  
+  geom_label(aes(label = cor.lab,
+                 color = cor),
+             parse = T,
+             nudge_y = -.25,
+             size = 3.5) +
   theme_classic() +
-  labs(x = expression("Cohens " * italic('d')),
-       y = "Moderator",
-       fill = expression("Pearson's " * italic('r'))) +
-  theme(legend.position = "top",
-        axis.line = element_blank(),
+  labs(y = expression("Cohens " * italic('d')),
+       x = "Moderator",
+       fill = expression("Pearson's " * italic('r'))
+       ) +
+  theme(axis.line = element_blank(),
         axis.ticks = element_blank(),
-        plot.background = element_blank())
+        plot.background = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.title = element_text(size = 10, margin = margin(b = 15)),  
+        legend.key.size = unit(.6, 'cm'))
 ```
-
-
-```{r}
-tmp2 <- 
-  tmp %>% 
-  select(-p.value) %>% 
-  pivot_wider(names_from = moderator,
-              values_from = estimate) %>% 
-  column_to_rownames(var = 'outcome') %>% 
-  as.matrix()
-
-heatmap(tmp2,
-        col = colorRampPalette(c("blue", "white", "red"))(100),
-        cexRow = 0.7,
-        cexCol = 0.7)
-```
-
-
-# Quick plot
-```{r}
-ggplot(data = tmp,
-       aes(color = moderator)) +
-  facet_wrap(~ outcome) +
-  geom_lin
-```
-
