@@ -31,13 +31,13 @@ DF_main <- DF_main %>%
         relational_mobility_1,
         relational_mobility_2,
         relational_mobility_3,
-        7 - relational_mobility_4,
-        7 - relational_mobility_5,
+        relational_mobility_4,
+        relational_mobility_5,
         relational_mobility_6,
         7 - relational_mobility_7,
-        relational_mobility_8,
+        7 - relational_mobility_8,
         7 - relational_mobility_9,
-        relational_mobility_10,
+        7 - relational_mobility_10,
         7 - relational_mobility_11,
         7 - relational_mobility_12
       ),
@@ -53,7 +53,7 @@ DF_main <- DF_main %>%
         responsibilism_1,
         responsibilism_2,
         responsibilism_3,
-        8 - responsibilism_4,
+        responsibilism_4,
         8 - responsibilism_5
       ),
       na.rm = TRUE
@@ -70,7 +70,7 @@ DF_cultural <- DF_main %>%
 
 #Tightness Looseness
 DF_tight <- read.csv(file = here("data", "GlobalGratitude_Tightness.csv")) %>%
-  mutate(country_code = countrycode(Country, origin = 'country.name', destination = 'iso3c')) %>%
+  mutate(country_code = countrycode(ï..Country, origin = 'country.name', destination = 'iso3c')) %>%
   filter(country_code %in% unique(DF_main$country_code)) %>% 
   select(Tightness:country_code) %>%
   rename("tightness" = "Tightness") %>%
