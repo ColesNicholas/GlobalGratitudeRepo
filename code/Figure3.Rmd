@@ -364,8 +364,9 @@ ggplot(data = results,
              nudge_y = -.25,
              size = 3.5) +
   theme_classic() +
-  labs(y = expression("Cohens " * italic('d')),
-       x = "Moderator",
+  labs(y = 
+         expression("Country-level effects of gratitude interventions (" * italic('d') * ")"),
+       x = "Country-level differences",
        fill = expression("Pearson's " * italic('r'))
        ) +
   theme(axis.line = element_blank(),
