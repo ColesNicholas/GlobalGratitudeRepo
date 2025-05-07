@@ -11,6 +11,7 @@ editor_options:
 library(tidyverse)
 library(here)
 library(countrycode)
+library(cowplot)
 
 options(scipen = 999)
 
@@ -193,69 +194,12 @@ fig.1b <-
   xlab('Cultural distance (from USA)')
 ```
 
-#OLD
+# Combine
 ```{r}
-ggplot(
-  data = DF2,
-  aes(x = dist.us,
-      y = .2)) +
-  
-  geom_linerange(
-    data = DF2 %>% 
-      filter(sampled == "no"),
-    aes(ymin = 0, ymax = 0.1)) +
-  
-  geom_linerange(
-    data = DF2 %>% 
-      filter(sampled == "yes"),
-    aes(ymin = 0, ymax = 0.2,
-        color = country)
-  ) +
-  
-  theme_classic() +
-  theme(
-    legend.position = 'top',
-    legend.box = "full",
-    axis.title.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
-    axis.line.y = element_blank()
-  ) +
-  
-  guides(
-    color = guide_legend(nrow = 3))
+plot_grid(fig.1b,
+          fig.1a,
+          nrow = 2,
+          labels = c('a', 'b'))
 ```
 
-Potentially useful
-```{r}
-
-  geom_text(
-    data = DF2 %>% 
-      filter(sampled == "yes"),
-    aes(label = country,
-        color = country,
-        y = .6)) +
-  
-  geom_point(
-    data = DF2 %>% 
-      filter(sampled == "no"),
-    color = 'grey50'
-  ) +
-  
-  theme(
-    legend.position = 'none')
-  )
-```
-
-
-Old
-```{r}
-ggplot(data = DF2,
-       aes(x = dist.us,
-           y = .5,
-           color = sampled)) +
-  geom_jitter(width = 0,
-              height = .1) +
-  ylim(0, 1)
-```
 
