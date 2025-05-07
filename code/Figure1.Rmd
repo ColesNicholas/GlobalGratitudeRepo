@@ -1,0 +1,261 @@
+---
+title: "Figure 1: Cross-cultural viz"
+author: "Nicholas A. Coles"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Load libraries
+```{r lib}
+library(tidyverse)
+library(here)
+library(countrycode)
+
+options(scipen = 999)
+
+i_am('code/Figure1.Rmd')
+```
+
+# Open country-specific effect sizes
+```{r}
+country.DF <-
+  # open data
+  read.csv(here('data',
+                'unique_country_effect_sizes.csv'
+                )
+           ) %>% 
+  
+  # select relevant outcomes
+  select(
+    pa_effect_size,
+    na_effect_size,
+    optimism_effect_size,
+    ls_effect_size, 
+    envy_effect_size, 
+    indebted_effect_size,
+    country) %>% 
+  
+  # summarise
+  group_by(country) %>% 
+  summarise(across(everything(), mean, na.rm = TRUE))
+
+mod.DF <-
+  read.csv(here('data',
+                'GlobalGratitude_CrossCulturalMod.csv'
+                )
+           ) %>% 
+  mutate(country = country_name) %>% 
+  select(-c(country_code,
+            country_name))
+
+rm(mod.list, out.list)
+```
+
+# Open cross-cultural moderator data
+```{r}
+# join
+DF <-
+  left_join(x = country.DF,
+            y = mod.DF,
+            by = "country")
+
+# delete vestigial
+rm(country.DF,
+   mod.DF)
+```
+
+# Open cultural distance data
+```{r}
+# cultural distance
+DF.cd <- read.csv(here('data',
+                       "culturaldistance_table_combined.csv")) %>% 
+  select(Name, United.States1981.2014) %>% 
+  rename(country = Name,
+         dist.us = United.States1981.2014) %>% 
+  mutate(country = str_remove_all(country, "[:digit:]"),
+         country = str_remove_all(country, "-"))
+```
+
+# Merge
+```{r}
+DF2 <- left_join(DF.cd,
+                 DF,
+                 by = 'country')
+```
+
+
+# Prep figure
+```{r}
+fig1.DF <- 
+  DF %>% 
+  select(country,
+         rel_mob_mean : tightness, 
+         relig_mean : indulgence) %>% 
+  pivot_longer(cols = rel_mob_mean : indulgence) %>% 
+  mutate(
+    name = 
+      fct_recode(name,
+                 "Relational mobility" = "rel_mob_mean", 
+                 "Responsibilism" = "respon_mean", 
+                 "Tightness" = "tightness", 
+                 "Religiosity" = "relig_mean",
+                 "GDP" = "mean_GDP",
+                 "Residential mobility" = "resmobility",
+                 "Power distance" = "power.distance",
+                 "Individualism" = "individualism",
+                 "Motivation" = "motivation",
+                 "Uncertainty Avoidance" = "uncertainty.avoidance",
+                 "Long term orientation" = "long.term.orientation",
+                 "Indulgence" = "indulgence")
+  )
+```
+
+# Top facet (cross-cultural moderators)
+```{r}
+fig.1a <-
+  ggplot(data = fig1.DF,
+       aes(x = country,
+           y = value,
+           fill = country)) +
+  facet_wrap(~ name,
+             scales = 'free') +
+  theme(axis.text.x = element_text(angle = 90, 
+                                   hjust = 1)) +
+  geom_bar(stat = 'identity') +
+  theme_classic() +
+  theme(legend.position = 'none',
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+# Bottom facet (cultural distance)
+Prep data
+```{r}
+DF2 <- DF2 %>% 
+  mutate(
+    sampled =
+      if_else(is.na(pa_effect_size),
+              'no', 
+              'yes'),
+    
+    country = 
+      countrycode(country,
+                  origin = "country.name",
+                  destination = "iso3c"),
+    
+    dist.us =
+      replace_na(dist.us, 
+                 0)
+    )
+```
+
+plot
+```{r}
+fig.1b <-
+  ggplot(
+  data = DF2,
+  aes(x = dist.us,
+      y = .2)) +
+  
+  # add rug graph
+  geom_linerange(
+    data = DF2 %>% 
+      filter(sampled == "no"),
+    aes(ymin = 0, ymax = 0.1),
+    color = 'grey50') +
+  
+  geom_linerange(
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(ymin = 0, ymax = 0.2,
+        color = country)) +
+  
+  # add country labels
+  geom_text(
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(label = country,
+        color = country,
+        y = .6),
+    position = position_jitter(height = 0.25)) +
+  
+  # fix theme
+  theme_classic() +
+  theme(
+    legend.position = 'none',
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.y = element_blank()
+  ) +
+  xlab('Cultural distance (from USA)')
+```
+
+#OLD
+```{r}
+ggplot(
+  data = DF2,
+  aes(x = dist.us,
+      y = .2)) +
+  
+  geom_linerange(
+    data = DF2 %>% 
+      filter(sampled == "no"),
+    aes(ymin = 0, ymax = 0.1)) +
+  
+  geom_linerange(
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(ymin = 0, ymax = 0.2,
+        color = country)
+  ) +
+  
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.box = "full",
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.y = element_blank()
+  ) +
+  
+  guides(
+    color = guide_legend(nrow = 3))
+```
+
+Potentially useful
+```{r}
+
+  geom_text(
+    data = DF2 %>% 
+      filter(sampled == "yes"),
+    aes(label = country,
+        color = country,
+        y = .6)) +
+  
+  geom_point(
+    data = DF2 %>% 
+      filter(sampled == "no"),
+    color = 'grey50'
+  ) +
+  
+  theme(
+    legend.position = 'none')
+  )
+```
+
+
+Old
+```{r}
+ggplot(data = DF2,
+       aes(x = dist.us,
+           y = .5,
+           color = sampled)) +
+  geom_jitter(width = 0,
+              height = .1) +
+  ylim(0, 1)
+```
+
