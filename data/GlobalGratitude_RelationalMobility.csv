@@ -1,0 +1,40 @@
+COUNTRY,REGION,RMOBLM
+Australia,Oceania,0.138
+Brazil,Latin America,0.203
+Canada,North America,0.175
+Chile,Latin America,0.109
+Colombia,Latin America,0.199
+Egypt,MENA,-0.194
+Estonia,Europe,-0.024
+France,Europe,0.213
+Germany,Europe,-0.011
+Hong Kong,Asia,-0.338
+Hungary,Europe,-0.387
+Israel,MENA,0.088
+Japan,Asia,-0.414
+Jordan,MENA,-0.341
+Lebanon,MENA,-0.163
+Libya,MENA,-0.255
+Malaysia,Asia,-0.39
+Mauritius,Africa,0.059
+Mexico,Latin America,0.359
+Morocco,MENA,-0.139
+Netherlands,Europe,0.197
+New Zealand,Oceania,0.083
+Philippines,Asia,-0.083
+Poland,Europe,0.05
+Portugal,Europe,0
+Singapore,Asia,-0.137
+South Korea,Asia,-0.007
+Spain,Europe,0.128
+Sweden,Europe,0.171
+Trinidad and Tobago,Latin America,0.164
+Tunisia,MENA,-0.222
+Turkey,MENA,-0.06
+Ukraine,Europe,0.053
+United Kingdom,Europe,0.044
+USA,North America,0.182
+Venezuela,Latin America,0.226
+Taiwan,Asia,-0.294
+Puerto Rico,Latin America,0.308
+Palestinian Ter.,MENA,-0.269
