@@ -59,7 +59,13 @@ rm(mod.list, out.list)
 DF <-
   left_join(x = country.DF,
             y = mod.DF,
-            by = "country")
+            by = "country") %>% 
+  
+  mutate(iso =
+    countrycode(country,
+                origin = "country.name",
+                destination = "iso3c")
+    )
 
 # delete vestigial
 rm(country.DF,
@@ -179,8 +185,8 @@ fig.1b <-
       filter(sampled == "yes"),
     aes(label = country,
         color = country,
-        y = .6),
-    position = position_jitter(height = 0.25)) +
+        y = .8),
+    position = position_jitter(height = 0.5)) +
   
   # fix theme
   theme_classic() +
@@ -200,6 +206,57 @@ plot_grid(fig.1b,
           fig.1a,
           nrow = 2,
           labels = c('a', 'b'))
+```
+
+# Try to create map
+```{r}
+# open packages
+library("sf")
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("ggspatial")
+
+# download world data
+world <- ne_countries(scale = "medium", 
+                      returnclass = "sf")
+
+# fix missing ISO values in world data
+world[world$name == "France", ]$iso_a3 = "FRA"
+world[world$name == "Norway", ]$iso_a3 = "NOR"
+```
+
+# Globe?
+```{r}
+world <- ne_countries(scale = "medium", 
+                      returnclass = "sf")
+
+fig.1c <- ggplot() +
+  # plot map layer
+  layer_spatial(data = world,
+                color = NA) +
+  layer_spatial(data = 
+                  world %>% 
+                  filter(iso_a3 %in% DF$iso),
+                aes(fill = iso_a3)) +
+  
+  # change coordinate projections
+  coord_sf(crs = 'ESRI:54030') +
+  cowplot::theme_minimal_grid() +
+  theme(legend.position = 'none')
+```
+
+# Combine
+```{r}
+ac <- 
+  plot_grid(fig.1c,
+            fig.1a,
+          ncol = 2,
+          labels = c('b', 'c'))
+
+plot_grid(fig.1b, 
+          ac, 
+          nrow = 2,
+          labels = c('a', ''))
 ```
 
 
