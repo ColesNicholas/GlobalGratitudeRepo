@@ -23,7 +23,7 @@ library(readr)
 i_am("code/GlobalGratitude_LabSpecificData.Rmd")
 
 #This is not working for some reason
-data_main <- read.csv(file = here("data", "GlobalGratitude_Final.csv"), fileEncoding = "UTF-8")
+data_main <- readRDS(file = here("data", "GlobalGratitude_Final.Rds"))
 
 #Check with Chinese data
 CHN_01 <- data_main %>% filter(lab == "CHN_01")
