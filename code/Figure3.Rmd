@@ -17,108 +17,6 @@ options(scipen = 999)
 i_am('code/Figure3.Rmd')
 ```
 
-# Open data
-```{r eval = F}
-DF_surv <- 
-  # open data
-  readRDS(here('data',
-               'GlobalGratitude_Final_Cleaned.Rds'))
-
-DF_surv2 <- DF_surv %>% 
-  
-  # remove countries that shouldn't be in the data?
-  # identify country ISO
-  mutate(country = 
-           substr(x = lab, 
-                  start = 1, 
-                  stop = 3)
-         ) %>% 
-  
-  # calculate scales
-  rowwise() %>% 
-  mutate(
-    # gratitude
-    gratitude_mean = 
-      mean(c(grateful, appreciative, thankful), 
-           na.rm = T),
-    
-    # positive affect
-    pa_mean = 
-      mean(c(happy, satisfied, content, joyful, pleased), 
-           na.rm = T),
-    
-    # optimism
-    optimistic_mean = 
-      mean(c(optimistic, hopeful), 
-           na.rm = T),
-  
-    # negative affect
-    na_mean = 
-      mean(c(sad, depressed, anxious, nervous), 
-           na.rm = T),
-    
-    # indebtendess
-    indebted_mean = 
-      mean(c(indebted, obligated), 
-           na.rm = T),
-          
-    # envy
-    envy_mean = 
-      mean(c(envious, bitter, jealous), 
-           na.rm = T),
-    
-    # life satisfaction
-    ls_4 = as.numeric(ls_4),
-    
-    ls_mean = 
-      mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), 
-           na.rm = T),
-    
-    # sense of self
-    ss_mean = 
-      mean(c(self_image_circle, self_image), 
-           na.rm = T)) %>% 
-  ungroup() %>% 
-  
-  # delete vestigial variables
-  select(-c(grateful, appreciative, thankful, 
-            happy, satisfied, content, 
-            joyful, pleased, optimistic,
-            hopeful,  depressed, sad,  anxious,  nervous,
-            indebted, obligated,
-            envious, bitter, jealous,
-            ls_1, ls_2, ls_3,
-            ls_4, ls_5, self_image_circle,
-            self_image)
-         ) %>% 
-  
-  # create country-specific estimates
-  # filter(country != "",
-  #        country != "KEN") %>% 
-  group_by(country) %>% 
-  summarise(n = n(),
-            gratitude_mean = mean(gratitude_mean,
-                                  na.rm = T),
-            pa_mean = mean(pa_mean,
-                           na.rm = T),
-            ls_mean = mean(ls_mean,
-                           na.rm = T),
-            optimistic_mean = mean(optimistic_mean,
-                                   na.rm = T),
-            ladder = mean(ladder,
-                          na.rm = T),
-            guilty = mean(guilty,
-                          na.rm = T),
-            indebted_mean = mean(indebted_mean,
-                                 na.rm = T),
-            ss_mean = mean(ss_mean,
-                           na.rm = T),
-            envy_mean = mean(envy_mean,
-                             na.rm = T),
-            na_mean = mean(na_mean,
-                           na.rm = T))
-```
-
 # Open country-specific effect sizes
 ```{r}
 country.DF <-
@@ -147,6 +45,7 @@ mod.DF <-
                 'GlobalGratitude_CrossCulturalMod.csv'
                 )
            ) %>% 
+  filter(sample == "sampled") %>% 
   mutate(country = country_name) %>% 
   select(-c(country_code,
             country_name))

@@ -54,8 +54,22 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
          random = list(~ 1 | intervention_condition, ~ 1 | country),
          data = df)})
 
+# m.ic2  <- lapply(1:length(effect_size_columns), function(i) {
+#   rma.mv(yi = df[[effect_size_columns[i]]],
+#          V = df[[variance_columns[i]]],
+#          random = list(~ 1 | intervention_condition/country),
+#          data = df)})
+
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)
+
+# evaluate relative importance of variance components for each outcome
+lapply(m.ic, function(model){
+   model$sigma2[2] / model$sigma2[1]
+
+}
+)
+
 ```
 
 #Calculate country-level and intervention-level descriptives
@@ -124,26 +138,31 @@ m.d <- lapply(effect_size_columns, function(effect_size) {
   # Create the plot for each effect size
   plot <- ggplot() +
     
-    # Add overall effect size estimate
+    # overall effect size estimate
     geom_point(aes(x = model$b[1], 
                    y = 5.7),
                shape = 18,
                size = 4,
                color = "grey30") +
     
-    # Add 95% CI of overall effect size estimate
+    # 95% CI of overall effect size estimate
     geom_segment(aes(x = model$ci.lb, 
                      xend = model$ci.ub, 
                      y = 5.7),
                  color = "grey30") +
     
-    # Density plot: intervention-level sources of heterogeneity
+    # visual indicator: null effect
+    geom_vline(xintercept = 0,
+               color = "grey30",
+               linetype = 'dotted') +
+    
+    # density plot: intervention-level sources of heterogeneity
     stat_function(fun = dnorm, 
                   args = list(mean = model$b[1], 
                               sd = sqrt(model$sigma2[1])), 
                   color = "#E64B35") +
     
-    # Density plot: country-level sources of heterogeneity
+    # density plot: country-level sources of heterogeneity
     stat_function(fun = dnorm, 
                   args = list(mean = model$b[1], 
                               sd = sqrt(model$sigma2[2])), 
@@ -171,7 +190,6 @@ m.d
 
 # Plot descriptives
 ```{r}
-
 # Combine both datasets into one data frame
 d.c$dataset <- "d.c"
 d.i$dataset <- "d.i"
@@ -179,6 +197,16 @@ d.c$intervention_condition <- NA
 d.i$country <- NA
 
 d.c.i <- rbind(d.c, d.i)
+
+# clean labels
+d.c.i <- d.c.i %>% 
+  mutate(label = case_when(
+    label == "god.letter" ~ "divine\ngrat",
+    label == "hk.list"    ~ "naikan",
+    label == "sub"        ~ "mental\nsub",
+    TRUE ~ label
+    )
+    )
 
 # Create a list of 6 plots based on the effect size values
 m.p <- lapply(effect_size_columns, function(es) {
@@ -188,6 +216,12 @@ m.p <- lapply(effect_size_columns, function(es) {
   
   # Create the plot for the current effect_size
   ggplot(data_subset) +
+    
+    # visual indicator: null effect
+    geom_vline(xintercept = 0,
+               color = "grey30",
+               linetype = 'dotted') +
+    
     # Add country-level descriptives (for d.c)
     geom_point(data = subset(data_subset, dataset == "d.c"),
                aes(x = m, y = y), 
@@ -220,7 +254,6 @@ m.p <- lapply(effect_size_columns, function(es) {
 
 # Check the resulting list of plots
 m.p
-
 ```
 
 # combine plots
