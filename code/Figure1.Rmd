@@ -18,7 +18,7 @@ options(scipen = 999)
 i_am('code/Figure1.Rmd')
 ```
 
-# Open country-specific effect sizes
+# Open country-specific effect sizes and moderator values
 ```{r}
 country.DF <-
   # open data
@@ -53,7 +53,7 @@ mod.DF <-
 rm(mod.list, out.list)
 ```
 
-# Open cross-cultural moderator data
+# Join
 ```{r}
 # join
 DF <-
@@ -68,8 +68,8 @@ DF <-
     )
 
 # delete vestigial
-rm(country.DF,
-   mod.DF)
+# rm(country.DF,
+#    mod.DF)
 ```
 
 # Open cultural distance data
@@ -89,6 +89,62 @@ DF.cd <- read.csv(here('data',
 DF2 <- left_join(DF.cd,
                  DF,
                  by = 'country')
+```
+
+# New attempt at top of Figure 1
+```{r}
+fig1.DF.new <-
+  mod.DF %>% 
+  pivot_longer(rel_mob_mean : indulgence) %>% 
+  filter(name != 'rel_mob_mean',
+         name != 'respon_mean') %>% 
+  mutate(
+    name = 
+      fct_recode(name,
+                 "Relational mobility" = "relational_mobility", 
+                 "Responsibilism" = "responsibilism", 
+                 "Tightness" = "tightness", 
+                 "Religiosity" = "relig_mean",
+                 "GDP" = "mean_GDP",
+                 "Residential mobility" = "resmobility",
+                 "Power distance" = "power.distance",
+                 "Individualism" = "individualism",
+                 "Motivation" = "motivation",
+                 "Uncertainty avoidance" = "uncertainty.avoidance",
+                 "Long term orientation" = "long.term.orientation",
+                 "Indulgence" = "indulgence")
+  )
+```
+
+```{r}
+fig.1a <-
+  ggplot(data = fig1.DF.new,
+       aes(x = value)) +
+  
+  # facet wrap
+  facet_wrap(~ name,
+             scales = 'free',
+             strip.position = 'bottom') +
+  
+  # plot all countries
+  geom_density(alpha = .5,
+               color = 'grey70') +
+  
+  # plot sampled countries
+  geom_density(data = fig1.DF.new %>% 
+               filter(sample == 'sampled'),
+             alpha = .5,
+             color = '#3C5488') +
+  theme_classic() +
+  theme(
+    legend.position = 'none',
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line.y = element_blank(),
+    strip.placement = "outside",
+    strip.background = element_blank()
+  )
 ```
 
 
@@ -119,7 +175,7 @@ fig1.DF <-
 ```
 
 # Top facet (cross-cultural moderators)
-```{r}
+```{r eval = F}
 fig.1a <-
   ggplot(data = fig1.DF,
        aes(x = country,
@@ -193,9 +249,10 @@ fig.1b <-
   theme(
     legend.position = 'none',
     axis.title.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
-    axis.line.y = element_blank()
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line.y = element_blank(),
+    strip.background = element_blank()
   ) +
   xlab('Cultural distance (from USA)')
 ```
