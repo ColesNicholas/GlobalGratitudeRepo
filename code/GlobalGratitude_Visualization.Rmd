@@ -50,14 +50,20 @@ DF <- DF %>%
     envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
     
     # life satisfaction
-    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE)
+    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE),
+    
+    # sense of self
+    ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
+
   ) %>% 
   ungroup() %>% 
   drop_na(gratitude_mean, pa_mean, optimistic_mean, na_mean, 
-          indebted_mean, envy_mean, ls_mean)
+          indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean)
 
 ```
 ```{r}
+
+DF <- DF %>% filter(UserLanguage == "EN")
 
 DF <- DF %>%
   mutate(country = case_when(
@@ -178,6 +184,7 @@ unique_country_results_df <- data.frame(
   control_condition = character(),
   intervention_condition = character(),
   contrast = character(),
+  gratitude_effect_size = numeric(),
   pa_effect_size = numeric(),
   na_effect_size = numeric(),
   optimism_effect_size = numeric(),
@@ -185,6 +192,9 @@ unique_country_results_df <- data.frame(
   ladder_effect_size = numeric(),
   envy_effect_size = numeric(),
   indebted_effect_size = numeric(),
+  guilty_effect_size = numeric(),
+  ss_effect_size = numeric(),
+  gratitude_var = numeric(),
   pa_var = numeric(),
   na_var = numeric(),
   optimism_var = numeric(),
@@ -192,6 +202,8 @@ unique_country_results_df <- data.frame(
   ladder_var = numeric(),
   envy_var = numeric(),
   indebted_var = numeric(),
+  guilty_var = numeric(),
+  ss_var = numeric(),
   stringsAsFactors = FALSE
 )
 
@@ -205,6 +217,7 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   intervention_subset <- country_data %>% filter(condition == intervention_cond)
   
   # Compute Cohen's d for each measure
+  gratitude_effect_size_result <- cohen.d(intervention_subset$gratitude_mean, control_subset$gratitude_mean, pooled_sd = TRUE)
   pa_effect_size_result <- cohen.d(intervention_subset$pa_mean, control_subset$pa_mean, pooled_sd = TRUE)
   na_effect_size_result <- cohen.d(intervention_subset$na_mean, control_subset$na_mean, pooled_sd = TRUE)
   optimism_effect_size_result <- cohen.d(intervention_subset$optimistic_mean, control_subset$optimistic_mean, pooled_sd = TRUE)
@@ -212,6 +225,9 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   ladder_effect_size_result <- cohen.d(intervention_subset$ladder, control_subset$ladder, pooled_sd = TRUE)
   envy_effect_size_result <- cohen.d(intervention_subset$envy_mean, control_subset$envy_mean, pooled_sd = TRUE)
   indebted_effect_size_result <- cohen.d(intervention_subset$indebted_mean, control_subset$indebted_mean, pooled_sd = TRUE)
+  guilty_effect_size_result <- cohen.d(intervention_subset$guilty, control_subset$guilty, pooled_sd = TRUE)
+  ss_effect_size_result <- cohen.d(intervention_subset$ss_mean, control_subset$ss_mean, pooled_sd = TRUE)
+
   
   # Extract Cohen's d (effect size) and calculate the variance for each effect size
   calculate_variance <- function(d, n1, n2) {
@@ -222,6 +238,7 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   }
   
   # Calculate variance for each measure
+  gratitude_var <- calculate_variance(gratitude_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   pa_var <- calculate_variance(pa_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   na_var <- calculate_variance(na_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   optimism_var <- calculate_variance(optimism_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
@@ -229,6 +246,8 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
   ladder_var <- calculate_variance(ladder_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   envy_var <- calculate_variance(envy_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   indebted_var <- calculate_variance(indebted_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  guilty_var <- calculate_variance(guilty_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
+  ss_var <- calculate_variance(ss_effect_size_result$estimate, nrow(control_subset), nrow(intervention_subset))
   
   # Return a data frame with the results
   return(data.frame(
@@ -236,20 +255,28 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
     control_condition = control_cond,
     intervention_condition = intervention_cond,
     contrast = paste(control_cond, "vs", intervention_cond),
-    pa_effect_size = pa_effect_size_result$estimate,
-    na_effect_size = na_effect_size_result$estimate,
-    optimism_effect_size = optimism_effect_size_result$estimate,
-    ls_effect_size = ls_effect_size_result$estimate,
-    ladder_effect_size = ladder_effect_size_result$estimate,
-    envy_effect_size = envy_effect_size_result$estimate,
-    indebted_effect_size = indebted_effect_size_result$estimate,
-    pa_var = pa_var,
-    na_var = na_var,
-    optimism_var = optimism_var,
-    ls_var = ls_var,
-    ladder_var = ladder_var,
-    envy_var = envy_var,
-    indebted_var = indebted_var,
+
+  gratitude_effect_size = gratitude_effect_size_result$estimate,
+  pa_effect_size = pa_effect_size_result$estimate,
+  na_effect_size = na_effect_size_result$estimate,
+  optimism_effect_size = optimism_effect_size_result$estimate,
+  ls_effect_size = ls_effect_size_result$estimate,
+  ladder_effect_size = ladder_effect_size_result$estimate,
+  envy_effect_size = envy_effect_size_result$estimate,
+  indebted_effect_size = indebted_effect_size_result$estimate,
+  guilty_effect_size = guilty_effect_size_result$estimate,
+  ss_effect_size = ss_effect_size_result$estimate,
+
+  gratitude_var = gratitude_var,
+  pa_var = pa_var,
+  na_var = na_var,
+  optimism_var = optimism_var,
+  ls_var = ls_var,
+  ladder_var = ladder_var,
+  envy_var = envy_var,
+  indebted_var = indebted_var,
+  guilty_var = guilty_var,
+  ss_var = ss_var,
     stringsAsFactors = FALSE
   ))
 }
@@ -380,6 +407,10 @@ write.csv(overall_country_results_df,
 write.csv(unique_country_results_df, 
         file = here('data',
                     "unique_country_effect_sizes.csv"))
+
+write.csv(unique_country_results_df, 
+        file = here('data',
+                    "en_unique_country_effect_sizes.csv"))
 
 write.csv(unique_cond_results_df, 
         file = here('data',
