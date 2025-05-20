@@ -33,8 +33,10 @@ Prep data
 i_am("code/Figure2.Rmd")
 
 df <- read.csv(file = here("data", "unique_country_effect_sizes.csv"))
+
 #English only-test
-df_en <- read.csv(file = here("data", "en_unique_country_effect_sizes.csv")) %>% drop_na(pa_effect_size)
+df <- read.csv(file = here("data", "en_unique_country_effect_sizes.csv")) %>% drop_na(pa_effect_size) 
+
 
 # List of effect size columns and variance columns
 effect_size_columns <- c("pa_effect_size", "na_effect_size",
@@ -49,6 +51,23 @@ m <- lapply(1:length(effect_size_columns), function(i) {
          V = df[[variance_columns[i]]],
          data = df)})
 
+#Calculate I2
+
+calc_I2_from_model <- function(model) {
+  Q <- model$QE           
+  df <- model$k - model$p
+  
+  # I^2 formula
+  I2 <- if (Q <= df) 0 else ((Q - df) / Q) * 100
+  return(round(I2, 1))
+}
+
+# Apply to each model in your list
+I2_list <- sapply(m, calc_I2_from_model)
+
+# Assign names
+names(I2_list) <- effect_size_columns
+
 # Use lapply to fit models for each pair of effect size and variance
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
@@ -56,11 +75,18 @@ m.ic <- lapply(1:length(effect_size_columns), function(i) {
          random = list(~ 1 | intervention_condition, ~ 1 | country),
          data = df)})
 
-# m.ic2  <- lapply(1:length(effect_size_columns), function(i) {
-#   rma.mv(yi = df[[effect_size_columns[i]]],
-#          V = df[[variance_columns[i]]],
-#          random = list(~ 1 | intervention_condition/country),
-#          data = df)})
+m.c  <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(yi = df[[effect_size_columns[i]]],
+         V = df[[variance_columns[i]]],
+         random = ~ 1 | country,
+         data = df)})
+
+
+m.i  <- lapply(1:length(effect_size_columns), function(i) {
+  rma.mv(yi = df[[effect_size_columns[i]]],
+         V = df[[variance_columns[i]]],
+         random = ~ 1 | intervention_condition,
+         data = df)})
 
 # Store the results with a name reflecting the effect size and variance pair
 names(m.ic) <- paste(effect_size_columns)
@@ -71,6 +97,7 @@ lapply(m.ic, function(model){
 
 }
 )
+
 
 ```
 

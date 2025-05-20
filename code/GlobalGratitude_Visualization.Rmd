@@ -117,11 +117,94 @@ unique_labs <- unique(DF$country)
 condition_names <- c("list", "letter", "text", "hk.list", "sub", "god.letter")
 
 ```
+```{r Overall intervention vs. control}
+overall_results_df <- data.frame(
+  control_condition = character(),
+  intervention_condition = character(),
+  pa_effect_size = numeric(),
+  na_effect_size = numeric(),
+  optimism_effect_size = numeric(),
+  ls_effect_size = numeric(),
+  ladder_effect_size = numeric(),
+  envy_effect_size = numeric(),
+  indebted_effect_size = numeric(),
+  grat_effect_size = numeric(),
+  guilty_effect_size = numeric(),
+  ss_effect_size = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Calculate Cohen's d effect sizes on the full dataset
+pa_effect_size_result <- cohen.d(pa_mean ~ condition_type, data = DF)
+na_effect_size_result <- cohen.d(na_mean ~ condition_type, data = DF)
+optimism_effect_size_result <- cohen.d(optimistic_mean ~ condition_type, data = DF)
+ls_effect_size_result <- cohen.d(ls_mean ~ condition_type, data = DF)
+ladder_effect_size_result <- cohen.d(ladder ~ condition_type, data = DF)
+envy_effect_size_result <- cohen.d(envy_mean ~ condition_type, data = DF)
+indebted_effect_size_result <- cohen.d(indebted_mean ~ condition_type, data = DF)
+grat_effect_size_result <- cohen.d(gratitude_mean ~ condition_type, data = DF)
+guilty_effect_size_result <- cohen.d(guilty ~ condition_type, data = DF)
+ss_effect_size_result <- cohen.d(ss_mean ~ condition_type, data = DF)
+
+# Store results in a data frame
+overall_results_df[1, ] <- list(
+  control_condition = "All",
+  intervention_condition = "All",
+  pa_effect_size = -pa_effect_size_result$estimate,
+  na_effect_size = -na_effect_size_result$estimate,
+  optimism_effect_size = -optimism_effect_size_result$estimate,
+  ls_effect_size = -ls_effect_size_result$estimate,
+  ladder_effect_size = -ladder_effect_size_result$estimate,
+  envy_effect_size = -envy_effect_size_result$estimate,
+  indebted_effect_size = -indebted_effect_size_result$estimate,
+  grat_effect_size = -grat_effect_size_result$estimate,
+  guilty_effect_size = -guilty_effect_size_result$estimate,
+  ss_effect_size = -ss_effect_size_result$estimate
+)
+
+print(overall_results_df)
+
+###
+
+overall_effect_size_results <- list(
+  pa = cohen.d(pa_mean ~ condition_type, data = DF),
+  na = cohen.d(na_mean ~ condition_type, data = DF),
+  optimism = cohen.d(optimistic_mean ~ condition_type, data = DF),
+  ls = cohen.d(ls_mean ~ condition_type, data = DF),
+  ladder = cohen.d(ladder ~ condition_type, data = DF),
+  envy = cohen.d(envy_mean ~ condition_type, data = DF),
+  indebted = cohen.d(indebted_mean ~ condition_type, data = DF),
+  gratitude = cohen.d(gratitude_mean ~ condition_type, data = DF),
+  guilty = cohen.d(guilty ~ condition_type, data = DF),
+  ss = cohen.d(ss_mean ~ condition_type, data = DF)
+)
+
+overall_effect_size_results <- lapply(overall_results, function(result) {
+  result$estimate <- -result$estimate
+  result$conf.int <- -rev(result$conf.int)
+  result
+})
+
+overall_t_test_results <- list(
+  pa = t.test(pa_mean ~ condition_type, data = DF),
+  na = t.test(na_mean ~ condition_type, data = DF),
+  optimism = t.test(optimistic_mean ~ condition_type, data = DF),
+  ls = t.test(ls_mean ~ condition_type, data = DF),
+  ladder = t.test(ladder ~ condition_type, data = DF),
+  envy = t.test(envy_mean ~ condition_type, data = DF),
+  indebted = t.test(indebted_mean ~ condition_type, data = DF),
+  gratitude = t.test(gratitude_mean ~ condition_type, data = DF),
+  guilty = t.test(guilty ~ condition_type, data = DF),
+  ss = t.test(ss_mean ~ condition_type, data = DF)
+)
+
+
+```
 
 #Overall intervention vs. control for each country (All interventions vs. All control)
 ```{r}
 
-overall_results_df <- data.frame(
+overall_country_results_df <- data.frame(
   country = character(),
   control_condition = character(),
   intervention_condition = character(),
@@ -132,6 +215,9 @@ overall_results_df <- data.frame(
   ladder_effect_size = numeric(),
   envy_effect_size = numeric(),
   indebted_effect_size = numeric(),
+  grat_effect_size = numeric(),
+  guilty_effect_size = numeric(),
+  ss_effect_size = numeric(),
   stringsAsFactors = FALSE
 )
 
@@ -143,29 +229,35 @@ results_list <- sapply(unique_labs, function(lab_name){
   # Count observations for each condition type
   condition_counts <- table(lab_data$condition_type)
   
-    # Calculate Cohen's d effect size
-    pa_effect_size_result <- cohen.d(pa_mean ~ condition_type, data = lab_data)
-    na_effect_size_result <- cohen.d(na_mean ~ condition_type, data = lab_data)
-    optimism_effect_size_result <- cohen.d(optimistic_mean ~ condition_type, data = lab_data)
-    ls_effect_size_result <- cohen.d(ls_mean ~ condition_type, data = lab_data)
-    ladder_effect_size_result <- cohen.d(ladder ~ condition_type, data = lab_data)
-    envy_effect_size_result <- cohen.d(envy_mean ~ condition_type, data = lab_data)
-    indebted_effect_size_result <- cohen.d(indebted_mean ~ condition_type, data = lab_data)
-
-    # Store the results in the data frame
-    result <- data.frame(
-      country = lab_name,
-      control_condition = "All",
-      intervention_condition = "All",
-      pa_effect_size = -pa_effect_size_result$estimate,
-      na_effect_size = -na_effect_size_result$estimate,
-      optimism_effect_size = -optimism_effect_size_result$estimate,
-      ls_effect_size = -ls_effect_size_result$estimate,
-      ladder_effect_size = -ladder_effect_size_result$estimate,
-      envy_effect_size = -envy_effect_size_result$estimate,
-      indebted_effect_size = -indebted_effect_size_result$estimate,
-      stringsAsFactors = FALSE
- )
+  # Calculate Cohen's d effect sizes
+  pa_effect_size_result <- cohen.d(pa_mean ~ condition_type, data = lab_data)
+  na_effect_size_result <- cohen.d(na_mean ~ condition_type, data = lab_data)
+  optimism_effect_size_result <- cohen.d(optimistic_mean ~ condition_type, data = lab_data)
+  ls_effect_size_result <- cohen.d(ls_mean ~ condition_type, data = lab_data)
+  ladder_effect_size_result <- cohen.d(ladder ~ condition_type, data = lab_data)
+  envy_effect_size_result <- cohen.d(envy_mean ~ condition_type, data = lab_data)
+  indebted_effect_size_result <- cohen.d(indebted_mean ~ condition_type, data = lab_data)
+  grat_effect_size_result <- cohen.d(gratitude_mean ~ condition_type, data = lab_data)
+  guilty_effect_size_result <- cohen.d(guilty ~ condition_type, data = lab_data)
+  ss_effect_size_result <- cohen.d(ss_mean ~ condition_type, data = lab_data)
+  
+  # Store the results in the data frame
+  result <- data.frame(
+    country = lab_name,
+    control_condition = "All",
+    intervention_condition = "All",
+    pa_effect_size = -pa_effect_size_result$estimate,
+    na_effect_size = -na_effect_size_result$estimate,
+    optimism_effect_size = -optimism_effect_size_result$estimate,
+    ls_effect_size = -ls_effect_size_result$estimate,
+    ladder_effect_size = -ladder_effect_size_result$estimate,
+    envy_effect_size = -envy_effect_size_result$estimate,
+    indebted_effect_size = -indebted_effect_size_result$estimate,
+    grat_effect_size = -grat_effect_size_result$estimate,
+    guilty_effect_size = -guilty_effect_size_result$estimate,
+    ss_effect_size = -ss_effect_size_result$estimate,
+    stringsAsFactors = FALSE
+  )
   
   return(result)
 }, simplify = FALSE)
@@ -400,6 +492,10 @@ print(unique_condition_nested)
 #Write CSV
 
 ```{r}
+write.csv(overall_results_df, 
+        file = here('data',
+                    "overall_effect_sizes.csv"))
+
 write.csv(overall_country_results_df, 
         file = here('data',
                     "overall_country_effect_sizes.csv"))
