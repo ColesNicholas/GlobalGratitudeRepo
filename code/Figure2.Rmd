@@ -68,7 +68,7 @@ I2_list <- sapply(m, calc_I2_from_model)
 # Assign names
 names(I2_list) <- effect_size_columns
 
-# Use lapply to fit models for each pair of effect size and variance
+# Use lapply to fit models for each pair of effect size and variance (use this for results, annabel)
 m.ic <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(yi = df[[effect_size_columns[i]]],
          V = df[[variance_columns[i]]],
