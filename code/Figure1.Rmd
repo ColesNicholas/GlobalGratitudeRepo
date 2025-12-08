@@ -25,15 +25,18 @@ DF <-
 # Standardize variables
 DF <-
   DF %>%
-  mutate(dist.us = if_else(country == "United States" & is.na(dist.us),
-    0,
-    dist.us
-  )) %>%
+  mutate(dist.us = 
+           if_else(country == "United States" & 
+                     is.na(dist.us),
+                   0,
+                   dist.us)
+         ) %>%
   mutate_at(
-    .vars = vars(
-      dist.us,
-      relational_mobility:indulgence
-    ),
+    .vars = 
+      vars(
+        dist.us,
+        relational_mobility : indulgence
+        ),
     ~ scales::rescale(., to = c(-1, 1))
   )
 ```
@@ -213,7 +216,7 @@ fig.1b <- ggplot() +
 # Rename columns
 fig1.DF <-
   DF %>%
-  pivot_longer(relational_mobility:indulgence) %>%
+  pivot_longer(relational_mobility : indulgence) %>%
   mutate(
     name =
       fct_recode(name,
@@ -232,6 +235,61 @@ fig1.DF <-
       )
   )
 ```
+
+Calculate percentage overlap
+```{r}
+per.overlap <-
+  sapply(unique(fig1.DF$name),
+         simplify = F,
+         USE.NAMES = T,
+         function(x){
+         
+         # filter by outcome and include all countries
+         d.pop <- 
+           fig1.DF %>% 
+           filter(name == x,
+                  !is.na(value))
+         
+         # pull out only sampled countries
+         d.sample <- d.pop %>% 
+           filter(sample == 'yes')
+         
+         # calculate overlap
+         o <-
+           overlap(x = list(d.pop$value,
+                            d.sample$value),
+                   type = '1')
+         
+         cbind(x = as.character(x), 
+               overlap = 
+                 round(o$OV * 100 ,
+                       2) %>% 
+                 as.numeric()
+               ) %>% 
+           as.data.frame() %>% 
+           return()
+       }
+       ) %>% 
+  bind_rows() %>% 
+  mutate(overlap =
+           as.numeric(overlap))
+```
+
+Inspect percent overlap
+```{r}
+mean(per.overlap$overlap,
+     na.rm = T)
+
+sd(per.overlap$overlap,
+     na.rm = T)
+
+min(per.overlap$overlap,
+     na.rm = T)
+
+max(per.overlap$overlap,
+     na.rm = T)
+```
+
 
 ```{r}
 # Create figure 1c
