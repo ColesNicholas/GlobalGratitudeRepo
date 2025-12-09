@@ -214,6 +214,21 @@ fig.3a <-
     hjust = 0,
     color = "#3C5488"
   ) +
+  geom_text(
+    aes(x = 52, y = length(unique(outcome)) / 1.65),
+    label = "\uFE5C",
+    size = 27,
+    hjust = 0
+  ) +
+  geom_text(
+    aes(
+      x = 58,
+      y = length(unique(outcome)) / 1.9
+    ),
+    label = "Theory-inconsistent\nobservations",
+    hjust = 0,
+    size = 3
+  ) +
   theme_classic() +
   xlim(0, 100) +
   xlab("Theory-inconsistent proportion of estimated distribution") +
@@ -468,14 +483,15 @@ fig.3b <- ggplot(
   aes(
     x = moderator,
     y = fct_rev(outcome),
-    fill = cor.est, # now correlation drives fill
+    fill = cor.est,
     label = bf.lab
   )
 ) +
-  geom_tile(aes(color = bf.tran.dir), # optional: outline or secondary color
-    size = 0,
+  geom_tile(
+    aes(fill = cor.est),
+    color = "black",
     width = 0.97, height = 0.97,
-    show.legend = FALSE # hide BF legend
+    show.legend = TRUE
   ) +
 
   # Fill gradient now for correlation
@@ -495,7 +511,7 @@ fig.3b <- ggplot(
   ) +
 
   # Text labels for correlation
-  geom_label(
+  geom_text(
     aes(label = cor.lab),
     parse = TRUE,
     nudge_y = 0.25,
