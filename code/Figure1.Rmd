@@ -80,7 +80,7 @@ fig.1a <-
   geom_linerange(
     data = DF %>% filter(sample == "no"),
     aes(ymin = 0, ymax = 0.1),
-    color = "grey50"
+    color = "grey35"
   ) +
 
   # rug lines: sampled countries
@@ -122,12 +122,17 @@ fig.1a <-
       y = 1, yend = 1
     ),
     color = "grey80",
-    size = 1.5,
+    size = 1,
     inherit.aes = FALSE
   ) +
+  
   geom_text(
-    aes(x = .8, y = 1, label = "All countries"),
+    aes(x = .77, 
+        y = 1, 
+        label = "All countries"),
+    color = 'grey50',
     hjust = 0,
+    size = 3,
     inherit.aes = FALSE
   ) +
 
@@ -137,26 +142,29 @@ fig.1a <-
       x = .6, xend = .75,
       y = .9, yend = .9
     ),
+    size = 1,
     color = "#3C5488",
-    size = 1.5,
     inherit.aes = FALSE
   ) +
+  
   geom_text(
     aes(
-      x = .8, y = .9,
-      label = "Sampled countries"
-    ),
+      x = .77, y = .9,
+      label = "Sampled countries"),
+    color = 'grey50',
     hjust = 0,
+    size = 3,
     inherit.aes = FALSE
   ) +
+  
   geom_rect(
     aes(
       xmin = .55, xmax = 1.05,
       ymin = .8, ymax = 1.1
     ),
-    color = "black",
+    color = "grey50",
     fill = NA,
-    size = 1,
+    size = .5,
     inherit.aes = FALSE
   )
 

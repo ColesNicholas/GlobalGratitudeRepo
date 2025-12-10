@@ -182,6 +182,26 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
   # create the plot for each effect size
   plot <- ggplot() +
 
+    # density plot: intervention-level heterogeneity
+    stat_function(
+      fun = dnorm,
+      args = list(
+        mean = model$b[1],
+        sd = sqrt(model$sigma2[1])
+      ),
+      color = "#E64B35"
+    ) +
+
+    # density plot: country-level heterogeneity
+    stat_function(
+      fun = dnorm,
+      args = list(
+        mean = model$b[1],
+        sd = sqrt(model$sigma2[2])
+      ),
+      color = "#3C5488"
+    ) +
+    
     # overall effect size estimate
     geom_point(
       aes(
@@ -207,26 +227,6 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
     # visual indicator: null effect
     geom_segment(aes(x = 0, xend = 0, y = 0, yend = 7),
       color = "#A47DAB", linetype = "dotted"
-    ) +
-
-    # density plot: intervention-level heterogeneity
-    stat_function(
-      fun = dnorm,
-      args = list(
-        mean = model$b[1],
-        sd = sqrt(model$sigma2[1])
-      ),
-      color = "#E64B35"
-    ) +
-
-    # density plot: country-level heterogeneity
-    stat_function(
-      fun = dnorm,
-      args = list(
-        mean = model$b[1],
-        sd = sqrt(model$sigma2[2])
-      ),
-      color = "#3C5488"
     )
 
   # final formatting
@@ -373,6 +373,7 @@ outcome <- c(
 # Replace the outcome column in results_df
 results_df$outcome <- outcome
 ```
+
 ```{r}
 # Save data frame
 write.csv(results_df,
@@ -386,29 +387,26 @@ write.csv(results_df,
 # Combine plots
 ```{r}
 # Combine m.d and m.p
-combined_plots <- mapply(function(plot_d, plot_p) {
-  plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
-}, m.d, m.p, SIMPLIFY = FALSE)
+combined_plots <-
+  mapply(function(plot_d, plot_p) {
+    plot_grid(plot_d,
+              plot_p,
+              ncol = 1,
+              rel_heights = c(.5, 1))
+  }, m.d, m.p, SIMPLIFY = FALSE)
 
 # Create labels
-cohen_label <- apply(results_df, 1, function(row) {
-  estimate <- round(as.numeric(row["estimate"]), 2)
-  ci_lower <- round(as.numeric(row["ci_lower"]), 2)
-  ci_upper <- round(as.numeric(row["ci_upper"]), 2)
-  p_val <- as.numeric(row["p_value"])
-
-  stars <- if (p_val < 0.001) {
-    "***"
-  } else if (p_val < 0.01) {
-    "**"
-  } else if (p_val < 0.05) {
-    "*"
-  } else {
-    ""
-  }
+cohen_label <- 
+  apply(results_df, 
+        1, 
+        function(row) {
+    estimate <- round(as.numeric(row["estimate"]), 2)
+    ci_lower <- round(as.numeric(row["ci_lower"]), 2)
+    ci_upper <- round(as.numeric(row["ci_upper"]), 2)
 
   # Markdown italics for d
-  paste0(" = ", estimate, ", 95% CI [", ci_lower, ", ", ci_upper, "]", stars)
+  paste0(" = ", estimate, ", 95% CI [", ci_lower, ", ", ci_upper, "]") %>% 
+    return()
 })
 
 tau_c_labels <- sapply(tau_df$tau_c, function(x) {
@@ -443,23 +441,23 @@ grid <- plot_grid(
 x_cohen <- c(0.02, 0.52, 0.02, 0.52, 0.02, 0.52)
 y_cohen <- c(0.97, 0.97, 0.65, 0.65, 0.33, 0.33)
 
-x_tau_i <- c(0.065, 0.53, 0.065, 0.53, 0.065, 0.53)
+x_tau_i <- c(0.02, 0.52, 0.02, 0.52, 0.02, 0.52)
 y_tau_i <- c(0.95, 0.95, 0.63, 0.63, 0.31, 0.31)
 
-x_tau_c <- c(0.065, 0.53, 0.065, 0.53, 0.065, 0.53)
+x_tau_c <- c(0.02, 0.52, 0.02, 0.52, 0.02, 0.52)
 y_tau_c <- c(0.93, 0.93, 0.61, 0.61, 0.29, 0.29)
 
 # Draw final figure with Cohen's d and tau annotations
 p <- ggdraw() +
-  draw_plot(grid, 0, 0.05, 1, 0.95) +
+  draw_plot(grid) +
 
   # Cohen's d label at bottom
   draw_label(expression("Cohen's " * italic(d)),
              x = 0.5, y = 0, vjust = -1, size = 10)
 
 # Add Cohen's d labels
-for(i in seq_along(cohen_label_expr)) {
-  p <- p + draw_label(cohen_label_expr[[i]],
+for(i in seq_along(cohen_label)) {
+  p <- p + draw_label(cohen_label[[i]],
                       x = x_cohen[i], y = y_cohen[i],
                       hjust = 0, size = 8, color = "#A47DAB")
 }
@@ -467,23 +465,34 @@ for(i in seq_along(cohen_label_expr)) {
 # Add tau_i numeric labels
 for(i in seq_along(tau_i_labels)) {
   p <- p + draw_label(tau_i_labels[i],
-                      x = x_tau_i[i], y = y_tau_i[i],
-                      hjust = 0, size = 8, color = "#E64B35")
+                      x = x_tau_i[i] + .05, y = y_tau_i[i],
+                      hjust = 0, size = 8, color = "#E64B35") +
+    
+    draw_label(expression(tau[practice]),
+               x = x_tau_i[i], y = y_tau_i[i],
+               hjust = 1, vjust = 1,
+               color = "#E64B35", size = 9.5)
 }
 
 # Add tau_c labels
 for(i in seq_along(tau_c_labels)) {
   p <- p + draw_label(tau_c_labels[i],
-                      x = x_tau_c[i], y = y_tau_c[i],
-                      hjust = 0, size = 8, color = "#3C5488")
+                      x = x_tau_c[i] +.05, y = y_tau_c[i],
+                      hjust = 0, size = 8, color = "#3C5488") +
+    
+    draw_label(expression(tau[country]),
+               x = x_tau_c[i], y = y_tau_c[i],
+               hjust = 1, vjust = 1,
+               color = "#3C5488", size = 9.5)
+    
 }
 
 #Label positions
-x_tau_i <- c(0.06, 0.06, 0.06)
-y_tau_i <- c(0.958, 0.638, 0.318)
+#x_tau_i <- c(0.06, 0.06, 0.06)
+#y_tau_i <- c(0.958, 0.638, 0.318)
 
-x_tau_c <- c(0.06, 0.06, 0.06)
-y_tau_c <- c(0.938, 0.618, 0.298)
+#x_tau_c <- c(0.06, 0.06, 0.06)
+#y_tau_c <- c(0.938, 0.618, 0.298)
 
 # Add τ headers
 for(i in seq_along(x_tau_c)) {

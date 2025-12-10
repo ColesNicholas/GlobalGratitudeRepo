@@ -216,8 +216,9 @@ fig.3a <-
   ) +
   geom_text(
     aes(x = 52, y = length(unique(outcome)) / 1.65),
-    label = "\uFE5C",
-    size = 27,
+    label = "]",
+    size = 12,
+    color = 'grey70',
     hjust = 0
   ) +
   geom_text(
@@ -225,7 +226,7 @@ fig.3a <-
       x = 58,
       y = length(unique(outcome)) / 1.9
     ),
-    label = "Theory-inconsistent\nobservations",
+    label = "Theory-inconsistent observations",
     hjust = 0,
     size = 3
   ) +
