@@ -215,15 +215,15 @@ fig.3a <-
     color = "#3C5488"
   ) +
   # vertical line
-  geom_segment(x = 57, xend = 57, y = 0.75, yend = 5.25, color = "#3C5488") +
+  geom_segment(x = 52, xend = 52, y = 0.75, yend = 5.25, color = "#3C5488") +
   # top horizontal
-  geom_segment(x = 56, xend = 57, y = 5.25, yend = 5.25, color = "#3C5488") +
+  geom_segment(x = 51, xend = 52, y = 5.25, yend = 5.25, color = "#3C5488") +
   # bottom horizontal
-  geom_segment(x = 56, xend = 57, y = 0.75, yend = 0.75, color = "#3C5488") +
+  geom_segment(x = 51, xend = 52, y = 0.75, yend = 0.75, color = "#3C5488") +
   
   geom_text(
     aes(
-      x = 58,
+      x = 53,
       y = length(unique(outcome)) / 1.9
     ),
     label = "Theory-inconsistent observations",
