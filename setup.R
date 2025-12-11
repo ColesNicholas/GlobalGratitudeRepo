@@ -12,18 +12,18 @@ pkg_install_load <- function(pkgs) {
 # download packages
 core_pkgs <- c(
   # tidyverse + data management
-  "tidyverse", "stringr", "synthpop", 
+  "tidyverse", "stringr", "synthpop",
   "here", "openxlsx", "readr",
-  
+
   # country/global
-  "countrycode", "rnaturalearth", "rnaturalearthdata", 
+  "countrycode", "rnaturalearth", "rnaturalearthdata",
   "ggspatial",
-  
+
   # visualization
-  "effsize", "metafor", "scales", 
-  "ggtext", "cowplot", "ggExtra", 
+  "effsize", "metafor", "scales",
+  "ggtext", "cowplot", "ggExtra",
   "ggrepel", "gridExtra", "styler",
-  
+
   # analysis
   "psych", "lavaan", "semTools",
   "BayesFactor", "lme4", "lmerTest",
