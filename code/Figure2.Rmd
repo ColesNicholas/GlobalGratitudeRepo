@@ -464,9 +464,16 @@ m.p
 # Combine plots
 ```{r}
 # Combine m.d and m.p
-combined_plots <- mapply(function(plot_d, plot_p) {
-  plot_grid(plot_d, plot_p, ncol = 1, rel_heights = c(.5, 1))
-}, m.d, m.p, SIMPLIFY = FALSE)
+combined_plots <- 
+  mapply(function(plot_d, plot_p) {
+    plot_grid(plot_d, 
+              plot_p, 
+              ncol = 1, 
+              align = 'hv',
+              rel_heights = c(.5, 1))},
+    m.d, 
+    m.p, 
+    SIMPLIFY = F)
 
 # Create the titles
 combined_plots <- lapply(1:length(combined_plots), function(i) {
@@ -568,6 +575,7 @@ country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
 
 pred_df <- left_join(practice_pred_df, country_pred_df, by = "effect_size")
 ```
+
 ```{r}
 # Save data frame
 write.csv(pred_df,
