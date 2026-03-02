@@ -190,9 +190,66 @@ write.csv(viz.DF,
     "cultural_consistency.csv"
   )
 )
+
+viz.DF <-
+  read.csv(file = here(
+    "data/output",
+    "cultural_consistency.csv")
+    )
 ```
 
 # New Figure 3A
+```{r}
+i.DF <-
+  read.csv(file = here(
+    "data",
+    "output",
+    "intervention_effectsizes.csv")
+    ) %>% 
+  mutate(se = sqrt(overall.var),
+         ci_lower = overall.effect - 1.96 * se,
+         ci_upper = overall.effect + 1.96 * se) %>% 
+  arrange(overall.effect)
+
+i.DF <-
+  i.DF %>% 
+  mutate(intervention_condition = 
+           factor(intervention_condition,
+                  levels =
+                    i.DF$intervention_condition,
+                  labels = c('Gratitude Text',
+                             'Gratitude Letter',
+                             'Naikan Reflection',
+                             'Mental Subtraction',
+                             'Divine Gratitute',
+                             'Gratitude List')
+                  )
+         )
+```
+
+```{r}
+ggplot(data = i.DF,
+       aes(x = overall.effect,
+           y = intervention_condition)) +
+  geom_segment(
+    aes(x = ci_lower,
+        xend = ci_upper,
+        color = '#E64B35')
+    ) +
+  geom_point(shape = 18,
+             size = 4,
+             color = '#E64B35') +
+  
+  xlim(c(0, .6)) +
+  xlab(expression(paste("Cohen's ", italic("d")))) +
+  ylab('Practice') +
+  theme_classic() +
+  theme(legend.position = "none") +
+  geom_vline(xintercept = 0,
+             color = "gray30", 
+             linetype = "dotted")
+```
+
 
 #Plot fig 3a
 ```{r}
