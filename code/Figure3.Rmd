@@ -215,20 +215,19 @@ i.DF <-
   i.DF %>% 
   mutate(intervention_condition = 
            factor(intervention_condition,
-                  levels =
-                    i.DF$intervention_condition,
+                  levels = c("text", "letter", "naikan", "mental.sub", "divine.grat", "list"),
                   labels = c('Gratitude Text',
                              'Gratitude Letter',
                              'Naikan Reflection',
                              'Mental Subtraction',
-                             'Divine Gratitute',
+                             'Divine Gratitude',
                              'Gratitude List')
                   )
          )
 ```
 
 ```{r}
-ggplot(data = i.DF,
+fig.3a <- ggplot(data = i.DF,
        aes(x = overall.effect,
            y = intervention_condition)) +
   geom_segment(
@@ -251,10 +250,10 @@ ggplot(data = i.DF,
 ```
 
 
-#Plot fig 3a
+#Plot fig 3b
 ```{r}
 # Plot figure 3a
-fig.3a <-
+fig.3b <-
   ggplot(
     data = viz.DF,
     aes(
@@ -272,33 +271,16 @@ fig.3a <-
     hjust = 0,
     color = "#3C5488"
   ) +
-  # vertical line
-  geom_segment(x = 52, xend = 52, y = 0.75, yend = 5.25, color = "#3C5488") +
-  # top horizontal
-  geom_segment(x = 51, xend = 52, y = 5.25, yend = 5.25, color = "#3C5488") +
-  # bottom horizontal
-  geom_segment(x = 51, xend = 52, y = 0.75, yend = 0.75, color = "#3C5488") +
-  
-  geom_text(
-    aes(
-      x = 53,
-      y = length(unique(outcome)) / 1.9
-    ),
-    label = "Theory-Inconsistent Observations",
-    hjust = 0,
-    size = 3,
-    color = "#3C5488"
-  ) +
   theme_classic() +
   xlim(0, 100) +
   xlab("Theory-Inconsistent Proportion of Estimated Distribution") +
   ylab("Outcome")
 
-fig.3a
+fig.3b
 
 ```
 
-# Prep data for fig.3b
+# Prep data for fig.3c
 ```{r}
 country.DF <-
   # open data
@@ -538,10 +520,10 @@ write.csv(results,
 )
 ```
 
-# Create final fig.3b
+# Create final fig.3c
 ```{r}
-# Create figure 3b
-fig.3b <- ggplot(
+# Create figure 3c
+fig.3c <- ggplot(
   data = results,
   aes(
     x = moderator,
@@ -552,7 +534,7 @@ fig.3b <- ggplot(
 ) +
   geom_tile(
     aes(fill = cor.est),
-    color = "black",
+    color = "white",
     width = 0.97, height = 0.97,
     show.legend = TRUE
   ) +
@@ -598,13 +580,18 @@ fig.3b <- ggplot(
 
 #Combine
 ```{r}
-plot_grid(fig.3a,
-  ggdraw(),
-  fig.3b,
-  labels = c("A", "", "B"),
-  nrow = 3,
-  rel_heights = c(.2, .05, .75),
-  rel_widths = c(.1, 1)
+
+plot_grid(
+  plot_grid(
+    fig.3a,
+    fig.3b,
+    labels = c("A", "B"),
+    ncol = 2
+  ),
+  fig.3c,
+  labels = c("", "C"),
+  ncol = 1,
+  rel_heights = c(0.55,1.45)
 )
 ```
 

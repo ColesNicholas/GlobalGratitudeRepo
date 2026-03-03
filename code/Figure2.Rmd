@@ -180,26 +180,26 @@ results_df <- do.call(rbind, lapply(names(m.ic), function(name) {
   p_value <- 2 * (1 - pnorm(abs(z_value)))
 
   # formatted label for geom_text
-label <- sprintf(
-  "italic(d) == %.2f * ', 95%% CI [%.2f, %.2f]'",
-  est, ci_lower, ci_upper
-)
+  label <- sprintf(
+    "italic(d) == %.2f * ', 95%% CI [%.2f, %.2f]'",
+    est, ci_lower, ci_upper
+  )
 
-# Extract tau values
-tau_i <- sqrt(model$sigma2[1])
-tau_c <- sqrt(model$sigma2[2])
-
-  # formatted label for geom_text
-tau_i_label <- sprintf(
-  "tau[practice] == %.2f", 
-  tau_i
-)
+  # Extract tau values
+  tau_i <- sqrt(model$sigma2[1])
+  tau_c <- sqrt(model$sigma2[2])
 
   # formatted label for geom_text
-tau_c_label <- sprintf(
-  "tau[country] == %.2f", 
-  tau_c
-)
+  tau_i_label <- sprintf(
+    "tau[practice] == %.2f",
+    tau_i
+  )
+
+  # formatted label for geom_text
+  tau_c_label <- sprintf(
+    "tau[country] == %.2f",
+    tau_c
+  )
 
   # return as data frame
   data.frame(
@@ -208,9 +208,9 @@ tau_c_label <- sprintf(
     ci_lower = round(ci_lower, 2),
     ci_upper = round(ci_upper, 2),
     p_value = p_value,
-    tau_i = round(tau_i,2),
-    tau_c = round(tau_c,2),
-    tau_ci = round(tau_c / tau_i,2),
+    tau_i = round(tau_i, 2),
+    tau_c = round(tau_c, 2),
+    tau_ci = round(tau_c / tau_i, 2),
     cohen_label = label,
     tau_i_label = tau_i_label,
     tau_c_label = tau_c_label
@@ -242,8 +242,10 @@ write.csv(results_df,
 
 # optional re-load
 results_df <-
-  read.csv(file = here("data/output", 
-                        "pooled_effect_size.csv"))
+  read.csv(file = here(
+    "data/output",
+    "pooled_effect_size.csv"
+  ))
 ```
 
 # Create density plots
@@ -252,10 +254,10 @@ results_df <-
 m.d <- lapply(seq_along(effect_size_columns), function(i) {
   effect_size <- effect_size_columns[i]
   model <- m.ic[[i]]
-  
+
   # create the plot for each effect size
   plot <- ggplot() +
-    
+
     # density plot: intervention-level heterogeneity
     stat_function(
       fun = dnorm,
@@ -265,7 +267,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       ),
       color = "#E64B35"
     ) +
-    
+
     # density plot: country-level heterogeneity
     stat_function(
       fun = dnorm,
@@ -275,7 +277,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       ),
       color = "#3C5488"
     ) +
-    
+
     # overall effect size estimate
     geom_point(
       aes(
@@ -286,7 +288,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       size = 4,
       color = "#91505E"
     ) +
-    
+
     # 95% CI of overall effect size estimate
     geom_segment(
       aes(
@@ -297,48 +299,48 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       ),
       color = "#91505E"
     ) +
-    
+
     # visual indicator: null effect
     geom_segment(aes(x = 0, xend = 0, y = 0, yend = 13),
-                 color = "gray30", linetype = "dotted"
+      color = "gray30", linetype = "dotted"
     ) +
-    
+
     # Plot limits
     scale_x_continuous(limits = c(-1.25, 1.35)) +
     scale_y_continuous(limits = c(0, 13)) +
     coord_cartesian(clip = "off") +
     theme_void()
 
-    # get panel ranges for dynamic label positioning
-    build <- ggplot_build(plot)
-    x_range <- build$layout$panel_params[[1]]$x.range
-    y_range <- build$layout$panel_params[[1]]$y.range
-  
-    # top-left positions
-    x_pos <- x_range[1] + 0.95 * diff(x_range)
-    y_top <- y_range[2] - 0.1 * diff(y_range)
+  # get panel ranges for dynamic label positioning
+  build <- ggplot_build(plot)
+  x_range <- build$layout$panel_params[[1]]$x.range
+  y_range <- build$layout$panel_params[[1]]$y.range
 
-    # create cohen's d label
-    label_df <- data.frame(
-      x = x_pos,
-      y = y_top,
-      label = results_df$cohen_label[i]
-    )
-    
-    # create tau_i label
-    tau_i_label <- data.frame(
-      x = x_pos,
-      y = y_top - 0.2 * diff(y_range),
-      label = results_df$tau_i_label[i]
-    )
-    
-    # create tau_c label
-    tau_c_label <- data.frame(
-      x = x_pos,
-      y = y_top - 0.4 * diff(y_range),
-      label = results_df$tau_c_label[i]
-    )
-  
+  # top-left positions
+  x_pos <- x_range[1] + 0.95 * diff(x_range)
+  y_top <- y_range[2] - 0.1 * diff(y_range)
+
+  # create cohen's d label
+  label_df <- data.frame(
+    x = x_pos,
+    y = y_top,
+    label = results_df$cohen_label[i]
+  )
+
+  # create tau_i label
+  tau_i_label <- data.frame(
+    x = x_pos,
+    y = y_top - 0.2 * diff(y_range),
+    label = results_df$tau_i_label[i]
+  )
+
+  # create tau_c label
+  tau_c_label <- data.frame(
+    x = x_pos,
+    y = y_top - 0.4 * diff(y_range),
+    label = results_df$tau_c_label[i]
+  )
+
   # add labels
   plot +
     geom_text(
@@ -368,7 +370,6 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
 })
 
 m.d
-
 ```
 
 # Plot descriptives
@@ -464,21 +465,25 @@ m.p
 # Combine plots
 ```{r}
 # Combine m.d and m.p
-combined_plots <- 
-  mapply(function(plot_d, plot_p) {
-    plot_grid(plot_d, 
-              plot_p, 
-              ncol = 1, 
-              align = 'hv',
-              rel_heights = c(.5, 1))},
-    m.d, 
-    m.p, 
-    SIMPLIFY = F)
+combined_plots <-
+  mapply(
+    function(plot_d, plot_p) {
+      plot_grid(plot_d,
+        plot_p,
+        ncol = 1,
+        align = "hv",
+        rel_heights = c(.5, 1)
+      )
+    },
+    m.d,
+    m.p,
+    SIMPLIFY = F
+  )
 
 # Create the titles
 combined_plots <- lapply(1:length(combined_plots), function(i) {
   res <- results_df[i, ]
-  
+
   combined_plots[[i]] +
     ggtitle(
       paste0(
@@ -500,10 +505,11 @@ grid <- plot_grid(
 # Draw final figure with title
 ggdraw() +
   draw_plot(grid, 0, 0.05, 1, 0.95) +
-  
+
   # Cohen's d label at bottom
   draw_label(expression("Cohen's " * italic(d)),
-             x = 0.5, y = 0, vjust = -1.5, size = 10)
+    x = 0.5, y = 0, vjust = -1.5, size = 10
+  )
 ```
 
 #Extract heterogeneity stats

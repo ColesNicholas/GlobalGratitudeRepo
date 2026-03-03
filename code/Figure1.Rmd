@@ -95,20 +95,20 @@ fig.1a <-
   ) +
 
   # country labels
-geom_text_repel(
-  data = DF %>% filter(sample == "yes"),
-  aes(
-    label = country,
-    color = country,
-    y = 1
-  ),
-  direction = "y",
-  nudge_y = -0.5,          
-  force = 2,              
-  max.overlaps = Inf,     
-  segment.color = NA,     
-  size = 3
-) +
+  geom_text_repel(
+    data = DF %>% filter(sample == "yes"),
+    aes(
+      label = country,
+      color = country,
+      y = 1
+    ),
+    direction = "y",
+    nudge_y = -0.5,
+    force = 2,
+    max.overlaps = Inf,
+    segment.color = NA,
+    size = 3
+  ) +
   # theme
   theme_classic() +
   theme(

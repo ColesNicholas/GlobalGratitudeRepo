@@ -128,7 +128,7 @@ unique_results_df <- data.frame()
 # Compute Cohen's d and variance
 compute_effect_sizes <- function(intervention_cond) {
   # subset data
-  control_subset <- DF %>% filter(condition_type == 'control')
+  control_subset <- DF %>% filter(condition_type == "control")
   intervention_subset <- DF %>% filter(condition == intervention_cond)
 
   # calculate variance
@@ -183,32 +183,40 @@ unique_results_df <- do.call(rbind, results_list)
 
 # process
 unique_results_df <-
-  unique_results_df %>% 
-  rowwise() %>% 
-  mutate(overall.effect =
-           mean(pa_effect_size,
-                (na_effect_size * -1),
-                optimistic_effect_size,
-                ls_effect_size,
-                envy_effect_size,
-                indebted_effect_size),
-         overall.var = 
-           mean(pa_var,
-                na_var,
-                optimistic_var,
-                ls_var,
-                envy_var,
-                indebted_var)
-         ) %>% 
-  select(intervention_condition, overall.effect, overall.var) %>% 
+  unique_results_df %>%
+  rowwise() %>%
+  mutate(
+    overall.effect =
+      mean(
+        pa_effect_size,
+        (na_effect_size * -1),
+        optimistic_effect_size,
+        ls_effect_size,
+        envy_effect_size,
+        indebted_effect_size
+      ),
+    overall.var =
+      mean(
+        pa_var,
+        na_var,
+        optimistic_var,
+        ls_var,
+        envy_var,
+        indebted_var
+      )
+  ) %>%
+  select(intervention_condition, overall.effect, overall.var) %>%
   arrange(desc(overall.effect))
 
 # export
 write.csv(unique_results_df,
-          here("data",
-               "output",
-               'intervention_effectsizes.csv'),
-          row.names = F)
+  here(
+    "data",
+    "output",
+    "intervention_effectsizes.csv"
+  ),
+  row.names = F
+)
 ```
 
 
