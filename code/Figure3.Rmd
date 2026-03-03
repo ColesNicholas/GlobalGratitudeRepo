@@ -215,35 +215,26 @@ i.DF <-
   i.DF %>% 
   mutate(intervention_condition = 
            factor(intervention_condition,
-<<<<<<< Updated upstream
-                  levels = c("text", "letter", "naikan", "mental.sub", "divine.grat", "list"),
-                  labels = c('Gratitude Text',
-                             'Gratitude Letter',
-                             'Naikan Reflection',
-                             'Mental Subtraction',
-                             'Divine Gratitude',
-                             'Gratitude List')
-=======
-                  levels =
-                    i.DF$intervention_condition,
+                  levels = c("list",
+                             "divine.grat", 
+                             "mental.sub",
+                             "naikan", 
+                             "letter", 
+                             "text"),
+                  
                   labels = c('Gratitude List',
+                             'Divine Gratitude',
                              'Mental Subtraction',
-                             'Divine Gratitute',
                              'Naikan Reflection',
                              'Gratitude Letter',
                              'Gratitude Text')
->>>>>>> Stashed changes
                   )
          )
 ```
 
 ```{r}
-<<<<<<< Updated upstream
-fig.3a <- ggplot(data = i.DF,
-=======
 fig3c <-
   ggplot(data = i.DF,
->>>>>>> Stashed changes
        aes(x = overall.effect,
            y = intervention_condition)) +
   geom_segment(
@@ -292,32 +283,9 @@ fig.3b <-
     hjust = 0,
     color = "#3C5488"
   ) +
-<<<<<<< Updated upstream
   theme_classic() +
   xlim(0, 100) +
   xlab("Theory-Inconsistent Proportion of Estimated Distribution") +
-=======
-  # # vertical line
-  # geom_segment(x = 90, xend = 90, y = 0.75, yend = 5.25, color = "#3C5488") +
-  # # top horizontal
-  # geom_segment(x = 89, xend = 90, y = 5.25, yend = 5.25, color = "#3C5488") +
-  # # bottom horizontal
-  # geom_segment(x = 89, xend = 90, y = 0.75, yend = 0.75, color = "#3C5488") +
-  # 
-  # geom_text(
-  #   aes(
-  #     x = 53,
-  #     y = length(unique(outcome)) / 1.9
-  #   ),
-  #   label = "Theory-inconsistent observations",
-  #   hjust = 0,
-  #   size = 3,
-  #   color = "#3C5488"
-  # ) +
-  theme_classic() +
-  xlim(0, 100) +
-  xlab("Theory-inconsistent proportion of estimated effect size distribution") +
->>>>>>> Stashed changes
   ylab("Outcome")
 
 fig.3b
@@ -563,12 +531,18 @@ write.csv(results,
     "moderators.csv"
   )
 )
+
+results <- 
+  read.csv(here(
+    "data",
+    "output",
+    "moderators.csv"))
 ```
 
 # Create final fig.3c
 ```{r}
 # Create figure 3c
-fig.3c <- ggplot(
+fig.3a <- ggplot(
   data = results,
   aes(
     x = moderator,
@@ -579,10 +553,7 @@ fig.3c <- ggplot(
 ) +
   geom_tile(
     aes(fill = cor.est),
-<<<<<<< Updated upstream
     color = "white",
-=======
->>>>>>> Stashed changes
     width = 0.97, height = 0.97,
     show.legend = TRUE
   ) +
@@ -628,32 +599,16 @@ fig.3c <- ggplot(
 
 #Combine
 ```{r}
-<<<<<<< Updated upstream
-
-plot_grid(
-  plot_grid(
-    fig.3a,
-    fig.3b,
-    labels = c("A", "B"),
-    ncol = 2
-  ),
-  fig.3c,
-  labels = c("", "C"),
-  ncol = 1,
-  rel_heights = c(0.55,1.45)
-)
-=======
 plot_grid(plot_grid(fig3c, 
                     ggdraw(),
-                    fig.3a,
+                    fig.3b,
                     labels = c("A", "", "B"),
                     nrow = 1,
                     rel_widths = c(.49, .02, .49)),
           ggdraw(),
-          plot_grid(fig.3b,
+          plot_grid(fig.3a,
                     labels = c("C")),
           nrow = 3,
           rel_heights = c(.3, .05, .75))
->>>>>>> Stashed changes
 ```
 
