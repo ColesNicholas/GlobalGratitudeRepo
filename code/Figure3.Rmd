@@ -166,11 +166,11 @@ viz.DF <-
         "Envy"
       ),
       labels = c(
-        "Positive affect",
+        "Positive Affect",
         "Optimism",
-        "Negative affect",
+        "Negative Affect",
         "Indebtedness",
-        "Life satisfaction",
+        "Life Satisfaction",
         "Envy"
       )
     ),
@@ -226,14 +226,14 @@ fig.3a <-
       x = 53,
       y = length(unique(outcome)) / 1.9
     ),
-    label = "Theory-inconsistent observations",
+    label = "Theory-Inconsistent Observations",
     hjust = 0,
     size = 3,
     color = "#3C5488"
   ) +
   theme_classic() +
   xlim(0, 100) +
-  xlab("Theory-inconsistent proportion of estimated distribution") +
+  xlab("Theory-Inconsistent Proportion of Estimated Distribution") +
   ylab("Outcome")
 
 fig.3a
@@ -380,10 +380,10 @@ results <-
       "indebted_effect_size"
     ),
     labels = c(
-      "Positive affect",
-      "Negative affect",
+      "Positive Affect",
+      "Negative Affect",
       "Optimism",
-      "Life satisfaction",
+      "Life Satisfaction",
       "Envy",
       "Indebtedness"
     )
@@ -406,15 +406,15 @@ results <-
     labels = c(
       "Individualism",
       "Tightness",
-      "Relational mobility",
-      "Residential mobility",
+      "Relational Mobility",
+      "Residential Mobility",
       "Responsibilism",
       "Religiosity",
       "GDP",
-      "Power distance",
+      "Power Distance",
       "Motivation",
-      "Uncertainty avoidance",
-      "Long term orientation",
+      "Uncertainty Avoidance",
+      "Long Term Orientation",
       "Indulgence"
     )
   ))
@@ -524,8 +524,8 @@ fig.3b <- ggplot(
   ) +
   theme_classic() +
   labs(
-    y = expression("Country-level effects of gratitude interventions (" * italic("d") * ")"),
-    x = "Country-level differences",
+    y = expression("Country-Level Effects of Gratitude Interventions (" * italic("d") * ")"),
+    x = "Country-Level Differences",
     fill = expression("Pearson's " * italic("r"))
   ) +
   theme(
@@ -543,7 +543,7 @@ fig.3b <- ggplot(
 plot_grid(fig.3a,
   ggdraw(),
   fig.3b,
-  labels = c("a", "", "b"),
+  labels = c("A", "", "B"),
   nrow = 3,
   rel_heights = c(.2, .05, .75),
   rel_widths = c(.1, 1)

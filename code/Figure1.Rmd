@@ -95,16 +95,20 @@ fig.1a <-
   ) +
 
   # country labels
-  geom_text(
-    data = DF %>% filter(sample == "yes"),
-    aes(
-      label = country,
-      color = country,
-      y = 1
-    ),
-    position = position_jitter(height = .75)
-  ) +
-
+geom_text_repel(
+  data = DF %>% filter(sample == "yes"),
+  aes(
+    label = country,
+    color = country,
+    y = 1
+  ),
+  direction = "y",
+  nudge_y = -0.5,          
+  force = 2,              
+  max.overlaps = Inf,     
+  segment.color = NA,     
+  size = 3
+) +
   # theme
   theme_classic() +
   theme(
@@ -115,7 +119,7 @@ fig.1a <-
     axis.line.y = element_blank(),
     strip.background = element_blank()
   ) +
-  xlab("Cultural distance (from USA)") +
+  xlab("Cultural Distance (From USA)") +
 
   # Grey line for "All countries"
   geom_segment(
@@ -362,13 +366,13 @@ bc <-
   plot_grid(fig.1b,
     fig.1c,
     ncol = 2,
-    labels = c("b", "c")
+    labels = c("B", "C")
   )
 
 plot_grid(fig.1a,
   bc,
   nrow = 2,
-  labels = c("a", "")
+  labels = c("A", "")
 )
 ```
 
