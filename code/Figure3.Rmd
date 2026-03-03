@@ -280,7 +280,7 @@ fig.3b <-
   ggplot(
     data = viz.DF,
     aes(
-      y = outcome,
+      y = reorder(outcome, opposite_distribution),
       x = opposite_distribution,
       label = countries
     )
