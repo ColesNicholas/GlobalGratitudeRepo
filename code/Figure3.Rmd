@@ -213,49 +213,28 @@ i.DF <-
   ) %>%
   arrange(overall.effect)
 
-<<<<<<< Updated upstream
 i.DF <-
-  i.DF %>% 
-  mutate(intervention_condition = 
-           factor(intervention_condition,
-                  levels = c("list",
-                             "divine.grat", 
-                             "mental.sub",
-                             "naikan", 
-                             "letter", 
-                             "text"),
-                  
-                  labels = c('Gratitude List',
-                             'Divine Gratitude',
-                             'Mental Subtraction',
-                             'Naikan Reflection',
-                             'Gratitude Letter',
-                             'Gratitude Text')
-                  )
-         )
-```
-
-```{r}
-fig3c <-
-  ggplot(data = i.DF,
-       aes(x = overall.effect,
-           y = intervention_condition)) +
-=======
-i.DF <- 
   i.DF %>%
   mutate(
-    intervention_condition = factor(
-      intervention_condition,
-      levels = c("list", "mental.sub", "divine.grat", "naikan", "letter", "text"),
-      labels = c(
-        "Gratitude List",
-        "Mental Subtraction",
-        "Divine Gratitude",
-        "Naikan Reflection",
-        "Gratitude Letter",
-        "Gratitude Text"
+    intervention_condition =
+      factor(intervention_condition,
+        levels = c(
+          "list",
+          "divine.grat",
+          "mental.sub",
+          "naikan",
+          "letter",
+          "text"
+        ),
+        labels = c(
+          "Gratitude List",
+          "Divine Gratitude",
+          "Mental Subtraction",
+          "Naikan Reflection",
+          "Gratitude Letter",
+          "Gratitude Text"
+        )
       )
-    )
   )
 ```
 
@@ -264,10 +243,9 @@ fig.3a <- ggplot(
   data = i.DF,
   aes(
     x = overall.effect,
-    y = intervention_condition
+    y = reorder(intervention_condition, overall.effect)
   )
 ) +
->>>>>>> Stashed changes
   geom_segment(
     aes(
       x = ci_lower,
@@ -290,6 +268,8 @@ fig.3a <- ggplot(
     color = "gray30",
     linetype = "dotted"
   )
+
+fig.3a
 ```
 
 
@@ -561,17 +541,18 @@ write.csv(results,
   )
 )
 
-results <- 
+results <-
   read.csv(here(
     "data",
     "output",
-    "moderators.csv"))
+    "moderators.csv"
+  ))
 ```
 
 # Create final fig.3c
 ```{r}
 # Create figure 3c
-fig.3a <- ggplot(
+fig.3c <- ggplot(
   data = results,
   aes(
     x = moderator,
@@ -628,24 +609,20 @@ fig.3a <- ggplot(
 
 #Combine
 ```{r}
-<<<<<<< Updated upstream
-plot_grid(plot_grid(fig3c, 
-=======
-plot_grid(plot_grid(fig.3a, 
->>>>>>> Stashed changes
-                    ggdraw(),
-                    fig.3b,
-                    labels = c("A", "", "B"),
-                    nrow = 1,
-                    rel_widths = c(.49, .02, .49)),
-          ggdraw(),
-<<<<<<< Updated upstream
-          plot_grid(fig.3a,
-=======
-          plot_grid(fig.3c,
->>>>>>> Stashed changes
-                    labels = c("C")),
-          nrow = 3,
-          rel_heights = c(.3, .05, .75))
+plot_grid(
+  plot_grid(fig.3a,
+    ggdraw(),
+    fig.3b,
+    labels = c("A", "", "B"),
+    nrow = 1,
+    rel_widths = c(.49, .02, .49)
+  ),
+  ggdraw(),
+  plot_grid(fig.3c,
+    labels = c("C")
+  ),
+  nrow = 3,
+  rel_heights = c(.3, .05, .75)
+)
 ```
 

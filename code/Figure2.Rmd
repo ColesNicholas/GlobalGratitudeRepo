@@ -118,13 +118,15 @@ d.i <- lapply(effect_size_columns, function(effect_size) {
     # mutate intervention names
     mutate(
       intervention_condition = recode(
-      intervention_condition,
-      "text" = "Gratitude Text",
-      "letter" = "Gratitude Letter",
-      "naikan" = "Naikan Reflection",
-      "mental.sub" = "Mental Subtraction",
-      "divine.grat" = "Divine Gratitude",
-      "list" = "Gratitude List")) %>% 
+        intervention_condition,
+        "text" = "Gratitude Text",
+        "letter" = "Gratitude Letter",
+        "naikan" = "Naikan Reflection",
+        "mental.sub" = "Mental Subtraction",
+        "divine.grat" = "Divine Gratitude",
+        "list" = "Gratitude List"
+      )
+    ) %>%
     # labels most extreme observations
     mutate(
       label = if_else(m == min(m),
@@ -150,13 +152,15 @@ d.all <- lapply(effect_size_columns, function(effect_size) {
     # mutate intervention names
     mutate(
       intervention_condition = recode(
-      intervention_condition,
-      "text" = "Gratitude Text",
-      "letter" = "Gratitude Letter",
-      "naikan" = "Naikan Reflection",
-      "mental.sub" = "Mental Subtraction",
-      "divine.grat" = "Divine Gratitude",
-      "list" = "Gratitude List")) %>%
+        intervention_condition,
+        "text" = "Gratitude Text",
+        "letter" = "Gratitude Letter",
+        "naikan" = "Naikan Reflection",
+        "mental.sub" = "Mental Subtraction",
+        "divine.grat" = "Divine Gratitude",
+        "list" = "Gratitude List"
+      )
+    ) %>%
     # Add jittered y-value
     mutate(
       effect_size = effect_size,
@@ -164,8 +168,8 @@ d.all <- lapply(effect_size_columns, function(effect_size) {
       # Label extreme values
       label = if_else(
         m == min(m),
-        paste0(country, ",\n", intervention_condition),""
-        ),
+        paste0(country, ",\n", intervention_condition), ""
+      ),
       label = if_else(
         m == max(m),
         paste0(country, ",\n", intervention_condition),
