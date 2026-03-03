@@ -119,13 +119,13 @@ fig.1a <-
     axis.line.y = element_blank(),
     strip.background = element_blank()
   ) +
-  xlab("Cultural Distance (from United States)") +
+  xlab("Cultural Distance (From the United States)") +
 
   # Grey line for "All countries"
   geom_segment(
     aes(
       x = .6, xend = .75,
-      y = 1, yend = 1
+      y = .8, yend = .8
     ),
     color = "grey80",
     size = 1,
@@ -134,8 +134,8 @@ fig.1a <-
   geom_text(
     aes(
       x = .77,
-      y = 1,
-      label = "All countries"
+      y = .8,
+      label = "All Countries"
     ),
     color = "grey50",
     hjust = 0,
@@ -147,7 +147,7 @@ fig.1a <-
   geom_segment(
     aes(
       x = .6, xend = .75,
-      y = .9, yend = .9
+      y = .7, yend = .7
     ),
     size = 1,
     color = "#3C5488",
@@ -155,8 +155,8 @@ fig.1a <-
   ) +
   geom_text(
     aes(
-      x = .77, y = .9,
-      label = "Sampled countries"
+      x = .77, y = .7,
+      label = "Sampled Countries"
     ),
     color = "grey50",
     hjust = 0,
@@ -234,7 +234,7 @@ fig1.DF <-
         "Individualism" = "individualism",
         "Motivation" = "motivation",
         "Uncertainty Avoidance" = "uncertainty.avoidance",
-        "Long-Term Orientation" = "long.term.orientation",
+        "Long Term Orientation" = "long.term.orientation",
         "Indulgence" = "indulgence"
       )
   )

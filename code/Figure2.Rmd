@@ -115,6 +115,16 @@ d.i <- lapply(effect_size_columns, function(effect_size) {
       y = -0.02,
       y = jitter(y, .1)
     ) %>%
+    # mutate intervention names
+    mutate(
+      intervention_condition = recode(
+      intervention_condition,
+      "text" = "Gratitude Text",
+      "letter" = "Gratitude Letter",
+      "naikan" = "Naikan Reflection",
+      "mental.sub" = "Mental Subtraction",
+      "divine.grat" = "Divine Gratitude",
+      "list" = "Gratitude List")) %>% 
     # labels most extreme observations
     mutate(
       label = if_else(m == min(m),
@@ -137,17 +147,28 @@ d.all <- lapply(effect_size_columns, function(effect_size) {
   df %>%
     group_by(country, intervention_condition) %>%
     summarise(m = mean(.data[[effect_size]]), .groups = "drop") %>%
+    # mutate intervention names
+    mutate(
+      intervention_condition = recode(
+      intervention_condition,
+      "text" = "Gratitude Text",
+      "letter" = "Gratitude Letter",
+      "naikan" = "Naikan Reflection",
+      "mental.sub" = "Mental Subtraction",
+      "divine.grat" = "Divine Gratitude",
+      "list" = "Gratitude List")) %>%
     # Add jittered y-value
     mutate(
       effect_size = effect_size,
       y = runif(n(), min = -0.01, max = 0),
       # Label extreme values
-      label = if_else(m == min(m),
-        paste(country, intervention_condition, sep = ", "),
-        ""
-      ),
-      label = if_else(m == max(m),
-        paste(country, intervention_condition, sep = ", "),
+      label = if_else(
+        m == min(m),
+        paste0(country, ",\n", intervention_condition),""
+        ),
+      label = if_else(
+        m == max(m),
+        paste0(country, ",\n", intervention_condition),
         label
       )
     )
@@ -407,7 +428,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.c"),
       aes(x = m, y = y, label = label),
-      color = "#3C5488", alpha = .5, nudge_y = .005, size = 3
+      color = "#3C5488", alpha = .5, nudge_y = .005, size = 2.5
     ) +
 
     # add overall descriptives
@@ -421,7 +442,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.all"),
       aes(x = m, y = y, label = label),
-      color = "#91505E", alpha = .6, nudge_y = .005, size = 3
+      color = "#91505E", alpha = .6, nudge_y = .005, size = 2.5
     ) +
 
     # add intervention-level descriptives
@@ -435,7 +456,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.i"),
       aes(x = m, y = y, label = label),
-      color = "#E64B35", alpha = .5, nudge_y = .005, size = 3
+      color = "#E64B35", alpha = .5, nudge_y = .005, size = 2.5
     ) +
 
     # aesthetics
@@ -591,4 +612,3 @@ write.csv(pred_df,
   )
 )
 ```
-

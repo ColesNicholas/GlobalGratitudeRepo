@@ -194,8 +194,8 @@ write.csv(viz.DF,
 viz.DF <-
   read.csv(file = here(
     "data/output",
-    "cultural_consistency.csv")
-    )
+    "cultural_consistency.csv"
+  ))
 ```
 
 # New Figure 3A
@@ -204,13 +204,16 @@ i.DF <-
   read.csv(file = here(
     "data",
     "output",
-    "intervention_effectsizes.csv")
-    ) %>% 
-  mutate(se = sqrt(overall.var),
-         ci_lower = overall.effect - 1.96 * se,
-         ci_upper = overall.effect + 1.96 * se) %>% 
+    "intervention_effectsizes.csv"
+  )) %>%
+  mutate(
+    se = sqrt(overall.var),
+    ci_lower = overall.effect - 1.96 * se,
+    ci_upper = overall.effect + 1.96 * se
+  ) %>%
   arrange(overall.effect)
 
+<<<<<<< Updated upstream
 i.DF <-
   i.DF %>% 
   mutate(intervention_condition = 
@@ -237,34 +240,62 @@ fig3c <-
   ggplot(data = i.DF,
        aes(x = overall.effect,
            y = intervention_condition)) +
+=======
+i.DF <- 
+  i.DF %>%
+  mutate(
+    intervention_condition = factor(
+      intervention_condition,
+      levels = c("list", "mental.sub", "divine.grat", "naikan", "letter", "text"),
+      labels = c(
+        "Gratitude List",
+        "Mental Subtraction",
+        "Divine Gratitude",
+        "Naikan Reflection",
+        "Gratitude Letter",
+        "Gratitude Text"
+      )
+    )
+  )
+```
+
+```{r}
+fig.3a <- ggplot(
+  data = i.DF,
+  aes(
+    x = overall.effect,
+    y = intervention_condition
+  )
+) +
+>>>>>>> Stashed changes
   geom_segment(
-    aes(x = ci_lower,
-        xend = ci_upper,
-        color = '#E64B35')
-    ) +
-  geom_point(shape = 18,
-             size = 4,
-             color = '#E64B35') +
-  
+    aes(
+      x = ci_lower,
+      xend = ci_upper,
+      color = "#E64B35"
+    )
+  ) +
+  geom_point(
+    shape = 18,
+    size = 4,
+    color = "#E64B35"
+  ) +
   xlim(c(0, .6)) +
-  xlab(expression(
-    paste("Overall efficacy (Cohen's ", 
-          italic("d"), 
-          ")"
-          )
-    )) +
-  ylab('Practice') +
+  xlab(expression(paste("Cohen's ", italic("d")))) +
+  ylab("Practice") +
   theme_classic() +
   theme(legend.position = "none") +
-  geom_vline(xintercept = 0,
-             color = "gray30", 
-             linetype = "dotted")
+  geom_vline(
+    xintercept = 0,
+    color = "gray30",
+    linetype = "dotted"
+  )
 ```
 
 
 #Plot fig 3b
 ```{r}
-# Plot figure 3a
+# Plot figure 3b
 fig.3b <-
   ggplot(
     data = viz.DF,
@@ -289,7 +320,6 @@ fig.3b <-
   ylab("Outcome")
 
 fig.3b
-
 ```
 
 # Prep data for fig.3c
@@ -522,7 +552,6 @@ results <- results %>%
       )
   )
 ```
-
 ```{r}
 # Write CSV
 write.csv(results,
@@ -599,14 +628,22 @@ fig.3a <- ggplot(
 
 #Combine
 ```{r}
+<<<<<<< Updated upstream
 plot_grid(plot_grid(fig3c, 
+=======
+plot_grid(plot_grid(fig.3a, 
+>>>>>>> Stashed changes
                     ggdraw(),
                     fig.3b,
                     labels = c("A", "", "B"),
                     nrow = 1,
                     rel_widths = c(.49, .02, .49)),
           ggdraw(),
+<<<<<<< Updated upstream
           plot_grid(fig.3a,
+=======
+          plot_grid(fig.3c,
+>>>>>>> Stashed changes
                     labels = c("C")),
           nrow = 3,
           rel_heights = c(.3, .05, .75))
