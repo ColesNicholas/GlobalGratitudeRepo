@@ -183,7 +183,6 @@ unique_results_df <- do.call(rbind, results_list)
 
 # process
 unique_results_df <-
-<<<<<<< Updated upstream
   unique_results_df %>%
   rowwise() %>%
   mutate(
@@ -193,7 +192,7 @@ unique_results_df <-
         (na_effect_size * -1),
         optimistic_effect_size,
         ls_effect_size,
-        envy_effect_size,
+        (envy_effect_size * -1),
         indebted_effect_size
       ),
     overall.var =
@@ -207,25 +206,6 @@ unique_results_df <-
       )
   ) %>%
   select(intervention_condition, overall.effect, overall.var) %>%
-=======
-  unique_results_df %>% 
-  rowwise() %>% 
-  mutate(overall.effect =
-           mean(c(pa_effect_size,
-                  (na_effect_size * -1),
-                  optimistic_effect_size,
-                  ls_effect_size,(envy_effect_size * - 1),
-                  indebted_effect_size)),
-         overall.var = 
-           mean(c(pa_var,
-                  na_var,
-                  optimistic_var,
-                  ls_var,
-                  envy_var,
-                  indebted_var))
-         ) %>% 
-  select(intervention_condition, overall.effect, overall.var) %>% 
->>>>>>> Stashed changes
   arrange(desc(overall.effect))
 
 # export
