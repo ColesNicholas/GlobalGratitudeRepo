@@ -242,29 +242,30 @@ i.DF <-
 fig.3a <- ggplot(
   data = i.DF,
   aes(
-    x = overall.effect,
-    y = reorder(intervention_condition, overall.effect)
+    y = overall.effect,
+    x = reorder(intervention_condition, overall.effect,
+                decreasing = T)
   )
 ) +
   geom_segment(
     aes(
-      x = ci_lower,
-      xend = ci_upper,
-      color = "#E64B35"
-    )
+      y = ci_lower,
+      yend = ci_upper
+    ),
+    color = "#E64B35"
   ) +
   geom_point(
     shape = 18,
     size = 4,
     color = "#E64B35"
   ) +
-  xlim(c(0, .6)) +
-  xlab(expression(paste("Cohen's ", italic("d")))) +
-  ylab("Practice") +
+  ylim(c(-.55, 1.15)) +
+  ylab(expression(paste("Overall Cohen's ", italic("d")))) +
+  xlab("Practice") +
   theme_classic() +
-  theme(legend.position = "none") +
-  geom_vline(
-    xintercept = 0,
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_hline(
+    yintercept = 0,
     color = "gray30",
     linetype = "dotted"
   )
@@ -272,8 +273,58 @@ fig.3a <- ggplot(
 fig.3a
 ```
 
+# New Figure 3B
 
-#Plot fig 3b
+```{r}
+c.DF <-
+  read.csv(file = here(
+    "data",
+    "output",
+    "country_effectsizes.csv"
+  )) %>%
+  mutate(
+    se = sqrt(overall.var),
+    ci_lower = overall.effect - 1.96 * se,
+    ci_upper = overall.effect + 1.96 * se
+  ) %>%
+  arrange(overall.effect)
+```
+
+```{r}
+fig.3b <- ggplot(
+  data = c.DF,
+  aes(
+    x = reorder(country, overall.effect, decreasing = T),
+    y = overall.effect
+  )
+) +
+  geom_segment(
+    aes(
+      y = ci_lower,
+      yend = ci_upper
+    ),
+    color = "#3C5488"
+  ) +
+  geom_point(
+    shape = 18,
+    size = 4,
+    color = "#3C5488"
+  ) +
+  ylim(c(-.55, 1.15)) +
+  ylab("") +
+  xlab("Country") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  geom_hline(
+    yintercept = 0,
+    color = "gray30",
+    linetype = "dotted"
+  )
+```
+
+
+
+# Old 3b
 ```{r}
 # Plot figure 3b
 fig.3b <-
@@ -532,6 +583,7 @@ results <- results %>%
       )
   )
 ```
+
 ```{r}
 # Write CSV
 write.csv(results,
@@ -570,7 +622,9 @@ fig.3c <- ggplot(
 
   # Fill gradient now for correlation
   scale_fill_gradient2(
-    low = "#d73027", mid = "white", high = "#4575b4",
+    low = "#FC8D62",
+    mid = "white",
+    high = "#66C2A5",
     midpoint = 0,
     limits = c(-.5, .5), # adjust limits to correlation range
     name = expression("Pearson's " * italic("r"))
@@ -581,7 +635,7 @@ fig.3c <- ggplot(
     aes(label = bf.lab),
     parse = TRUE,
     nudge_y = -0.25,
-    size = 3.5
+    size = 3
   ) +
 
   # Text labels for correlation
@@ -589,11 +643,11 @@ fig.3c <- ggplot(
     aes(label = cor.lab),
     parse = TRUE,
     nudge_y = 0.25,
-    size = 3.5
+    size = 3
   ) +
   theme_classic() +
   labs(
-    y = expression("Country-Level Effects of Gratitude Interventions (" * italic("d") * ")"),
+    y = expression("Country-Level Overall Effects (" * italic("d") * ")"),
     x = "Country-Level Differences",
     fill = expression("Pearson's " * italic("r"))
   ) +
@@ -615,14 +669,14 @@ plot_grid(
     fig.3b,
     labels = c("A", "", "B"),
     nrow = 1,
-    rel_widths = c(.49, .02, .49)
+    rel_widths = c(7, 2, 32)
   ),
   ggdraw(),
   plot_grid(fig.3c,
     labels = c("C")
   ),
   nrow = 3,
-  rel_heights = c(.3, .05, .75)
+  rel_heights = c(.4, .05, .65)
 )
 ```
 

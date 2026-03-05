@@ -432,6 +432,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.c"),
       aes(x = m, y = y, label = label),
+      max.overlaps = Inf,
       color = "#3C5488", alpha = .5, nudge_y = .005, size = 2.5
     ) +
 
@@ -446,6 +447,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.all"),
       aes(x = m, y = y, label = label),
+      max.overlaps = Inf,
       color = "#91505E", alpha = .6, nudge_y = .005, size = 2.5
     ) +
 
@@ -460,7 +462,9 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.i"),
       aes(x = m, y = y, label = label),
-      color = "#E64B35", alpha = .5, nudge_y = .005, size = 2.5
+      color = "#E64B35", alpha = .5, 
+      max.overlaps = Inf,
+      nudge_y = .005, size = 2.5
     ) +
 
     # aesthetics
@@ -512,7 +516,7 @@ combined_plots <- lapply(1:length(combined_plots), function(i) {
   combined_plots[[i]] +
     ggtitle(
       paste0(
-        letters[i], ". ", res$outcome
+        LETTERS[i], ". ", res$outcome
       )
     ) +
     theme(
