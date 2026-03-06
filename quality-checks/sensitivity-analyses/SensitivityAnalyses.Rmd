@@ -447,6 +447,6 @@ apa_df <- combined_df %>%
 
 
 # Write to CSV
-write_csv(apa_df, here("quality-checks", "sensitivity-analyses/si_table_4.csv"))
+write_csv(apa_df, here("quality-checks", "sensitivity-analyses/si_table_6.csv"))
 ```
 

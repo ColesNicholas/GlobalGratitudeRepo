@@ -211,7 +211,7 @@ i.DF <-
     ci_lower = overall.effect - 1.96 * se,
     ci_upper = overall.effect + 1.96 * se
   ) %>%
-  arrange(overall.effect)
+  arrange(desc(overall.effect))
 
 i.DF <-
   i.DF %>%
@@ -235,7 +235,17 @@ i.DF <-
           "Gratitude Text"
         )
       )
+  ) 
+
+i.DF <- i.DF %>% select(-se)
+
+write.csv(
+  i.DF,
+  file = here(
+    "data/output",
+    "si_table_4.csv"
   )
+)
 ```
 
 ```{r}
@@ -287,7 +297,17 @@ c.DF <-
     ci_lower = overall.effect - 1.96 * se,
     ci_upper = overall.effect + 1.96 * se
   ) %>%
-  arrange(overall.effect)
+  arrange(desc(overall.effect))
+
+c.DF <- c.DF %>% select(-se)
+
+write.csv(
+  c.DF,
+  file = here(
+    "data/output",
+    "si_table_5.csv"
+  )
+)
 ```
 
 ```{r}
