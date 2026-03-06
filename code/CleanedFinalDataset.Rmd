@@ -47,7 +47,10 @@ USA_02b <-
   )) %>%
   # remove the color columns (results are inaccurate due to survey error)
   select(-color_task_red_6, -color_task_yellow_1, -color_task_blue_1)
+```
 
+
+```{r}
 # Save the processed data to CSV
 write.csv(USA_02b,
   file = here(

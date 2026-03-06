@@ -207,7 +207,10 @@ unique_results_df <-
   ) %>%
   select(intervention_condition, overall.effect, overall.var) %>%
   arrange(desc(overall.effect))
+```
 
+#Save dataset
+```{r}
 # export
 write.csv(unique_results_df,
   here(
@@ -218,7 +221,6 @@ write.csv(unique_results_df,
   row.names = F
 )
 ```
-
 
 # Unique intervention vs. control for each country (Each interventions vs. Each control)
 ```{r}
@@ -458,7 +460,10 @@ country_results_df <-
   ) %>%
   select(country, overall.effect, overall.var) %>%
   arrange(desc(overall.effect))
+```
 
+#Save dataset
+```{r}
 # export
 write.csv(country_results_df,
   here(
@@ -469,4 +474,3 @@ write.csv(country_results_df,
   row.names = F
 )
 ```
-

@@ -1,0 +1,468 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="28.2.5">
+  <diagram name="Page-1" id="bTmki2LVThCZo1XSe_z3">
+    <mxGraphModel dx="1253" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;entryX=0.524;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=light-dark(#000000,#FFFFFF);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-3" target="-V64b5A3mnAWBO5Hsgpg-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1633" y="730" />
+              <mxPoint x="2075" y="730" />
+              <mxPoint x="2075" y="684" />
+              <mxPoint x="2080" y="684" />
+            </Array>
+            <mxPoint x="1632.5" y="702" as="sourcePoint" />
+            <mxPoint x="2072.5" y="702" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-2" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-1">
+          <mxGeometry x="-0.0687" y="2" relative="1" as="geometry">
+            <mxPoint x="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-3" value="&lt;u&gt;&lt;b&gt;globalgratitude_final.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from main survey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1540" y="640" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FFFFFF);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-6" target="-V64b5A3mnAWBO5Hsgpg-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-5" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-4">
+          <mxGeometry x="-0.0667" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-6" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_unharmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Raw Qualtrics data from the USA_02b survey (replication of pilot study)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1760" y="540" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FBFBFB);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-8" target="-V64b5A3mnAWBO5Hsgpg-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-8" value="&lt;u&gt;&lt;b&gt;USA_02b_raw_harmonized.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Harmonized to match with global_gratitude_final.Rds&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1760" y="640" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-9" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;USA_02c.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Raw Qualtrics data from USA_02c survey (main survey + 1 module)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1980" y="640" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1864.58" y="936" as="sourcePoint" />
+            <mxPoint x="1864.58" y="973" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-18" target="-V64b5A3mnAWBO5Hsgpg-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-18" target="-V64b5A3mnAWBO5Hsgpg-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-18" target="-V64b5A3mnAWBO5Hsgpg-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#EEEEEE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-18" target="-V64b5A3mnAWBO5Hsgpg-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-15" value="Used&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-14">
+          <mxGeometry x="-0.44" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=light-dark(#000000,#FFFFFF);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-18" target="-V64b5A3mnAWBO5Hsgpg-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-17" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-16">
+          <mxGeometry x="-0.3023" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-18" value="&lt;u&gt;&lt;b&gt;globalgratitude_final_cleaned.Rds&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Final dataset used for all data analysis.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="876" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1864.58" y="1066" as="sourcePoint" />
+            <mxPoint x="1864.58" y="1099" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-20" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-19">
+          <mxGeometry x="-0.1919" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-24" target="-V64b5A3mnAWBO5Hsgpg-121">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-24" target="-V64b5A3mnAWBO5Hsgpg-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-23" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-22">
+          <mxGeometry x="-0.5177" y="-2" relative="1" as="geometry">
+            <mxPoint x="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-24" value="&lt;u&gt;&lt;b&gt;EffectSizes.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate Cohen&#39;s d effect sizes and variance for comparisons between each gratitude intervention and each control for every country.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="973" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-27" target="-V64b5A3mnAWBO5Hsgpg-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-27" target="-V64b5A3mnAWBO5Hsgpg-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-27" value="&lt;b&gt;&lt;u&gt;unique_country_effect_sizes.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Data of pairwise comparisons across all interventions vs. all controls for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1096" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#D5D5D5);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1864.58" y="828.5" as="sourcePoint" />
+            <mxPoint x="1864.58" y="876" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-29" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-28">
+          <mxGeometry x="-0.0175" relative="1" as="geometry">
+            <mxPoint y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-30" value="&lt;u&gt;&lt;b&gt;CleanedFinalDataset.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Combine and clean data from all three original datasets to create final Rds file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="756.5" width="230" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-35" target="-V64b5A3mnAWBO5Hsgpg-115">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-35" target="-V64b5A3mnAWBO5Hsgpg-57">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1865" y="1330" />
+              <mxPoint x="2135" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-35" target="-V64b5A3mnAWBO5Hsgpg-118">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1865" y="1330" />
+              <mxPoint x="2405" y="1330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-34" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-33">
+          <mxGeometry x="-0.8731" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-35" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure2.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 2.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1194" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#DFDFDF);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-38" target="-V64b5A3mnAWBO5Hsgpg-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-37" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-36">
+          <mxGeometry x="-0.1905" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-38" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;CrossCulturalMods&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;Compile all cross-cultural moderator data from outside sources.&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="984" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-41" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-41" target="-V64b5A3mnAWBO5Hsgpg-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-41" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;responsibilism.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on the responsibilism measure (Talhelm et al., under review).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="796.5" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-43" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-43" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;culturaldistance_combined.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Dataset on cultural distance measures from Muthukrishna et al., 2020 combined across years.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="886.5" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-45" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-45" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;u&gt;worldreligiosity.csv&lt;/u&gt;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on world religiosity (Joshanloo &amp;amp; Gebauer, 2019).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="983" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-47" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-47" value="&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;GDPpc.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on gross domestic product (World Bank, 2023).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="1073" width="250" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-51" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-51" target="-V64b5A3mnAWBO5Hsgpg-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-50" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-49">
+          <mxGeometry x="0.3643" relative="1" as="geometry">
+            <mxPoint x="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-51" value="&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;hofstede_resmobility.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data on Hofstede cultural dimensions (The Culture Factor, 2023) and residential mobility (Gallup, 2016).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="700" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-53" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-53" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;tightness.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font&gt;Data on the tightness-looseness measure (Gelfand et al., 2021).&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="1156" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-56" target="-V64b5A3mnAWBO5Hsgpg-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-55" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-54">
+          <mxGeometry x="0.7621" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-56" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;relationalmobility&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Data of the relational mobility measure (Thompson et al., 2018).&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="790" y="1233.5" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-57" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;prediction_intervals.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile prediction intervals for all outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2020" y="1360" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-58" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure1.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 1.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1194" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-64" target="-V64b5A3mnAWBO5Hsgpg-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-64" target="-V64b5A3mnAWBO5Hsgpg-68">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-61" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-60">
+          <mxGeometry x="0.3597" relative="1" as="geometry">
+            <mxPoint x="13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-64" target="-V64b5A3mnAWBO5Hsgpg-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-63" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-62">
+          <mxGeometry x="-0.1667" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-64" value="&lt;b&gt;&lt;u&gt;crossculturalmod.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;Combined dataset with all cross-cultural moderators.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1096" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-131" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-68" target="-V64b5A3mnAWBO5Hsgpg-130">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-132" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-68" target="-V64b5A3mnAWBO5Hsgpg-126">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-68" target="-V64b5A3mnAWBO5Hsgpg-116">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-134" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-68" target="-V64b5A3mnAWBO5Hsgpg-128">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-135" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-V64b5A3mnAWBO5Hsgpg-134">
+          <mxGeometry x="-0.8431" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-68" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;Figure3.Rmd&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Creates Figure 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1194" width="230" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-73" target="-V64b5A3mnAWBO5Hsgpg-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-73" target="-V64b5A3mnAWBO5Hsgpg-119">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-73" target="-V64b5A3mnAWBO5Hsgpg-120">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-72" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-71">
+          <mxGeometry x="-0.1177" y="1" relative="1" as="geometry">
+            <mxPoint x="3" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-73" value="&lt;u&gt;&lt;b&gt;MixedModels.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate pre-registered analyses, fits a separate mixed-effects model for each outcome variable.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="812.5" width="230" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-74" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;reliability_scores.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Cronbach&#39;s alpha scores for each outcome.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="767.5" width="230" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-77" target="-V64b5A3mnAWBO5Hsgpg-78">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-76" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-75">
+          <mxGeometry x="-0.0706" y="1" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-77" value="&lt;u&gt;&lt;b&gt;SiteDemographics.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Calculate demographics for each site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="746.5" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-78" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_1.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 1.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="706.5" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-81" target="-V64b5A3mnAWBO5Hsgpg-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-80" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#DADADA);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-79">
+          <mxGeometry x="-0.0217" y="-1" relative="1" as="geometry">
+            <mxPoint x="-3" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-81" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;u&gt;culturaldistance.csv&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Original data on cultural distance (Muthukrishna et al., 2020).&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="480" y="886.5" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-87" target="-V64b5A3mnAWBO5Hsgpg-88">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1265" y="854" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-83" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-82">
+          <mxGeometry x="-0.377" relative="1" as="geometry">
+            <mxPoint y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-87" target="-V64b5A3mnAWBO5Hsgpg-90">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#F9F9F9);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-87" target="-V64b5A3mnAWBO5Hsgpg-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-86" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-85">
+          <mxGeometry x="-0.2524" y="2" relative="1" as="geometry">
+            <mxPoint x="4" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-87" value="&lt;font&gt;&lt;b style=&quot;&quot;&gt;&lt;u style=&quot;&quot;&gt;SimulatedData&lt;/u&gt;&lt;u style=&quot;&quot;&gt;.Rmd&lt;/u&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Create simulated data for non-sharable data.&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="756.5" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-88" value="&lt;font style=&quot;&quot;&gt;&lt;b&gt;&lt;u&gt;crossculturalmod_simulated.csv&lt;/u&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;A version of the crossculturalmod.csv file with simulated data.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="857" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-89" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;hofstede_resmobility_simulated.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;Simulated data for the hofstede_resmobility.csv file.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="762.5" width="250" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-90" value="&lt;u&gt;&lt;b&gt;responsibilism_simulated.csv&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Simulated data for the responsibilism.csv file.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="839" width="250" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-93" target="-V64b5A3mnAWBO5Hsgpg-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-92" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-91">
+          <mxGeometry x="-0.0899" y="1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-93" value="&lt;u&gt;&lt;b&gt;LabSpecificData.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create Excel workbook with all data for quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="936" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-97" target="-V64b5A3mnAWBO5Hsgpg-100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontColor=light-dark(#000000,#FFFFFF);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-97" target="-V64b5A3mnAWBO5Hsgpg-100">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-96" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-95">
+          <mxGeometry x="-0.1163" y="-1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-97" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;labspecific_data.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with survey responses divided by site.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="936" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#E9E9E9);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);fillColor=none;" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-100" target="-V64b5A3mnAWBO5Hsgpg-104">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-123" value="Used for" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-V64b5A3mnAWBO5Hsgpg-98">
+          <mxGeometry x="-0.2667" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-100" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks.xlxs&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Excel workbook with completed quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="1030" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-104" target="-V64b5A3mnAWBO5Hsgpg-109">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-104" target="-V64b5A3mnAWBO5Hsgpg-113">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-103" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-102">
+          <mxGeometry x="-0.4298" y="-1" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-104" value="&lt;u&gt;&lt;b&gt;QualityChecks.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Create summary table and dataset of each site&#39;s quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="1120" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-104" target="-V64b5A3mnAWBO5Hsgpg-104">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-108" target="-V64b5A3mnAWBO5Hsgpg-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-107" value="Exports" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-106">
+          <mxGeometry x="-0.7395" y="2" relative="1" as="geometry">
+            <mxPoint x="17" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-108" value="&lt;u&gt;&lt;b&gt;SensitivityAnalyses.Rmd&lt;/b&gt;&lt;/u&gt;&lt;div&gt;Conduct sensistivity analyses comparing&amp;nbsp; English only and quality check data to the full dataset.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="1250" width="230" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-109" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;qualitychecks_summary.xlsx&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Summary table of quality checks.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="1077" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-110" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_6.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 6.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.53" y="1248" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=light-dark(#000000,#FEFEFE);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" edge="1" parent="1" source="-V64b5A3mnAWBO5Hsgpg-113" target="-V64b5A3mnAWBO5Hsgpg-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-112" value="Used&lt;div&gt;for&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="-V64b5A3mnAWBO5Hsgpg-111">
+          <mxGeometry x="-0.3041" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-113" value="&lt;div&gt;&lt;span style=&quot;&quot;&gt;&lt;b&gt;&lt;u&gt;QC_globalgratitude_final_cleaned.Rds&lt;/u&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Dataset with problematic data removed.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2030.5299999999997" y="1154" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-114" value="Used for" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontColor=light-dark(#000000,#FFFFFF);" vertex="1" parent="1">
+          <mxGeometry x="1830" y="1158" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-115" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;pooled_effect_size.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile pooled effect sizes for all outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1750" y="1360" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-116" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;moderators.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Create list of correlations between cross-cultural moderators and outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1350" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-118" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;overall_heterogeneity.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile overall heterogeneity values for all outcomes.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2290" y="1360" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-119" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table_3.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 3.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="882" width="230" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-120" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_regression_ouput.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Information.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="2320.5299999999997" y="825.5" width="230" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-121" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;intervention_effectsizes.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile pooled effect sizes for all practices.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="953.5" width="250" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-122" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;country_effectsizes.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Compile pooled effect sizes for all countries.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1030" width="250" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-126" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;cultural_consistency.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Proportion and names of countries with opposite effects to hypotheses.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1280" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-128" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table 4.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 4.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1417" width="230" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="-V64b5A3mnAWBO5Hsgpg-130" value="&lt;div&gt;&lt;u&gt;&lt;b&gt;si_table 5.csv&lt;/b&gt;&lt;/u&gt;&lt;/div&gt;&lt;div&gt;Data for Supplemental Table 5.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=light-dark(#000000,#000000);shadow=1;fontColor=light-dark(#000000,#FFFFFF);labelBackgroundColor=none;shadowColor=light-dark(#000000,#0E0E0E);" vertex="1" parent="1">
+          <mxGeometry x="1450" y="1490" width="230" height="57" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -240,7 +240,7 @@ fig1.DF <-
   )
 ```
 
-Calculate percentage overlap
+# Calculate percentage overlap
 ```{r}
 per.overlap <-
   sapply(unique(fig1.DF$name),
@@ -289,7 +289,7 @@ per.overlap <-
   )
 ```
 
-Inspect percent overlap
+# Inspect percent overlap
 ```{r}
 mean(per.overlap$overlap,
   na.rm = T

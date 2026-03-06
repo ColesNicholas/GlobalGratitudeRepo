@@ -462,7 +462,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     geom_text_repel(
       data = subset(data_subset, dataset == "d.i"),
       aes(x = m, y = y, label = label),
-      color = "#E64B35", alpha = .5, 
+      color = "#E64B35", alpha = .5,
       max.overlaps = Inf,
       nudge_y = .005, size = 2.5
     ) +

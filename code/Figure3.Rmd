@@ -198,7 +198,7 @@ viz.DF <-
   ))
 ```
 
-# New Figure 3A
+# Figure 3A
 ```{r}
 i.DF <-
   read.csv(file = here(
@@ -235,7 +235,7 @@ i.DF <-
           "Gratitude Text"
         )
       )
-  ) 
+  )
 
 i.DF <- i.DF %>% select(-se)
 
@@ -254,7 +254,8 @@ fig.3a <- ggplot(
   aes(
     y = overall.effect,
     x = reorder(intervention_condition, overall.effect,
-                decreasing = T)
+      decreasing = T
+    )
   )
 ) +
   geom_segment(
@@ -283,7 +284,7 @@ fig.3a <- ggplot(
 fig.3a
 ```
 
-# New Figure 3B
+# Figure 3B
 
 ```{r}
 c.DF <-
@@ -340,37 +341,6 @@ fig.3b <- ggplot(
     color = "gray30",
     linetype = "dotted"
   )
-```
-
-
-
-# Old 3b
-```{r}
-# Plot figure 3b
-fig.3b <-
-  ggplot(
-    data = viz.DF,
-    aes(
-      y = reorder(outcome, opposite_distribution),
-      x = opposite_distribution,
-      label = countries
-    )
-  ) +
-  geom_col(
-    alpha = .5,
-    fill = "gray30"
-  ) +
-  geom_text(aes(x = 18),
-    size = 3,
-    hjust = 0,
-    color = "#3C5488"
-  ) +
-  theme_classic() +
-  xlim(0, 100) +
-  xlab("Theory-Inconsistent Proportion of Estimated Distribution") +
-  ylab("Outcome")
-
-fig.3b
 ```
 
 # Prep data for fig.3c
