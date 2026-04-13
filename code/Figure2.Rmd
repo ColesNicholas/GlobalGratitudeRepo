@@ -362,7 +362,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
   # create tau_c label
   tau_c_label <- data.frame(
     x = x_pos,
-    y = y_top - 0.4 * diff(y_range),
+    y = y_top - 0.45 * diff(y_range),
     label = results_df$tau_c_label[i]
   )
 
@@ -372,7 +372,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       data = label_df,
       aes(x = x, y = y, label = label),
       color = "#91505E",
-      size = 3,
+      size = 6 / .pt,
       parse = TRUE,
       hjust = 1
     ) +
@@ -380,7 +380,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       data = tau_i_label,
       aes(x = x, y = y, label = label),
       color = "#E64B35",
-      size = 3,
+      size = 6 / .pt,
       parse = TRUE,
       hjust = 1
     ) +
@@ -388,7 +388,7 @@ m.d <- lapply(seq_along(effect_size_columns), function(i) {
       data = tau_c_label,
       aes(x = x, y = y, label = label),
       color = "#3C5488",
-      size = 3,
+      size = 6 / .pt,
       parse = TRUE,
       hjust = 1
     )
@@ -433,7 +433,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
       data = subset(data_subset, dataset == "d.c"),
       aes(x = m, y = y, label = label),
       max.overlaps = Inf,
-      color = "#3C5488", alpha = .5, nudge_y = .005, size = 2.5
+      color = "#3C5488", alpha = .5, nudge_y = .005, size = 6 / .pt
     ) +
 
     # add overall descriptives
@@ -448,7 +448,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
       data = subset(data_subset, dataset == "d.all"),
       aes(x = m, y = y, label = label),
       max.overlaps = Inf,
-      color = "#91505E", alpha = .6, nudge_y = .005, size = 2.5
+      color = "#91505E", alpha = .6, nudge_y = .005, size = 6 / .pt
     ) +
 
     # add intervention-level descriptives
@@ -464,7 +464,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
       aes(x = m, y = y, label = label),
       color = "#E64B35", alpha = .5,
       max.overlaps = Inf,
-      nudge_y = .005, size = 2.5
+      nudge_y = .005, size = 6 / .pt
     ) +
 
     # aesthetics
@@ -472,6 +472,7 @@ m.p <- lapply(seq_along(effect_size_columns), function(i) {
     theme(
       axis.title.y = element_blank(),
       axis.title.x = element_blank(),
+      axis.text.x = element_text(size = 6),
       axis.text.y = element_blank(),
       axis.ticks.y = element_blank()
     ) +
@@ -520,7 +521,7 @@ combined_plots <- lapply(1:length(combined_plots), function(i) {
       )
     ) +
     theme(
-      plot.title = element_markdown(hjust = 0, vjust = 1.5, size = 9, face = "bold")
+      plot.title = element_markdown(hjust = 0, vjust = 1.5, size = 8, face = "bold")
     )
 })
 
@@ -532,13 +533,28 @@ grid <- plot_grid(
 
 
 # Draw final figure with title
-ggdraw() +
-  draw_plot(grid, 0, 0.05, 1, 0.95) +
+fig.2 <- ggdraw() +
+  draw_plot(grid, 0, 0.03, 1, 0.97) +
 
   # Cohen's d label at bottom
   draw_label(expression("Cohen's " * italic(d)),
-    x = 0.5, y = 0, vjust = -1.5, size = 10
+    x = 0.5, y = 0.01, vjust = 0, size = 6
   )
+
+fig.2
+```
+
+# Export Figure 2
+```{r}
+ggsave(
+  filename = here("figures", "Figure2.pdf"),
+  plot = fig.2,
+  device = pdf,
+  width = 18,
+  height = 18,
+  units = "cm",
+  dpi = 600
+)
 ```
 
 #Extract heterogeneity stats
