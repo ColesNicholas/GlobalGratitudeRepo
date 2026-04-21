@@ -34,7 +34,7 @@ DF <- DF %>%
     na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
 
     # indebtedness
-    indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
+    indebted_mean = tabmean(c(indebted, obligated), na.rm = TRUE),
 
     # envy
     envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
