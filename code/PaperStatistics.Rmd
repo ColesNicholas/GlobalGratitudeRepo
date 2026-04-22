@@ -114,7 +114,7 @@ nrow(consent)
 
 # Number of participants that did not finish at least 95% of the survey
 
-finish <- combined_DF %>% filter(Progress > 0, Progress < 95)
+finish <- combined_DF %>% filter(Progress < 95)
 
 nrow(finish)
 

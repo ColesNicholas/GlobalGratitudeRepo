@@ -9,7 +9,7 @@ editor_options:
 # Load packages
 ```{r lib}
 # load packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 # Open data
