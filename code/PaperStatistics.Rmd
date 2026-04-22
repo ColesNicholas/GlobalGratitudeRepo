@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r}
 # install packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 # Abstract
@@ -21,14 +21,14 @@ DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"
 nrow(DF)
 
 # Overall effect sizes for each outcome
-ef <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+ef <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv")) %>%
   filter(Sample == "Full") %>%
   select(Outcome, Cohen.s.d)
 
 print(ef)
 
 # Overall tau
-tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv")) %>%
   filter(Sample == "Full") %>%
   select(Outcome, τc, τp)
 
@@ -127,7 +127,7 @@ nrow(site)
 
 Demographics
 ```{r}
-# Calculate sex percentage
+
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 sex_factor <- factor(DF$sex,
@@ -148,7 +148,7 @@ sex_table$Percentage <- round(100 * sex_table$Count / sum(sex_table$Count), 1)
 sex_table
 
 # Calculate Age
-DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds")) %>%
+DF <- combined_DF %>%
   filter(
     !is.na(age),
     # Remove outliers
@@ -156,7 +156,7 @@ DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"
   )
 
 mean(DF$age)
-SD(DF$age)
+sd(DF$age)
 ```
 
 #Procedure
@@ -193,7 +193,7 @@ heterogeneity <- read.csv(file = here("data/output", "overall_heterogeneity.csv"
 print(heterogeneity)
 
 # Overall tau
-tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_4.csv")) %>%
+tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv")) %>%
   filter(Sample == "Full") %>%
   select(Outcome, τc, τp)
 
@@ -203,7 +203,7 @@ print(tau)
 Prediction Intervals
 ```{r}
 # Prediction intervals
-prediction <- heterogeneity <- read.csv(file = here("data/output", "prediction_intervals.csv")) %>% select(effect_size, practice_pi_lb, practice_pi_ub, country_pi_lb, country_pi_ub)
+prediction <- read.csv(file = here("data/output", "prediction_intervals.csv")) %>% select(effect_size, practice_pi_lb, practice_pi_ub, country_pi_lb, country_pi_ub)
 
 print(prediction)
 ```
@@ -211,7 +211,7 @@ print(prediction)
 Cross-Cultural Consistency
 ```{r}
 # Cross-Cultural consistency
-consistency <- heterogeneity <- read.csv(file = here("data/output", "cultural_consistency.csv")) %>% select(-opposite_countries_prop, -countries)
+consistency <- read.csv(file = here("data/output", "cultural_consistency.csv")) %>% select(-opposite_countries_prop, -countries)
 
 print(consistency)
 ```
@@ -242,5 +242,6 @@ for (outcome in names(analysis)) {
   cat("\n---", outcome, "---\n")
   print(analysis[[outcome]])
 }
+
 ```
 

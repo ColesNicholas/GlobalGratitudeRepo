@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r}
 # Install packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 # Set Up Data
@@ -34,7 +34,7 @@ DF <- DF %>%
     na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
 
     # indebtedness
-    indebted_mean = tabmean(c(indebted, obligated), na.rm = TRUE),
+    indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
 
     # envy
     envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
@@ -435,7 +435,7 @@ for (lab_name in countries) {
 country_results_df <- do.call(rbind, results_list)
 
 # process
-country_results_df <-
+full_country_results_df <-
   country_results_df %>%
   rowwise() %>%
   mutate(
@@ -464,8 +464,9 @@ country_results_df <-
 
 #Save dataset
 ```{r}
+
 # export
-write.csv(country_results_df,
+write.csv(full_country_results_df,
   here(
     "data",
     "output",
@@ -473,4 +474,15 @@ write.csv(country_results_df,
   ),
   row.names = F
 )
+
+# export
+write.csv(country_results_df,
+  here(
+    "data",
+    "output",
+    "country_effectsize_outcomes.csv"
+  ),
+  row.names = F
+)
+
 ```

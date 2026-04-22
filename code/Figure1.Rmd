@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r}
 # Install packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 # Open cross-cultural values
@@ -187,12 +187,6 @@ world[world$name == "Norway", ]$iso_a3 <- "NOR"
 sampled_iso <- DF %>%
   filter(sample == "yes") %>%
   pull(iso)
-
-# Get world map
-world <- ne_countries(
-  scale = "medium",
-  returnclass = "sf"
-)
 
 # Create fig.1b
 fig.1b <- ggplot() +

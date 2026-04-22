@@ -9,7 +9,7 @@ editor_options:
 # Load packages
 ```{r}
 # Install packages
-source("setup.R")
+source(here::here("setup.R"))
 
 # Allow for Type III Sums of Square
 options(contrasts = c("contr.sum", "contr.poly"))
@@ -185,114 +185,6 @@ out.list <- c(
 ```
 
 # Analyses
-## Pre-registered analyses (full)
-```{r}
-# For each outcome build model
-pr.results <- sapply(
-  X = out.list,
-  simplify = F,
-  FUN = function(x) {
-    m <- lmer(
-      as.formula(paste0(
-        x,
-        "~ condition + (1 + condition | lab)"
-      )),
-      data = DF
-    )
-
-    emm <- emmeans(
-      m,
-      pairwise ~ condition,
-      adjust = "none",
-      pbkrtest.limit = 99999
-    )
-
-    return(list(
-      m = summary(m),
-      emm = emm
-    ))
-  }
-)
-```
-
-### Bind rows and export
-```{r}
-contrast.table <-
-  rbind(
-    cbind(
-      outcome = "gratitude",
-      pr.results$gratitude_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "pa",
-      pr.results$pa_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "optimism",
-      pr.results$optimistic_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "na",
-      pr.results$na_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "indebted",
-      pr.results$indebted_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "guilty",
-      pr.results$guilty$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "envy",
-      pr.results$envy_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "ls",
-      pr.results$ls_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "ss",
-      pr.results$ss_mean$emm$contrasts %>%
-        as.data.frame()
-    ),
-    cbind(
-      outcome = "ladder",
-      pr.results$ladder$emm$contrasts %>%
-        as.data.frame()
-    )
-  )
-
-contrast.table <- contrast.table %>%
-  mutate(
-    p.value = stars.pval(p.value),
-    estimate = round(estimate, 2),
-    SE = round(SE, 2),
-    df = round(df, 2),
-    t.ratio = round(t.ratio, 2)
-  )
-```
-
-
-```{r}
-# Write CSV
-write.csv(
-  contrast.table,
-  file = here(
-    "data/output",
-    "si_table_3.csv"
-  )
-)
-```
-
 ## Pre-registered analyses (full)
 ```{r}
 # For each outcome build model

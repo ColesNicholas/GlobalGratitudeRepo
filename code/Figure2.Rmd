@@ -9,7 +9,7 @@ editor_options:
 # Load packages
 ```{r}
 # Load packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 # Prep data
@@ -51,7 +51,6 @@ m.c <- lapply(1:length(effect_size_columns), function(i) {
     data = df
   )
 })
-
 
 m.i <- lapply(1:length(effect_size_columns), function(i) {
   rma.mv(
@@ -610,7 +609,7 @@ practice_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
 }))
 
 # Calculate country-level prediction intervals
-country_pred_df <- do.call(rbind, lapply(seq_along(m.i), function(i) {
+country_pred_df <- do.call(rbind, lapply(seq_along(m.c), function(i) {
   mod <- m.c[[i]]
 
   pred_country <- predict(mod, digits = 3)

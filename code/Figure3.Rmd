@@ -10,7 +10,7 @@ editor_options:
 # Load packages
 ```{r lib}
 # Load packages
-source("setup.R")
+source(here::here("setup.R"))
 ```
 
 #Prep data 
