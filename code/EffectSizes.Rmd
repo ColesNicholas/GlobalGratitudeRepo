@@ -75,8 +75,7 @@ unique_labs <- unique(DF$country)
 condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
 variables <- c(
   "gratitude_mean", "pa_mean", "na_mean", "optimistic_mean", "ls_mean", "ladder",
-  "envy_mean", "indebted_mean", "guilty", "ss_mean"
-)
+  "envy_mean", "indebted_mean", "guilty", "ss_mean")
 
 # Set levels
 DF$condition <- factor(DF$condition)

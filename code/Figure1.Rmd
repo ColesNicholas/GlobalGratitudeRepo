@@ -16,11 +16,11 @@ source(here::here("setup.R"))
 # Open cross-cultural values
 ```{r}
 # Fetch cross-cultural data
-DF <-
-  read.csv(here(
-    "data/final-data",
-    "crossculturalmod.csv"
-  ))
+DF <- if (file.exists(here("data/final-data", "crossculturalmod.csv"))) {
+  read.csv(here("data/final-data", "crossculturalmod.csv"))
+} else {
+  read.csv(here("data/final-data", "crossculturalmod_simulated.csv"))
+}
 
 # Standardize variables
 DF <-

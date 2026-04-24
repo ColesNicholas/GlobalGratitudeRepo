@@ -366,10 +366,11 @@ country.DF <-
   summarise(across(everything(), mean, na.rm = TRUE))
 
 mod.DF <-
-  read.csv(here(
-    "data/final-data",
-    "crossculturalmod.csv"
-  )) %>%
+  (if (file.exists(here("data/final-data", "crossculturalmod.csv"))) {
+    read.csv(here("data/final-data", "crossculturalmod.csv"))
+  } else {
+    read.csv(here("data/final-data", "crossculturalmod_simulated.csv"))
+  }) %>%
   filter(sample == "yes")
 ```
 
