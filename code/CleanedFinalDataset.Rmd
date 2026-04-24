@@ -182,10 +182,11 @@ data_cleaned <-
     ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
   ) %>%
   ungroup() %>%
-  
   # remove participants who did not complete the main outcome measures
-  filter(!if_any(c(gratitude_mean, pa_mean, optimistic_mean, na_mean,
-                              indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean), is.na))
+  filter(!if_any(c(
+    gratitude_mean, pa_mean, optimistic_mean, na_mean,
+    indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
+  ), is.na))
 
 # Rename interventions and controls
 data_cleaned <-

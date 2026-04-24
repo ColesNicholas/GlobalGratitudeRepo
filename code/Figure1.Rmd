@@ -261,7 +261,7 @@ per.overlap <-
             d.pop$value,
             d.sample$value
           ),
-          type = "1"
+          type = "2"
         )
 
       cbind(
