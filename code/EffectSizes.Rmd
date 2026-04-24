@@ -18,39 +18,6 @@ source(here::here("setup.R"))
 # Fetch survey
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
-DF <- DF %>%
-  rowwise() %>%
-  mutate(
-    # gratitude
-    gratitude_mean = mean(c(grateful, appreciative, thankful), na.rm = TRUE),
-
-    # positive affect
-    pa_mean = mean(c(happy, satisfied, content, joyful, pleased), na.rm = TRUE),
-
-    # optimism
-    optimistic_mean = mean(c(optimistic, hopeful), na.rm = TRUE),
-
-    # negative affect
-    na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
-
-    # indebtedness
-    indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
-
-    # envy
-    envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
-
-    # life satisfaction
-    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE),
-
-    # sense of self
-    ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
-  ) %>%
-  ungroup() %>%
-  drop_na(
-    gratitude_mean, pa_mean, optimistic_mean, na_mean,
-    indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
-  )
-
 # Rename column
 DF <- DF %>%
   mutate(country = case_when(
@@ -143,7 +110,7 @@ compute_effect_sizes <- function(intervention_cond) {
       intervention_subset[[measure]],
       control_subset[[measure]],
       pooled = TRUE,
-      hedges.correction = TRUE
+      hedges.correction = FALSE
     )
     d_value <- d_result$estimate
     var_value <- calc_var(d_value, nrow(control_subset), nrow(intervention_subset))
@@ -246,7 +213,7 @@ compute_effect_sizes <- function(lab_name, control_cond, intervention_cond) {
       intervention_subset[[measure]],
       control_subset[[measure]],
       pooled = TRUE,
-      hedges.correction = TRUE
+      hedges.correction = FALSE
     )
     d_value <- d_result$estimate
     var_value <- calc_var(d_value, nrow(control_subset), nrow(intervention_subset))
@@ -392,7 +359,7 @@ compute_effect_sizes <- function(lab_name) {
       intervention_subset[[measure]],
       control_subset[[measure]],
       pooled = TRUE,
-      hedges.correction = TRUE
+      hedges.correction = FALSE
     )
     d_value <- d_result$estimate
     var_value <- calc_var(d_value, nrow(control_subset), nrow(intervention_subset))
@@ -470,16 +437,6 @@ write.csv(full_country_results_df,
     "data",
     "output",
     "country_effectsizes.csv"
-  ),
-  row.names = F
-)
-
-# export
-write.csv(country_results_df,
-  here(
-    "data",
-    "output",
-    "country_effectsize_outcomes.csv"
   ),
   row.names = F
 )
