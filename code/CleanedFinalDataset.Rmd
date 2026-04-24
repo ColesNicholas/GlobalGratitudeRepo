@@ -146,18 +146,50 @@ data_cleaned <-
     Progress >= 95,
     lab != ""
   ) %>%
-  # remove non-relevant columns
-  select(Status:pageNo)
-
-# Remove instances where age data are clearly wrong (Jul 9, 2025)
-data_cleaned <- data_cleaned %>%
+  # Remove instances where age data are clearly wrong (Jul 9, 2025)
   mutate(
     age =
       if_else(age > 99,
         NA,
         age
       )
+  ) %>%
+  # Calculate means for main outcomes
+  rowwise() %>%
+  mutate(
+    # gratitude
+    gratitude_mean = mean(c(grateful, appreciative, thankful), na.rm = TRUE),
+
+    # positive affect
+    pa_mean = mean(c(happy, satisfied, content, joyful, pleased), na.rm = TRUE),
+
+    # optimism
+    optimistic_mean = mean(c(optimistic, hopeful), na.rm = TRUE),
+
+    # negative affect
+    na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
+
+    # indebtedness
+    indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
+
+    # envy
+    envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
+
+    # life satisfaction
+    ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE),
+
+    # sense of self
+    ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  
+  # remove participants who did not complete the main outcome measures
+  drop_na(
+    gratitude_mean, pa_mean, optimistic_mean, na_mean,
+    indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
   )
+  # remove non-relevant columns
+  select(Status:pageNo)
 
 # Rename interventions and controls
 data_cleaned <-
