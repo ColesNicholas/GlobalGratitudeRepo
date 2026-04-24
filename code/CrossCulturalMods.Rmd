@@ -141,23 +141,15 @@ DF_relig <- read.csv(file = here(
 #Combine datasets
 ```{r}
 # Combine datasets
-DF_combined <- bind_rows(
-  DF_culture,
+DF_combined <- list(DF_culture,
   DF_relation,
   DF_respon,
   DF_tight,
   DF_relig,
   DF_GDP,
-  DF_indcol
-) %>%
-  group_by(iso) %>%
-  summarise(
-    across(everything(),
-      ~ dplyr::first(na.omit(.x)),
-      .names = "{.col}"
-    ),
-    .groups = "drop"
-  )
+  DF_indcol) %>%
+  reduce(full_join, by = c("country", "iso"))
+
 
 # Organize countries sampled in study
 DF_combined$sample <- ifelse(DF_combined$iso %in% sampled, "yes", "no")

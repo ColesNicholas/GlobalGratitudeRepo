@@ -35,7 +35,7 @@ syn_data <- syn(
 )
 
 syn_data <- syn_data$syn
-syn_data <- syn_data %>%
+temp_syn_data <- syn_data %>%
   slice(1:length(country_data)) %>%
   mutate(Matched = country_data)
 

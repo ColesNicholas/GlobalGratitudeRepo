@@ -127,7 +127,6 @@ nrow(site)
 
 Demographics
 ```{r}
-
 DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
 
 sex_factor <- factor(DF$sex,
@@ -242,6 +241,5 @@ for (outcome in names(analysis)) {
   cat("\n---", outcome, "---\n")
   print(analysis[[outcome]])
 }
-
 ```
 

@@ -1,0 +1,155 @@
+"Matched","resmobility","power.distance","individualism","motivation","uncertainty.avoidance","long.term.orientation","indulgence"
+"United States",0.1504,NA,NA,NA,NA,NA,NA
+"Egypt",0.1518,28,56,46,75,47,NA
+"Morocco",NA,65,43,57,29,30,83
+"Lebanon",0.0748,NA,NA,NA,NA,NA,NA
+"Saudi Arabia",NA,86,13,38,45,11,100
+"Jordan",0.2213,95,25,55,98,11,20
+"Syria",0.048,70,19,46,64,14,42
+"Turkey",0.0786,11,60,66,39,50,63
+"Pakistan",0.1105,57,55,80,94,100,42
+"Indonesia",0.1539,NA,NA,NA,NA,NA,NA
+"Bangladesh",0.1139,58,69,42,86,42,42
+"United Kingdom",0.0716,80,17,55,60,22,16
+"France",0.1013,70,24,40,51,32,33
+"Germany",0.0913,94,35,29,100,25,NA
+"Netherlands",0.1539,57,20,43,60,27,40
+"Belgium",0.2215,11,74,56,49,55,75
+"Spain",0.0732,NA,NA,NA,NA,NA,NA
+"Italy",0.1312,63,62,38,100,27,57
+"Poland",0.081,90,20,50,88,67,20
+"Hungary",0.2195,90,13,54,75,15,NA
+"Czechia",0.1953,35,70,21,60,60,56
+"Romania",0.1331,95,30,50,40,45,55
+"Sweden",0.1953,60,34,42,50,27,40
+"Greece",0.1105,NA,NA,NA,NA,NA,NA
+"Denmark",0.1391,63,59,39,99,28,55
+"Iran",0.0937,60,60,34,98,47,35
+"Hong Kong SAR China",0.1624,67,71,43,86,60,46
+"Singapore",0.2035,31,89,16,50,55,68
+"Japan",0.0766,13,70,79,69,47,63
+"China",0.0446,NA,NA,NA,NA,NA,NA
+"India",0.1365,NA,NA,NA,NA,NA,NA
+"Venezuela",0.1844,40,76,26,55,59,56
+"Brazil",0.1051,40,79,65,60,47,66
+"Mexico",0.0966,44,69,14,65,69,17
+"Nigeria",0.0775,42,62,21,64,51,14
+"Kenya",0.1312,70,7,68,55,14,46
+"Tanzania",0.073,NA,NA,NA,NA,NA,NA
+"Israel",0.1237,70,18,52,55,30,15
+"Palestinian Territories",0.0495,66,51,47,86,32,48
+"Ghana",0.1105,95,9,44,85,NA,NA
+"Uganda",0.0654,65,18,55,86,22,38
+"Benin",0.0887,57,69,57,80,49,26
+"Madagascar",0.0544,74,25,57,35,52,29
+"Malawi",0.063,64,20,40,95,19,74
+"South Africa",0.0887,90,20,50,87,67,20
+"Canada",0.0748,NA,NA,NA,NA,NA,NA
+"Australia",0.0655,NA,NA,NA,NA,NA,NA
+"Philippines",0.0705,NA,NA,NA,NA,NA,NA
+"Sri Lanka",0.1341,NA,NA,NA,NA,NA,NA
+"Vietnam",NA,77,23,15,30,0,100
+"Thailand",0.0685,90,27,49,88,39,24
+"Cambodia",0.2338,100,25,54,99,11,23
+"Laos",0.0586,100,51,21,93,51,0
+"Myanmar (Burma)",0.2033,78,36,50,67,24,24
+"New Zealand",0.0805,70,4,40,86,20,59
+"Angola",0.0841,47,47,57,86,27,66
+"Botswana",0.1351,NA,NA,NA,NA,NA,NA
+"Ethiopia",0.2028,40,67,24,59,60,54
+"Mali",0.2156,93,18,55,80,14,NA
+"Mauritania",0.2215,40,89,14,50,55,55
+"Niger",0.0781,80,37,10,46,46,NA
+"Rwanda",0.1751,NA,NA,NA,NA,NA,NA
+"Senegal",NA,65,43,56,30,30,83
+"Zambia",0.0901,60,60,57,98,51,54
+"South Korea",0.0449,66,46,57,29,86,10
+"Taiwan",0.204,40,70,24,55,59,53
+"Afghanistan",0.2213,13,77,57,49,55,84
+"Belarus",0.0503,70,23,47,63,17,41
+"Georgia",0.0781,80,35,9,46,42,NA
+"Kazakhstan",0.0522,90,55,26,95,50,0
+"Kyrgyzstan",0.0655,54,40,45,67,86,46
+"Moldova",0.0503,78,5,46,49,30,35
+"Russia",0.1008,65,100,55,95,64,57
+"Ukraine",0.1624,70,5,64,50,1,NA
+"Burkina Faso",0.0446,56,9,50,70,20,14
+"Cameroon",0.0248,80,26,73,76,11,74
+"Sierra Leone",0.0639,NA,NA,NA,NA,NA,NA
+"Zimbabwe",0.0688,71,30,40,35,45,31
+"Costa Rica",0.0786,45,62,26,64,51,16
+"Albania",0.0763,85,15,52,87,38,29
+"Algeria",NA,66,27,40,44,40,NA
+"Argentina",0.0503,80,38,69,85,22,80
+"Armenia",0.2087,70,29,40,50,NA,NA
+"Austria",0.0671,65,17,55,85,25,31
+"Azerbaijan",0.081,93,20,52,90,69,19
+"Bahrain",0.0577,90,53,40,88,35,20
+"Bhutan",0.0913,60,60,34,98,42,38
+"Bolivia",0.1613,NA,NA,NA,NA,NA,NA
+"Bosnia & Herzegovina",0.0863,80,23,40,50,NA,NA
+"Bulgaria",0.1237,56,77,42,86,47,40
+"Chad",0.1331,64,30,61,76,0,80
+"Chile",0.1313,97,27,50,38,45,56
+"Colombia",0.0732,80,12,55,60,39,22
+"Comoros",0.092,75,43,48,28,100,46
+"Congo - Kinshasa",0.1021,95,5,43,85,NA,NA
+"Congo - Brazzaville",0.2087,42,43,65,13,NA,NA
+"Croatia",0.048,74,11,45,49,28,35
+"Cyprus",0.079,22,67,88,70,45,66
+"Dominican Republic",0.2458,65,36,70,44,12,57
+"Ecuador",0.0684,90,28,48,90,32,20
+"El Salvador",0.1341,NA,NA,NA,NA,NA,NA
+"Estonia",0.0602,NA,NA,NA,NA,NA,NA
+"Finland",0.0716,80,17,55,60,23,16
+"Gabon",0.1008,70,24,40,50,39,32
+"Guatemala",0.1312,63,62,39,98,28,57
+"Guinea",0.1021,94,17,60,44,47,43
+"Haiti",0.0577,70,47,38,86,53,16
+"Honduras",0.0879,88,20,50,90,69,24
+"Iceland",0.1953,13,87,15,13,61,68
+"Iraq",0.0675,90,27,48,90,36,20
+"Ireland",0.2156,70,20,40,50,NA,NA
+"Côte d’Ivoire",0.1624,NA,NA,NA,NA,NA,NA
+"Jamaica",0.0968,56,58,46,96,47,63
+"Kuwait",0.0863,65,30,40,29,NA,NA
+"Latvia",0.2195,31,58,64,45,51,68
+"Liberia",0.0557,90,50,42,90,32,22
+"Libya",0.2195,40,56,62,45,51,68
+"Lithuania",0.0544,88,58,24,92,51,15
+"Luxembourg",0.1308,95,27,50,40,47,57
+"North Macedonia",0.0684,64,47,60,95,51,30
+"Malaysia",0.189,NA,NA,NA,NA,NA,NA
+"Malta",0.1587,NA,NA,NA,NA,NA,NA
+"Mongolia",0.1341,71,27,45,66,30,28
+"Montenegro",0.0446,80,35,66,86,24,83
+"Nepal",0.0515,65,48,45,85,32,46
+"Nicaragua",0.0742,NA,NA,NA,NA,NA,NA
+"Norway",0.1412,NA,NA,NA,NA,NA,NA
+"Panama",NA,75,18,45,49,NA,NA
+"Paraguay",0.1518,42,25,57,60,18,78
+"Peru",0.2029,35,79,14,50,55,70
+"Portugal",0.0544,90,60,20,92,49,14
+"Qatar",0.0964,74,43,48,28,87,46
+"Serbia",0.0688,90,27,48,87,32,22
+"Slovakia",0.1069,30,79,66,60,47,66
+"Slovenia",0.1916,100,51,37,23,NA,NA
+"Sudan",0.062,NA,NA,NA,NA,NA,NA
+"Suriname",0.0901,46,77,15,65,86,16
+"Switzerland",0.1539,NA,NA,NA,NA,NA,NA
+"Tajikistan",0.1166,90,36,29,35,51,44
+"Trinidad & Tobago",0.1117,NA,NA,NA,NA,NA,NA
+"Tunisia",0.189,70,30,40,50,NA,NA
+"Turkmenistan",0.063,70,29,40,80,22,NA
+"United Arab Emirates",0.0837,70,5,40,86,14,55
+"Uruguay",0.1504,34,17,20,86,NA,NA
+"Uzbekistan",0.063,NA,NA,NA,NA,NA,NA
+"Yemen",0.0527,86,40,43,95,32,29
+"Kosovo",0.0675,56,40,46,70,86,46
+"Somaliland",0.1066,70,25,40,50,35,38
+"Cape Verde",0.1084,94,0,43,85,NA,NA
+"Fiji",0.1587,NA,NA,NA,NA,NA,NA
+"Mozambique",0.0592,NA,NA,NA,NA,NA,NA
+"Namibia",0.2035,80,7,40,65,12,67
+"Puerto Rico",0.19,13,79,10,28,59,68
+"São Tomé & Príncipe",0.1246,NA,NA,NA,NA,NA,NA

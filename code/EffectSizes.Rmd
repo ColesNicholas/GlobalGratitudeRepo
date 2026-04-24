@@ -464,7 +464,6 @@ full_country_results_df <-
 
 #Save dataset
 ```{r}
-
 # export
 write.csv(full_country_results_df,
   here(
@@ -484,5 +483,4 @@ write.csv(country_results_df,
   ),
   row.names = F
 )
-
 ```
