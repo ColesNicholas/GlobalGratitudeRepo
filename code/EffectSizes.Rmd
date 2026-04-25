@@ -75,7 +75,8 @@ unique_labs <- unique(DF$country)
 condition_names <- c("list", "letter", "text", "naikan", "mental.sub", "divine.grat")
 variables <- c(
   "gratitude_mean", "pa_mean", "na_mean", "optimistic_mean", "ls_mean", "ladder",
-  "envy_mean", "indebted_mean", "guilty", "ss_mean")
+  "envy_mean", "indebted_mean", "guilty", "ss_mean"
+)
 
 # Set levels
 DF$condition <- factor(DF$condition)
@@ -86,7 +87,7 @@ DF$condition <- factor(DF$condition, levels = c(
 DF$condition_type <- factor(DF$condition_type, levels = c("control", "intervention"))
 ```
 
-# Unique intervention vs. control
+# Unique intervention vs. control (Across countries)
 ```{r}
 # Initialize data frame
 unique_results_df <- data.frame()
@@ -266,7 +267,7 @@ write.csv(unique_country_results_df,
 )
 ```
 
-#Overall outcomes by country
+#Overall outcomes (pooled across emotion matrix) by country
 ```{r}
 # Initialize data frame
 country_results_df <- data.frame()

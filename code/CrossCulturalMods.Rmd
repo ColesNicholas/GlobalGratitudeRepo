@@ -141,13 +141,15 @@ DF_relig <- read.csv(file = here(
 #Combine datasets
 ```{r}
 # Combine datasets
-DF_combined <- list(DF_culture,
+DF_combined <- list(
+  DF_culture,
   DF_relation,
   DF_respon,
   DF_tight,
   DF_relig,
   DF_GDP,
-  DF_indcol) %>%
+  DF_indcol
+) %>%
   reduce(full_join, by = c("country", "iso"))
 
 

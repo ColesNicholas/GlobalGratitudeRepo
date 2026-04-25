@@ -126,11 +126,13 @@ nrow(site)
 
 # Number of participants who did not finish the means for emotion matrix (after accounting for all other removals)
 
-emotion <- combined_DF %>% 
+emotion <- combined_DF %>%
   # account for other removals
-  filter(consent != 0,
-         Progress >= 95, 
-         lab != "") %>% 
+  filter(
+    consent != 0,
+    Progress >= 95,
+    lab != ""
+  ) %>%
   # calculate emotion matrix
   rowwise() %>%
   mutate(
@@ -159,12 +161,12 @@ emotion <- combined_DF %>%
     ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
   ) %>%
   ungroup() %>%
-  
   # remove participants who did not complete the main outcome measures
-  filter(if_any(c(gratitude_mean, pa_mean, optimistic_mean, na_mean,
-                              indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean), is.na))
+  filter(if_any(c(
+    gratitude_mean, pa_mean, optimistic_mean, na_mean,
+    indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
+  ), is.na))
 nrow(emotion)
-
 ```
 
 Demographics
