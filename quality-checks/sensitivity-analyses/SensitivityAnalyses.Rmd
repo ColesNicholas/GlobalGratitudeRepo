@@ -15,14 +15,14 @@ source(here::here("setup.R"))
 
 # Open data
 ```{r}
-# fetch survey for english-only data
+# Fetch survey for english-only data
 EN_DF <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds")) %>%
   filter(UserLanguage == "EN")
 
-# fetch survey for quality-check data
+# Fetch survey for quality-check data
 QC_DF <- readRDS(file = here("quality-checks/sensitivity-analyses", "QC_globalgratitude_final_cleaned.Rds"))
 
-# list of effect size columns and variance columns
+# List of effect size columns and variance columns
 effect_size_columns <- c(
   "pa_effect_size", "na_effect_size",
   "optimistic_effect_size", "ls_effect_size",
@@ -37,40 +37,9 @@ variance_columns <- c(
 
 #Calculate and apply scales
 ```{r}
-# calculate scales
-calc_scales <- function(data) {
+# Clean data
+clean <- function(data) {
   data %>%
-    rowwise() %>%
-    mutate(
-      # gratitude
-      gratitude_mean = mean(c(grateful, appreciative, thankful), na.rm = TRUE),
-
-      # positive affect
-      pa_mean = mean(c(happy, satisfied, content, joyful, pleased), na.rm = TRUE),
-
-      # optimism
-      optimistic_mean = mean(c(optimistic, hopeful), na.rm = TRUE),
-
-      # negative affect
-      na_mean = mean(c(sad, depressed, anxious, nervous), na.rm = TRUE),
-
-      # indebtedness
-      indebted_mean = mean(c(indebted, obligated), na.rm = TRUE),
-
-      # envy
-      envy_mean = mean(c(envious, bitter, jealous), na.rm = TRUE),
-
-      # life satisfaction
-      ls_mean = mean(c(ls_1, ls_2, ls_3, ls_4, ls_5), na.rm = TRUE),
-
-      # sense of self
-      ss_mean = mean(c(self_image, self_image_circle), na.rm = TRUE)
-    ) %>%
-    ungroup() %>%
-    drop_na(
-      gratitude_mean, pa_mean, optimistic_mean, na_mean,
-      indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
-    ) %>%
     mutate(country = case_when(
       lab == "POL_01" ~ "Poland",
       lab == "POL_02" ~ "Poland",
@@ -113,7 +82,6 @@ calc_scales <- function(data) {
       lab == "MKD_01" ~ "Macedonia",
       TRUE ~ NA_character_
     )) %>%
-    filter(!is.na(country)) %>%
     select(country, condition, condition_type, guilty, ladder, gratitude_mean:ss_mean) %>%
     mutate(
       # recode factors
@@ -126,13 +94,13 @@ calc_scales <- function(data) {
 }
 
 # apply
-EN_DF <- calc_scales(EN_DF)
-QC_DF <- calc_scales(QC_DF)
+EN_DF <- clean(EN_DF)
+QC_DF <- clean(QC_DF)
 ```
 
 # Organize data
 ```{r}
-# create lists
+# Create lists
 EN_unique_labs <- unique(EN_DF$country)
 QC_unique_labs <- unique(QC_DF$country)
 
@@ -212,11 +180,7 @@ compute_all_effect_sizes <- function(data, unique_labs, variables) {
 
 # Run for both datasets
 EN_unique_country_results_df <- compute_all_effect_sizes(EN_DF, EN_unique_labs, variables)
-EN_unique_country_results_df <- EN_unique_country_results_df %>%
-  filter(!is.na(intervention_condition), !is.na(country))
 QC_unique_country_results_df <- compute_all_effect_sizes(QC_DF, QC_unique_labs, variables)
-QC_unique_country_results_df <- QC_unique_country_results_df %>%
-  filter(!is.na(intervention_condition), !is.na(country))
 ```
 
 #Calculate English data tau values 
@@ -244,7 +208,7 @@ en_tau_c <- sapply(en.m.ic, function(model) (sqrt(model$sigma2[2])))
 en_tau_p <- sapply(en.m.ic, function(model) (sqrt(model$sigma2[1])))
 ```
 
-#Calculate quality-check  data tau values
+#Calculate quality-check data tau values
 ```{r}
 # fit models for each pair of effect size and variance
 qc.m.ic <- lapply(1:length(effect_size_columns), function(i) {
@@ -397,7 +361,12 @@ ef_combined <- dplyr::bind_rows(results_df, qc_results_df, en_results_df)
 #Combine into one table
 ```{r}
 # Store counts as numeric
-n_full <- 10772
+DF <- readRDS(file = here(
+  "data/final-data",
+  "globalgratitude_final_cleaned.Rds"
+))
+
+n_full <- nrow(DF)
 n_qc <- nrow(QC_DF)
 n_en <- nrow(EN_DF)
 

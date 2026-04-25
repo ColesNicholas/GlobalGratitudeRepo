@@ -1,10 +1,10 @@
 Outcome,Sample,n,Cohen's d,95% CI,τc,τp,τc/τp
-pa_effect_size,Full,"10,772",.36,"[.27, .45]",.170,.077,2.21
-na_effect_size,Full,"10,772",-0.22,"[-0.29, -0.14]",.190,.047,4.01
-optimistic_effect_size,Full,"10,772",.24,"[.18, .30]",.152,.034,4.44
-ls_effect_size,Full,"10,772",.11,"[.07, .15]",.102,.000,120546.76
-envy_effect_size,Full,"10,772",-0.16,"[-0.24, -0.07]",.144,.079,1.83
-indebted_effect_size,Full,"10,772",.15,"[.07, .23]",.131,.082,1.60
+pa_effect_size,Full,"10,696",.37,"[.28, .45]",.172,.078,2.22
+na_effect_size,Full,"10,696",-0.22,"[-0.30, -0.14]",.193,.048,4.02
+optimistic_effect_size,Full,"10,696",.24,"[.18, .30]",.155,.035,4.43
+ls_effect_size,Full,"10,696",.12,"[.07, .16]",.104,.000,110846.07
+envy_effect_size,Full,"10,696",-0.16,"[-0.24, -0.07]",.146,.080,1.84
+indebted_effect_size,Full,"10,696",.15,"[.07, .24]",.134,.083,1.62
 pa_effect_size,Excluding potentially problematic participants," 9,617",.39,"[.30, .47]",.166,.079,2.11
 na_effect_size,Excluding potentially problematic participants," 9,617",-0.22,"[-0.31, -0.14]",.188,.064,2.95
 optimistic_effect_size,Excluding potentially problematic participants," 9,617",.27,"[.20, .33]",.144,.038,3.75

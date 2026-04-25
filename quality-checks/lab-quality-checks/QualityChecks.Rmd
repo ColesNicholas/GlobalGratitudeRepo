@@ -48,6 +48,7 @@ selected_sheets <- lapply(selected_indices, function(i) {
   readWorkbook(temp_file, sheet = new_sheets[i])
 })
 
+# Create dataframe
 combined_df <- bind_rows(selected_sheets) %>%
   # column response was accidentally deleted when conducting quality checks
   mutate(lab = ifelse(ResponseId == "R_8EFEKmOIkETMemi", "ITA_01", lab)) %>%
@@ -80,11 +81,16 @@ match_column_types <- function(df, reference_df) {
 USA_02b <- match_column_types(USA_02b, combined_df)
 USA_02c <- match_column_types(USA_02c, combined_df)
 
-# final sheets
+# Final dataset
+df <- readRDS(file = here("data/final-data", "globalgratitude_final_cleaned.Rds"))
+# Final sheets
 final_df <- bind_rows(combined_df, USA_02b, USA_02c) %>%
   # fix issues with extra spaces
   mutate(Category = str_replace(Category, "^no\\s+$", "no")) %>%
-  mutate(Category = if_else(Category == "No", "no", Category))
+  mutate(Category = if_else(Category == "No", "no", Category)) %>% 
+  # remove responses that are already removed in final dataset by response ID
+  filter(ResponseId %in% df$ResponseId)
+  
 ```
 
 #Final Statistics
@@ -135,11 +141,12 @@ DF_combined <- DF %>%
   left_join(final_df, by = c("ResponseId")) %>%
   filter(Category != "no")
 
-# save csv
-write_rds(DF_combined,
+# save Rds
+saveRDS(
+  DF_combined,
   file = here(
     "quality-checks/sensitivity-analyses",
-    "QC_globalgratitude_final_cleaned.Rds"
+    "QC_globalgratitude_final_cleaned.RDS"
   )
 )
 ```
