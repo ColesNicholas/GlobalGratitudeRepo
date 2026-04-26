@@ -290,5 +290,34 @@ for (outcome in names(analysis)) {
   cat("\n---", outcome, "---\n")
   print(analysis[[outcome]])
 }
+
+# Build a summary dataframe: β1, t(df), p, τslope for each outcome
+# Each analysis[[outcome]] is list(m = summary(lmer_model), emm = ...)
+stats_df <- do.call(rbind, lapply(names(analysis), function(outcome) {
+  model_sum <- analysis[[outcome]]$m
+  coefs     <- model_sum$coefficients
+
+  # Row 2 = condition_type slope (β1); row 1 is the intercept
+  # Negate so sign reflects intervention - control (model reference is intervention)
+  beta1  <- -coefs[2, "Estimate"]
+  t_val  <- -coefs[2, "t value"]
+  df_val <- coefs[2, "df"]
+  p_val  <- coefs[2, "Pr(>|t|)"]
+
+  # τslope: SD of the random slope for condition_type across labs
+  tau_slope <- attr(model_sum$varcor$lab, "stddev")[2]
+
+  data.frame(
+    outcome   = outcome,
+    beta1     = round(beta1, 2),
+    t_value   = round(t_val, 1),
+    df        = round(df_val, 1),
+    p_value   = p_val,
+    tau_slope = round(tau_slope, 2),
+    stringsAsFactors = FALSE
+  )
+}))
+
+print(stats_df)
 ```
 
