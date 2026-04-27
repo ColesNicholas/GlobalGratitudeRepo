@@ -35,6 +35,190 @@ tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.c
 print(tau)
 ```
 
+#Results
+Percent Overlap
+```{r}
+DF <- if (file.exists(here("data/final-data", "crossculturalmod.csv"))) {
+  read.csv(here("data/final-data", "crossculturalmod.csv"))
+} else {
+  read.csv(here("data/final-data", "crossculturalmod_simulated.csv"))
+}
+
+# Standardize variables
+DF <-
+  DF %>%
+  mutate(
+    dist.us =
+      if_else(country == "United States" &
+        is.na(dist.us),
+      0,
+      dist.us
+      )
+  ) %>%
+  mutate_at(
+    .vars =
+      vars(
+        dist.us,
+        relational_mobility:indulgence
+      ),
+    ~ scales::rescale(., to = c(-1, 1))
+  )
+
+# Rename columns
+fig1.DF <-
+  DF %>%
+  pivot_longer(relational_mobility:indulgence) %>%
+  mutate(
+    name =
+      fct_recode(name,
+        "Relational Mobility" = "relational_mobility",
+        "Responsibilism" = "responsibilism",
+        "Tightness" = "tightness",
+        "Religiosity" = "relig_mean",
+        "GDP" = "mean_GDP",
+        "Residential Mobility" = "resmobility",
+        "Power Distance" = "power.distance",
+        "Individualism" = "individualism",
+        "Motivation" = "motivation",
+        "Uncertainty Avoidance" = "uncertainty.avoidance",
+        "Long Term Orientation" = "long.term.orientation",
+        "Indulgence" = "indulgence"
+      )
+  )
+
+per.overlap <-
+  sapply(unique(fig1.DF$name),
+    simplify = F,
+    USE.NAMES = T,
+    function(x) {
+      # filter by outcome and include all countries
+      d.pop <-
+        fig1.DF %>%
+        filter(
+          name == x,
+          !is.na(value)
+        )
+
+      # pull out only sampled countries
+      d.sample <- d.pop %>%
+        filter(sample == "yes")
+
+      # calculate overlap
+      o <-
+        overlap(
+          x = list(
+            d.pop$value,
+            d.sample$value
+          ),
+          type = "2"
+        )
+
+      cbind(
+        x = as.character(x),
+        overlap =
+          round(
+            o$OV * 100,
+            2
+          ) %>%
+            as.numeric()
+      ) %>%
+        as.data.frame() %>%
+        return()
+    }
+  ) %>%
+  bind_rows() %>%
+  mutate(
+    overlap =
+      as.numeric(overlap)
+  )
+
+# Inspect percent overlap
+mean(per.overlap$overlap,
+  na.rm = T
+)
+
+sd(per.overlap$overlap,
+  na.rm = T
+)
+
+min(per.overlap$overlap,
+  na.rm = T
+)
+
+max(per.overlap$overlap,
+  na.rm = T
+)
+```
+
+Overall Effect Sizes
+```{r}
+# Overall effect sizes, CI, p-values
+overall_ef <-
+  read.csv(file = here(
+    "data/output",
+    "pooled_effect_size.csv"
+  ))
+
+print(overall_ef)
+```
+
+Heterogeneity
+```{r}
+# Overall heterogeneity
+heterogeneity <- read.csv(file = here("data/output", "overall_heterogeneity.csv"))
+
+print(heterogeneity)
+
+# Overall tau
+tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv")) %>%
+  filter(Sample == "Full") %>%
+  select(Outcome, τc, τp, τc.τp)
+
+print(tau)
+
+# Practice-level heterogeneity
+practice_heterogeneity <- read.csv(file = here("data/output", "si_table_4.csv"))
+
+print(practice_heterogeneity)
+
+# Country-level heterogeneity
+country_heterogeneity <- read.csv(file = here("data/output", "si_table_5.csv"))
+
+print(country_heterogeneity)
+```
+
+Prediction Intervals
+```{r}
+# Prediction intervals
+prediction <- read.csv(file = here("data/output", "prediction_intervals.csv")) %>% select(effect_size, practice_pi_lb, practice_pi_ub, country_pi_lb, country_pi_ub)
+
+print(prediction)
+```
+
+Cross-Cultural Consistency
+```{r}
+# Cross-Cultural consistency
+consistency <- read.csv(file = here("data/output", "cultural_consistency.csv")) %>% select(-opposite_countries_prop, -countries)
+
+print(consistency)
+```
+
+Cross-Cultural Moderators
+```{r}
+# Cross-cultural moderators
+moderators <- read.csv(file = here("data/output", "moderators.csv"))
+
+specific_rows <- moderators[c(36, 43, 64, 65), ]
+tightness_rows <- moderators %>%
+  filter(moderator == "Tightness") %>%
+  slice(4)
+
+moderators_selected <- bind_rows(tightness_rows, specific_rows) %>%
+  select(outcome:ci.upper)
+
+print(moderators_selected)
+```
+
 #Methodology
 Participant N
 ```{r}
@@ -106,12 +290,6 @@ combined_DF <-
 
 nrow(combined_DF)
 
-# Number of participants who did not provide consent
-
-consent <- combined_DF %>% filter(consent == 0)
-
-nrow(consent)
-
 # Number of participants that did not finish at least 95% of the survey
 
 finish <- combined_DF %>% filter(Progress < 95)
@@ -127,7 +305,6 @@ nrow(site)
 # Number of participants who did not finish the means for emotion matrix (after accounting for all other removals)
 
 emotion <- combined_DF %>%
-  emotion() <- combined_DF %>%
   # account for other removals
   filter(
     consent != 0,
@@ -167,10 +344,7 @@ emotion <- combined_DF %>%
     gratitude_mean, pa_mean, optimistic_mean, na_mean,
     indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
   ), is.na))
-filter(if_any(c(
-  gratitude_mean, pa_mean, optimistic_mean, na_mean,
-  indebted_mean, envy_mean, ls_mean, guilty, ladder, ss_mean
-), is.na))
+
 nrow(emotion)
 ```
 
@@ -220,67 +394,9 @@ reliability <-
 print(reliability)
 ```
 
-#Results
-Overall Effect Sizes
-```{r}
-# Overall effect sizes, CI, p-values
-overall_ef <-
-  read.csv(file = here(
-    "data/output",
-    "pooled_effect_size.csv"
-  ))
-
-print(overall_ef)
-```
-
-Heterogeneity
-```{r}
-# Overall heterogeneity
-heterogeneity <- read.csv(file = here("data/output", "overall_heterogeneity.csv"))
-
-print(heterogeneity)
-
-# Overall tau
-tau <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv")) %>%
-  filter(Sample == "Full") %>%
-  select(Outcome, τc, τp)
-
-print(tau)
-```
-
-Prediction Intervals
-```{r}
-# Prediction intervals
-prediction <- read.csv(file = here("data/output", "prediction_intervals.csv")) %>% select(effect_size, practice_pi_lb, practice_pi_ub, country_pi_lb, country_pi_ub)
-
-print(prediction)
-```
-
-Cross-Cultural Consistency
-```{r}
-# Cross-Cultural consistency
-consistency <- read.csv(file = here("data/output", "cultural_consistency.csv")) %>% select(-opposite_countries_prop, -countries)
-
-print(consistency)
-```
-
-Cross-Cultural Moderators
-```{r}
-# Cross-cultural moderators
-moderators <- read.csv(file = here("data/output", "moderators.csv"))
-
-specific_rows <- moderators[c(36, 43, 64, 65), ]
-tightness_rows <- moderators %>%
-  filter(moderator == "Tightness") %>%
-  slice(1:4)
-
-moderators_selected <- bind_rows(specific_rows, tightness_rows) %>%
-  select(outcome:ci.upper)
-
-print(moderators_selected)
-```
-
 #Supplemental Information
+
+Original Analysis Plan
 ```{r}
 # Pre-registered analysis (reduced)
 analysis <- readRDS(file = here("data/output", "si_regression_output.Rds"))
@@ -295,29 +411,37 @@ for (outcome in names(analysis)) {
 # Each analysis[[outcome]] is list(m = summary(lmer_model), emm = ...)
 stats_df <- do.call(rbind, lapply(names(analysis), function(outcome) {
   model_sum <- analysis[[outcome]]$m
-  coefs     <- model_sum$coefficients
+  coefs <- model_sum$coefficients
 
   # Row 2 = condition_type slope (β1); row 1 is the intercept
   # Negate so sign reflects intervention - control (model reference is intervention)
-  beta1  <- -coefs[2, "Estimate"]
-  t_val  <- -coefs[2, "t value"]
+  beta1 <- -coefs[2, "Estimate"]
+  t_val <- -coefs[2, "t value"]
   df_val <- coefs[2, "df"]
-  p_val  <- coefs[2, "Pr(>|t|)"]
+  p_val <- coefs[2, "Pr(>|t|)"]
 
   # τslope: SD of the random slope for condition_type across labs
   tau_slope <- attr(model_sum$varcor$lab, "stddev")[2]
 
   data.frame(
-    outcome   = outcome,
-    beta1     = round(beta1, 2),
-    t_value   = round(t_val, 1),
-    df        = round(df_val, 1),
-    p_value   = p_val,
+    outcome = outcome,
+    beta1 = round(beta1, 2),
+    t_value = round(t_val, 1),
+    df = round(df_val, 1),
+    p_value = p_val,
     tau_slope = round(tau_slope, 2),
     stringsAsFactors = FALSE
   )
 }))
 
 print(stats_df)
+```
+
+Sensitivity Analysis
+```{r}
+# Data quality sensitivity analysis
+DC_df <- read.csv(file = here("quality-checks/sensitivity-analyses", "si_table_6.csv"))
+
+print(DC_df)
 ```
 
